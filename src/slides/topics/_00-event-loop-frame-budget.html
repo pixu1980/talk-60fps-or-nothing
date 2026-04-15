@@ -1,0 +1,53 @@
+<section>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3>A 60Hz screen gives you 16.67ms</h3>
+    <small balance>
+      A 60Hz display refreshes 60 times per second, so one frame slot is 1000 / 60 = 16.67ms. Miss that slot and the browser shows the previous frame again. On 120Hz, the budget drops to 8.33ms.
+    </small>
+    <div class="frame-budget-bar" aria-label="Frame budget split across JavaScript, style, layout, paint, and composite">
+      <div class="budget-segment budget-segment--js">
+        <strong>JS</strong>
+        <span>tasks</span>
+      </div>
+      <div class="budget-segment budget-segment--style">
+        <strong>Style</strong>
+        <span>recalc</span>
+      </div>
+      <div class="budget-segment budget-segment--layout">
+        <strong>Layout</strong>
+        <span>geometry</span>
+      </div>
+      <div class="budget-segment budget-segment--paint">
+        <strong>Paint</strong>
+        <span>raster</span>
+      </div>
+      <div class="budget-segment budget-segment--composite">
+        <strong>Composite</strong>
+        <span>frame submit</span>
+      </div>
+    </div>
+    <p class="frame-budget-note">That budget is shared by JavaScript, style calculation, layout, paint, compositing, and platform overhead.</p>
+  </section>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3>Before pixels, JavaScript gets a turn</h3>
+    <small balance> The browser event loop runs a task, flushes microtasks, then gives rendering a chance. If your code overstays, the next frame waits. </small>
+    <div class="event-loop-flow" role="img" aria-label="Task queue, microtasks, requestAnimationFrame, and rendering steps">
+      <article class="loop-card">
+        <strong>Task queue</strong>
+        <small>input, timers, event handlers</small>
+      </article>
+      <article class="loop-card">
+        <strong>Microtasks</strong>
+        <small>promises, MutationObserver</small>
+      </article>
+      <article class="loop-card">
+        <strong>requestAnimationFrame</strong>
+        <small>last safe JavaScript before render</small>
+      </article>
+      <article class="loop-card">
+        <strong>Render work</strong>
+        <small>style, layout, paint, composite</small>
+      </article>
+    </div>
+  </section>
+</section>

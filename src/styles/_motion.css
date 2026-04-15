@@ -1,0 +1,126 @@
+/* Motion Primitives - Kinetic CSS */
+
+/* ========================================
+   Design Tokens - Duration, Easing, Spacing
+   ======================================== */
+
+:root {
+	/* Durations */
+	--duration-fast: 150ms;
+	--duration-normal: 300ms;
+	--duration-slow: 600ms;
+	--duration-cinematic: 800ms;
+
+	/* Easing */
+	--ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+	--ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	--ease-snap: cubic-bezier(0.5, 1.5, 0.75, 1);
+
+	/* Stagger base delay */
+	--stagger-base: 80ms;
+}
+
+/* ========================================
+   Reduced Motion - Global Override
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+@layer pixu-talk {
+	@layer motion-overrides {
+		.slide-dive-in {
+			height: 100% !important;
+			min-block-size: 36rem;
+			display: grid !important;
+			place-items: center;
+		}
+
+		.slide-dive-in stack-container {
+			width: min(42rem, 72vw);
+			height: 7rem;
+		}
+
+		.slide-dive-in stack-container stack-item {
+			font-size: clamp(5rem, 7vw, 7.6rem);
+		}
+
+		.slide-dive-in stack-container:hover {
+			width: min(88rem, 84vw);
+			height: min(28rem, 48vh);
+		}
+
+		.slide-dive-in stack-container:hover stack-item {
+			font-size: calc(12rem - (0.9rem * var(--index)));
+		}
+
+		section[data-topic="sponsors"],
+		section[data-topic="scroll-view-appearing"],
+		section[data-topic="tilt-card"],
+		.slide-outro-taf {
+			min-block-size: 38rem;
+		}
+
+		section[data-topic="tilt-card-demo"] {
+			min-block-size: 46rem;
+		}
+
+		.slide-outro-taf {
+			height: 100%;
+			display: grid;
+			place-items: center;
+		}
+
+		.slide-outro-taf .taf-wrapper {
+			height: 38vh;
+			max-width: min(68rem, 76vw);
+		}
+
+		.slide-outro-taf svg {
+			width: 92%;
+			margin-top: -8rem;
+		}
+
+		.slide-outro-taf .circles small {
+			inset: auto 1rem 0.75rem auto;
+		}
+
+		.slide-outro-taf .six {
+			width: 96%;
+		}
+
+		.slide-outro-taf .five {
+			width: 80%;
+		}
+
+		.slide-outro-taf .four {
+			width: 66%;
+		}
+
+		.slide-outro-taf .three {
+			width: 52%;
+		}
+
+		.slide-outro-taf .two {
+			width: 40%;
+		}
+
+		.slide-outro-taf .one {
+			width: 18%;
+		}
+
+		.slide-outro-taf [pixu] {
+			inline-size: 15rem;
+		}
+	}
+}

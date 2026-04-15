@@ -1,0 +1,74 @@
+<section>
+  <section data-topic="performance" data-menu-title="Performance Matrix">
+    <h3>Performance Matrix</h3>
+    <small balance> Same perceived effect, very different cost. The browser does not negotiate here. </small>
+    <div class="perf-grid perf-grid--two-up">
+      <div class="perf-card perf-good fragment">
+        <strong>Composition friendly</strong>
+        <ul>
+          <li><code>transform</code></li>
+          <li><code>opacity</code></li>
+          <li>simple <code>filter</code></li>
+          <li>native <code>scroll-driven</code></li>
+        </ul>
+        <span class="perf-badge">Prefer</span>
+      </div>
+      <div class="perf-card perf-warn fragment">
+        <strong>Paint heavy</strong>
+        <ul>
+          <li><code>background</code></li>
+          <li><code>box-shadow</code></li>
+          <li><code>border-radius</code></li>
+          <li>complex <code>clip-path</code></li>
+        </ul>
+        <span class="perf-badge">Measure</span>
+      </div>
+    </div>
+  </section>
+  <section data-topic="performance" data-menu-title="Performance Matrix">
+    <small balance>Once geometry or read/write DOM work enters frame, you are spending real main-thread budget.</small>
+    <div class="perf-grid perf-grid--single">
+      <div class="perf-card perf-bad fragment">
+        <strong>Layout triggering</strong>
+        <ul>
+          <li><code>width</code>, <code>height</code></li>
+          <li><code>inset</code>, <code>top</code>, <code>left</code></li>
+          <li><code>margin</code>, <code>padding</code></li>
+          <li>Read/write DOM in the same frame</li>
+        </ul>
+        <span class="perf-badge">Expensive</span>
+      </div>
+    </div>
+    <p class="perf-summary">Prefer composition when visual result allows it. Measure paint. Budget layout deliberately.</p>
+  </section>
+  <section data-menu-title="CSS vs JS">
+    <h3><mark>CSS</mark> vs <mark>JavaScript</mark> is not a religious war</h3>
+    <small balance> Right question: who drives change, and which renderer phase are you touching? </small>
+  </section>
+  <section data-menu-title="CSS vs JS">
+    <comparison>
+      <left>
+        <h4>CSS excels at</h4>
+        <small>
+          <ul>
+            <li>State transitions</li>
+            <li>Scroll-driven effects</li>
+            <li>Declarative timing and easing</li>
+            <li>Progressive enhancement with <mark>@supports</mark></li>
+          </ul>
+        </small>
+      </left>
+      <right>
+        <h4>JS excels at</h4>
+        <small>
+          <ul>
+            <li>Pointer and gesture input</li>
+            <li>Physics and imperative orchestration</li>
+            <li>Reading app state and external signals</li>
+            <li>Bridging UI intent into CSS custom properties</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>

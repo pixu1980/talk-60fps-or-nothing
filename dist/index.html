@@ -1,17 +1,24 @@
-<!DOCTYPE html><html lang="it"><head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
-    <title>Talk Title</title>
+    <title>60fps or Nothing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="talk-60fps-or-nothing.189df365.css">
+    <link rel="stylesheet" href="talk-60fps-or-nothing.b4b6b222.css">
   </head>
   <body>
     <main class="reveal">
       <div class="slides">
-        <section intro="">
-  <h2>
-    This slide acts like a doodle visually resuming the talk
-  </h2>
+        <section intro="" aria-label="60fps or nothing visual intro">
+  <figure class="stage" role="figure" aria-label="Performance-first motion system">
+    <div class="system" role="img">
+      <div class="orbit orbit--inner" aria-hidden="true"></div>
+      <div class="orbit orbit--middle" aria-hidden="true"></div>
+      <div class="orbit orbit--outer" aria-hidden="true"></div>
+      <div class="orbit orbit--fourth" aria-hidden="true"></div>
+      <div class="orbit orbit--fifth" aria-hidden="true"></div>
+      <h1 class="title" role="button" aria-label="Drag 60fps or nothing" tabindex="0">60fps or <br>nothing</h1>
+    </div>
+  </figure>
 </section>
 
 <section>
@@ -20,8 +27,51 @@
       <left>
         <figure>
           <picture>
-            <source srcset="pixu.ea6d4c65.webp" type="image/webp">
-            <img src="pixu.06482de6.jpg" alt="Pixu">
+            <source srcset="francesco-sciuti.dc8308ed.webp" type="image/webp">
+            <img src="francesco-sciuti.f52bd053.jpg" alt="Francesco Sciuti">
+          </picture>
+        </figure>
+        <h3>Francesco <mark>Sciuti</mark></h3>
+        <small balance="" class="fragment">
+          <p><mark>CEO</mark> &amp; Co-Founder @ <mark>Devmy</mark></p>
+          <p><mark>Google Developer Expert</mark> &amp; ex <mark>Microsoft MVP</mark></p>
+          <p>
+            DevRel expert @ <mark>Codemotion</mark>, <mark>speaker</mark>
+            <br>
+            and trainer
+          </p>
+        </small>
+      </left>
+      <right class="fragment">
+        <h6>
+          <img src="linkedin.51093a7b.svg" alt="francescosciuti@linkedin">
+          linkedin.com/in/francescosciuti/
+        </h6>
+        <h6>
+          <img src="github.21123c11.svg" alt="fsciuti@github">
+          github.com/fsciuti
+        </h6>
+        <h6>
+          <img src="youtube.4857fd9d.svg" alt="acadevmy@youtube">
+          youtube.com/c/acadevmy
+        </h6>
+        <h6>
+          <img src="linkedin.51093a7b.svg" alt="devmy@linkedin">
+          linkedin.com/company/devmyfactory
+        </h6>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section pixu="" data-transition="convex">
+    <comparison>
+      <left>
+        <figure>
+          <picture>
+            <source srcset="pixu.0e0f9a4a.webp" type="image/webp">
+            <img src="pixu.57ca72a6.png" alt="Pixu">
           </picture>
         </figure>
         <h3>Emiliano <mark>Pisu</mark></h3>
@@ -71,10 +121,19 @@
 
 <section>
   <section>
-    <h4>Here goes the <mark>main</mark> topic title</h4>
+    <h4 balance="">
+      If an animation stutters or a UI responds late,
+      <mark>it is not always the browser's fault</mark>.
+    </h4>
   </section>
   <section>
-    <h4>Here goes the main topic description</h4>
+    <p balance="">The <mark>rendering pipeline</mark> explains when you are paying for <mark>layout</mark>, <mark>paint</mark>, or <mark>composition</mark>.</p>
+  </section>
+  <section>
+    <p balance="">Optimization is not free: we choose <mark>APIs</mark>, <mark>CSS</mark> properties, and <mark>JavaScript</mark> orchestration more carefully so we do not waste frames.</p>
+  </section>
+  <section>
+    <p balance="">Let us go through <mark>clear criteria</mark>, reusable examples, and smooth animations on real <mark>browsers</mark> and <mark>webviews</mark>.</p>
   </section>
 </section>
 
@@ -84,13 +143,15 @@
     <h4>What are we going to <br><mark>talk about</mark> today?</h4>
   </section>
   <section>
-    <h4>Topic Name</h4>
+    <h4>Agenda</h4>
     <small>
       <ul>
-        <li class="fragment">argument 1</li>
-        <li class="fragment">argument 2</li>
-        <li class="fragment">argument 3</li>
-        <li class="fragment">argument 4</li>
+        <li class="fragment">What FPS means, what <mark>60fps</mark> means, and why <mark>16.67ms</mark> matters</li>
+        <li class="fragment">Before pixels: event loop, frame budget, and three renderer costs</li>
+        <li class="fragment"><mark>Performance Matrix</mark>, CSS vs JS, and why compositing wins</li>
+        <li class="fragment">Reality check: users, processes, threads, URL-to-pixels, CRP</li>
+        <li class="fragment">Examples refocused on browser-friendly motion, not demo-only sparkle</li>
+        <li class="fragment">Practical rules to keep interface at <mark>60fps</mark></li>
       </ul>
     </small>
   </section>
@@ -111,41 +172,695 @@
 
 
 <section>
-  <!-- Here goes the talk slides -->
+  <section data-menu-title="FPS Basics">
+    <h3>What are FPS?</h3>
+    <small balance="">FPS means <mark>frames per second</mark>: how many complete images the browser can present every second.</small>
+    <div class="fps-card-grid" aria-label="Frame rates from 24 to 120 frames per second">
+      <article class="fps-card">
+        <strong>24fps</strong>
+        <small>cinema cadence</small>
+      </article>
+      <article class="fps-card">
+        <strong>30fps</strong>
+        <small>feels acceptable, not snappy</small>
+      </article>
+      <article class="fps-card fps-card--focus">
+        <strong>60fps</strong>
+        <small>baseline for fluid UI</small>
+      </article>
+      <article class="fps-card">
+        <strong>120fps</strong>
+        <small>same rules, half budget</small>
+      </article>
+    </div>
+  </section>
+  <section data-menu-title="FPS Basics">
+    <h3>What does <mark>60fps</mark> mean?</h3>
+    <small balance="">It means delivering <mark>60 fresh frames every second</mark>. When you miss one slot, browser repeats previous frame and motion instantly feels late.</small>
+    <div class="fps-cadence" aria-label="Six sequential 60fps frame slots">
+      <span>frame 1</span>
+      <span>frame 2</span>
+      <span>frame 3</span>
+      <span>frame 4</span>
+      <span>frame 5</span>
+      <span>frame 6</span>
+    </div>
+    <p class="fps-basics-note">Smoothness is not animation magic. It is input, JavaScript, style, layout, paint, and compositing all reaching next frame in time.</p>
+  </section>
 </section>
 
 <section>
-  <section data-transition="convex">
-    <h4>Wrapping up</h4>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3>A 60Hz screen gives you 16.67ms</h3>
+    <small balance="">
+      A 60Hz display refreshes 60 times per second, so one frame slot is 1000 / 60 = 16.67ms. Miss that slot and the browser shows the previous frame again. On 120Hz, the budget drops to 8.33ms.
+    </small>
+    <div class="frame-budget-bar" aria-label="Frame budget split across JavaScript, style, layout, paint, and composite">
+      <div class="budget-segment budget-segment--js">
+        <strong>JS</strong>
+        <span>tasks</span>
+      </div>
+      <div class="budget-segment budget-segment--style">
+        <strong>Style</strong>
+        <span>recalc</span>
+      </div>
+      <div class="budget-segment budget-segment--layout">
+        <strong>Layout</strong>
+        <span>geometry</span>
+      </div>
+      <div class="budget-segment budget-segment--paint">
+        <strong>Paint</strong>
+        <span>raster</span>
+      </div>
+      <div class="budget-segment budget-segment--composite">
+        <strong>Composite</strong>
+        <span>frame submit</span>
+      </div>
+    </div>
+    <p class="frame-budget-note">That budget is shared by JavaScript, style calculation, layout, paint, compositing, and platform overhead.</p>
   </section>
-  <section data-transition="convex">
-    <comparison>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3>Before pixels, JavaScript gets a turn</h3>
+    <small balance=""> The browser event loop runs a task, flushes microtasks, then gives rendering a chance. If your code overstays, the next frame waits. </small>
+    <div class="event-loop-flow" role="img" aria-label="Task queue, microtasks, requestAnimationFrame, and rendering steps">
+      <article class="loop-card">
+        <strong>Task queue</strong>
+        <small>input, timers, event handlers</small>
+      </article>
+      <article class="loop-card">
+        <strong>Microtasks</strong>
+        <small>promises, MutationObserver</small>
+      </article>
+      <article class="loop-card">
+        <strong>requestAnimationFrame</strong>
+        <small>last safe JavaScript before render</small>
+      </article>
+      <article class="loop-card">
+        <strong>Render work</strong>
+        <small>style, layout, paint, composite</small>
+      </article>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="Layout Paint Composite">
+    <h3>The three words that really matter</h3>
+    <small balance=""> Layout, paint, and composition are not synonyms for "animation". They are different costs, with different culprits. </small>
+  </section>
+  <section class="browser-three-stage" data-menu-title="Layout Paint Composite">
+    <article class="stage-card stage-card--layout">
+      <strong>Layout</strong>
+      <p>Computes sizes and coordinates.</p>
+      <small><code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>font-size</code></small>
+    </article>
+    <article class="stage-card stage-card--paint">
+      <strong>Paint</strong>
+      <p>Draws fills, borders, text, and shadows.</p>
+      <small><code>background</code>, <code>color</code>, <code>box-shadow</code></small>
+    </article>
+    <article class="stage-card stage-card--composite">
+      <strong>Composition</strong>
+      <p>Reassembles already rasterized layers.</p>
+      <small><code>transform</code>, <code>opacity</code></small>
+    </article>
+  </section>
+  <section data-menu-title="Layout Paint Composite">
+    <comparison browser-two-columns="">
       <left>
-        <h4>Pros</h4>
+        <div class="browser-image-frame">
+          <img src="image61.62250f55.png" alt="Paint records and drawing order">
+        </div>
+      </left>
+      <right>
         <small>
           <ul>
-            <li class="fragment">pro 1</li>
-            <li class="fragment">pro 2</li>
-            <li class="fragment">pro 3</li>
-            <li class="fragment">pro 4</li>
+            <li><mark>Paint</mark> builds a list of draw commands</li>
+            <li class="fragment">Apparently harmless combinations can invalidate large areas</li>
+            <li class="fragment">Shadows, blur, clipping, and complex backgrounds are often the first suspects</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+  <section data-menu-title="Layout Paint Composite">
+    <comparison browser-two-columns="">
+      <left>
+        <div class="browser-image-frame">
+          <img src="image63.1b1a8b35.png" alt="Compositing and layer tree">
+        </div>
+      </left>
+      <right>
+        <small>
+          <ul>
+            <li>The <mark>compositor thread</mark> can create frames without blocking the main thread</li>
+            <li class="fragment">That is why well chosen scroll and transform effects can feel "free"</li>
+            <li class="fragment">But layers are not free: too many layers consume memory and raster time</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section data-topic="performance" data-menu-title="Performance Matrix">
+    <h3>Performance Matrix</h3>
+    <small balance=""> Same perceived effect, very different cost. The browser does not negotiate here. </small>
+    <div class="perf-grid perf-grid--two-up">
+      <div class="perf-card perf-good fragment">
+        <strong>Composition friendly</strong>
+        <ul>
+          <li><code>transform</code></li>
+          <li><code>opacity</code></li>
+          <li>simple <code>filter</code></li>
+          <li>native <code>scroll-driven</code></li>
+        </ul>
+        <span class="perf-badge">Prefer</span>
+      </div>
+      <div class="perf-card perf-warn fragment">
+        <strong>Paint heavy</strong>
+        <ul>
+          <li><code>background</code></li>
+          <li><code>box-shadow</code></li>
+          <li><code>border-radius</code></li>
+          <li>complex <code>clip-path</code></li>
+        </ul>
+        <span class="perf-badge">Measure</span>
+      </div>
+    </div>
+  </section>
+  <section data-topic="performance" data-menu-title="Performance Matrix">
+    <small balance="">Once geometry or read/write DOM work enters frame, you are spending real main-thread budget.</small>
+    <div class="perf-grid perf-grid--single">
+      <div class="perf-card perf-bad fragment">
+        <strong>Layout triggering</strong>
+        <ul>
+          <li><code>width</code>, <code>height</code></li>
+          <li><code>inset</code>, <code>top</code>, <code>left</code></li>
+          <li><code>margin</code>, <code>padding</code></li>
+          <li>Read/write DOM in the same frame</li>
+        </ul>
+        <span class="perf-badge">Expensive</span>
+      </div>
+    </div>
+    <p class="perf-summary">Prefer composition when visual result allows it. Measure paint. Budget layout deliberately.</p>
+  </section>
+  <section data-menu-title="CSS vs JS">
+    <h3><mark>CSS</mark> vs <mark>JavaScript</mark> is not a religious war</h3>
+    <small balance=""> Right question: who drives change, and which renderer phase are you touching? </small>
+  </section>
+  <section data-menu-title="CSS vs JS">
+    <comparison>
+      <left>
+        <h4>CSS excels at</h4>
+        <small>
+          <ul>
+            <li>State transitions</li>
+            <li>Scroll-driven effects</li>
+            <li>Declarative timing and easing</li>
+            <li>Progressive enhancement with <mark>@supports</mark></li>
           </ul>
         </small>
       </left>
       <right>
-        <h4>Cons</h4>
+        <h4>JS excels at</h4>
         <small>
           <ul>
-            <li class="fragment">con 1</li>
-            <li class="fragment">con 2</li>
-            <li class="fragment">con 3</li>
-            <li class="fragment">con 4</li>
+            <li>Pointer and gesture input</li>
+            <li>Physics and imperative orchestration</li>
+            <li>Reading app state and external signals</li>
+            <li>Bridging UI intent into CSS custom properties</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="Compositing">
+    <h3>CSS is not magic. Compositing is.</h3>
+    <small balance="">CSS helps when browser can own timeline, but real win is keeping motion on compositor-friendly properties and away from layout and paint.</small>
+  </section>
+  <section data-menu-title="Compositing">
+    <h4>How to stay GPU friendly</h4>
+    <small>
+      <ul>
+        <li>Prefer <mark>transform</mark> and <mark>opacity</mark> for motion</li>
+        <li class="fragment">Use CSS transitions, animations, <mark>view()</mark>, and <mark>@starting-style</mark> when browser can drive timeline</li>
+        <li class="fragment">Promote layers carefully with <mark>will-change</mark> or stable transforms only where it truly helps</li>
+        <li class="fragment">Let JS set state or CSS custom properties, not geometry on every frame</li>
+      </ul>
+    </small>
+  </section>
+  <section data-menu-title="Compositing">
+    <h4>What breaks the budget</h4>
+    <small>
+      <ul>
+        <li>Animating <mark>width</mark>, <mark>height</mark>, <mark>top</mark>, <mark>left</mark>, or font metrics</li>
+        <li class="fragment">Forced sync layout from read/write DOM work in same turn</li>
+        <li class="fragment">Large paint invalidations from blur, shadow, and complex clipping</li>
+        <li class="fragment">Too many layers, trading main-thread relief for memory and raster cost</li>
+      </ul>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="Reality Check">
+    <h3>We are all great with someone else's browser</h3>
+    <small balance=""> As long as a demo runs on the right laptop, every animation looks brilliant. The problem starts when the browser actually has to do its job. </small>
+  </section>
+  <section class="slide-browser-meme" data-menu-title="Reality Check">
+    <h4>Why should we understand it?</h4>
+    <div class="browser-image-frame">
+      <img src="image20.33fdd4c3.png" alt="Browser performance frustration">
+    </div>
+  </section>
+  <section data-menu-title="Reality Check">
+    <small>
+      <ul>
+        <li>Users do not judge your code, they judge the pixels that reach the screen</li>
+        <li class="fragment">They notice lag, input delay, choppy scroll, and layout instability</li>
+        <li class="fragment">Understanding the renderer helps you choose better between CSS, JS, and asset strategy</li>
+      </ul>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="Browser Internals">
+    <h3>A browser is not a window: it is a multi-process system</h3>
+    <small balance=""> Browser process, renderer process, GPU process, network, and storage: this is where you first see why a frame is never "just CSS". </small>
+  </section>
+  <section data-menu-title="Browser Internals">
+    <comparison browser-two-columns="">
+      <left>
+        <div class="browser-image-frame">
+          <img src="image26.20e09296.png" alt="High level browser process diagram">
+        </div>
+      </left>
+      <right>
+        <small>
+          <ul>
+            <li><mark>Browser process</mark>: UI, tab lifecycle, security, coordination</li>
+            <li><mark>Renderer process</mark>: HTML, CSS, JS, layout, paint, compositing</li>
+            <li><mark>GPU process</mark>: raster work and final composition</li>
+            <li><mark>IPC</mark>: every hop between processes has a real cost</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+  <section data-menu-title="Browser Internals">
+    <comparison browser-two-columns="">
+      <left>
+        <div class="browser-image-frame">
+          <img src="image24.9cf3c0c3.png" alt="Browser processes and threads">
+        </div>
+      </left>
+      <right>
+        <small>
+          <ul>
+            <li>Processes talk through <mark>IPC</mark>, while threads share memory inside the same process</li>
+            <li class="fragment">The main thread and compositor thread have different responsibilities</li>
+            <li class="fragment">If you saturate the main thread, the browser cannot read input or prepare the frame in time</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="Rendering Pipeline">
+    <h3>From URL to pixels</h3>
+    <small balance=""> Navigation, parsing, style calculation, layout, paint, compositing. Every UI choice enters this pipeline. </small>
+  </section>
+  <section data-menu-title="Rendering Pipeline">
+    <comparison browser-two-columns="">
+      <left>
+        <div class="browser-image-frame">
+          <img src="image31.536e03b0.png" alt="Browser navigation timeline">
+        </div>
+      </left>
+      <right>
+        <small>
+          <ul>
+            <li>Input starts in the browser process, then reaches the renderer</li>
+            <li class="fragment">HTML and subresource loading unlock work on the main thread</li>
+            <li class="fragment">Every late resource can push the frame budget later than it should be</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+  <section class="browser-image-section" data-menu-title="Rendering Pipeline">
+    <h4>The Critical Rendering Path</h4>
+    <div class="browser-image-frame browser-image-frame--wide">
+      <img src="image27.3159e704.png" alt="Critical rendering path with main, compositor, and GPU thread">
+    </div>
+  </section>
+  <section data-menu-title="Rendering Pipeline">
+    <small>
+      <ul>
+        <li><mark>Parsing</mark>: bytes to DOM and CSSOM</li>
+        <li class="fragment"><mark>Style Calculation</mark>: computed styles per node</li>
+        <li class="fragment"><mark>Layout</mark>: geometry and position</li>
+        <li class="fragment"><mark>Paint</mark>: what to draw and in which order</li>
+        <li class="fragment"><mark>Composition</mark>: layers, tiles, final frame</li>
+      </ul>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section data-topic="sponsors" data-menu-title="@starting-style">
+    <h4>Entrances: the browser loves simple starting states</h4>
+    <small balance="">
+      If your entrance is a clean transition between two states, let
+      <mark>CSS</mark> start it. No observer, no class toggling, no JS.
+    </small>
+  </section>
+  <section data-topic="sponsors" data-menu-title="@starting-style">
+    <div class="sponsor-logo-container">
+      <img style="--i: 0" src="aurora-core.f74c7bc1.svg" alt="Aurora Core" class="sponsor-logo">
+      <img style="--i: 1" src="brick-harbor.de656ded.svg" alt="Brick Harbor" class="sponsor-logo">
+      <img style="--i: 2" src="cinder-loop.519c7a86.svg" alt="Cinder Loop" class="sponsor-logo">
+      <img style="--i: 3" src="delta-bloom.9fc44934.svg" alt="Delta Bloom" class="sponsor-logo">
+      <img style="--i: 4" src="ember-stack.425c52e4.svg" alt="Ember Stack" class="sponsor-logo">
+      <img style="--i: 5" src="flux-garden.39398231.svg" alt="Flux Garden" class="sponsor-logo">
+    </div>
+  </section>
+  <section data-topic="sponsors" data-menu-title="@starting-style">
+    <div class="sponsor-logo-container">
+      <img style="--i: 6" src="glacier-node.ed279522.svg" alt="Glacier Node" class="sponsor-logo">
+      <img style="--i: 7" src="horizon-lab.124b9bb5.svg" alt="Horizon Lab" class="sponsor-logo">
+      <img style="--i: 8" src="ion-press.d4b00ea0.svg" alt="Ion Press" class="sponsor-logo">
+      <img style="--i: 9" src="juno-wave.e2a30155.svg" alt="Juno Wave" class="sponsor-logo">
+      <img style="--i: 10" src="kelp-vector.6fabe1ad.svg" alt="Kelp Vector" class="sponsor-logo">
+      <img style="--i: 11" src="lumen-ship.7758e396.svg" alt="Lumen Ship" class="sponsor-logo">
+    </div>
+  </section>
+  <section data-topic="sponsors" data-menu-title="@starting-style">
+    <small balance=""> <mark>@starting-style</mark> lets you define the initial state and leave the transition to the browser. </small>
+    <pre>      <code class="hljs css" data-trim="">
+.sponsor-logo {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.5) translateY(40px);
+  }
+
+  transition-delay: calc((var(--i, 0) + 1) * var(--stagger-base));
+}
+      </code>
+    </pre>
+  </section>
+  <section data-topic="sponsors" data-menu-title="@starting-style">
+    <small>
+      <ul>
+        <li>CSS only, so there is no event wiring or JS orchestration cost</li>
+        <li class="fragment">If you animate <mark>transform</mark> and <mark>opacity</mark>, you are mostly paying for composition</li>
+        <li class="fragment">Use JS only when the entrance depends on data, gestures, or complex sequencing</li>
+      </ul>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <h4 balance="">Scroll reveal: <mark>view()</mark> versus observer plus class toggling</h4>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <div class="scroll-view-container">
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="aurora-core.f74c7bc1.svg" alt="Aurora Core" loading="lazy">
+          <h5>Aurora Core</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="brick-harbor.de656ded.svg" alt="Brick Harbor" loading="lazy">
+          <h5>Brick Harbor</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="cinder-loop.519c7a86.svg" alt="Cinder Loop" loading="lazy">
+          <h5>Cinder Loop</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="delta-bloom.9fc44934.svg" alt="Delta Bloom" loading="lazy">
+          <h5>Delta Bloom</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <div class="scroll-view-container">
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="ember-stack.425c52e4.svg" alt="Ember Stack" loading="lazy">
+          <h5>Ember Stack</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="flux-garden.39398231.svg" alt="Flux Garden" loading="lazy">
+          <h5>Flux Garden</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="glacier-node.ed279522.svg" alt="Glacier Node" loading="lazy">
+          <h5>Glacier Node</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="horizon-lab.124b9bb5.svg" alt="Horizon Lab" loading="lazy">
+          <h5>Horizon Lab</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <small balance=""> When the trigger is the viewport itself, the browser can drive the timeline natively without waking JS on every intersection. </small>
+    <pre><code class="hljs css" data-trim="">
+.scroll-view-card {
+  animation: reveal-and-elevate 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-range: entry 35% cover 70%;
+  animation-timeline: view(inline);
+}
+
+@keyframes reveal-and-elevate {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(8rem);
+    filter: blur(8px);
+  }
+}
+    </code></pre>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <comparison>
+      <left>
+        <h4>CSS timeline</h4>
+        <small>
+          <ul>
+            <li>Legata allo scroll nativo</li>
+            <li>Minor glue code</li>
+            <li>Molto vicina al compositor mindset</li>
+          </ul>
+        </small>
+      </left>
+      <right>
+        <h4>JS observer</h4>
+        <small>
+          <ul>
+            <li>More portable today</li>
+            <li>Useful for analytics or business logic</li>
+            <li>But it often turns into imperative class toggling</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>
+
+<section>
+  <section data-menu-title="CSS Math">
+    <h3>CSS can do much more than easing and fade</h3>
+    <small balance=""> Modern math functions move part of the visual logic into CSS, leaving JS only the orchestration when it is really needed. </small>
+  </section>
+  <section data-topic="gaussian-curve" data-menu-title="CSS Math">
+    <figure class="gaussian-container" role="img" aria-label="Gaussian curve with sponsors positioned along the bell curve">
+      <div class="gaussian-curve-bg"></div>
+      <div class="gaussian-mean-line"></div>
+      <div class="gaussian-logos">
+        <div class="gaussian-logo"><img src="aurora-core.f74c7bc1.svg" alt="Aurora Core" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="brick-harbor.de656ded.svg" alt="Brick Harbor" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="cinder-loop.519c7a86.svg" alt="Cinder Loop" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="delta-bloom.9fc44934.svg" alt="Delta Bloom" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="ember-stack.425c52e4.svg" alt="Ember Stack" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="flux-garden.39398231.svg" alt="Flux Garden" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="glacier-node.ed279522.svg" alt="Glacier Node" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="horizon-lab.124b9bb5.svg" alt="Horizon Lab" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="ion-press.d4b00ea0.svg" alt="Ion Press" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="juno-wave.e2a30155.svg" alt="Juno Wave" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="kelp-vector.6fabe1ad.svg" alt="Kelp Vector" loading="lazy"></div>
+        <div class="gaussian-logo"><img src="lumen-ship.7758e396.svg" alt="Lumen Ship" loading="lazy"></div>
+      </div>
+      <span class="gaussian-label gaussian-label--left">-3σ</span>
+      <span class="gaussian-label gaussian-label--center">μ</span>
+      <span class="gaussian-label gaussian-label--right">+3σ</span>
+    </figure>
+  </section>
+  <section data-menu-title="CSS Math">
+    <small>
+      <ul>
+        <li><mark>sibling-index()</mark> and <mark>sibling-count()</mark> move positional math into CSS</li>
+        <li class="fragment"><mark>sin()</mark>, <mark>exp()</mark>, and <mark>pow()</mark> let you build smarter layout and motion systems</li>
+        <li class="fragment">No layout thrashing from JS if the browser can derive everything from custom properties</li>
+      </ul>
+    </small>
+  </section>
+</section>
+
+<section>
+  <section data-topic="tilt-card-demo" data-menu-title="Tilt Layered Card">
+    <h4>All I have left is to <mark>wish you</mark>...</h4>
+  </section>
+  <section data-topic="tilt-card-demo" data-menu-title="Tilt Layered Card">
+    <div class="card-container" aria-label="60fps or nothing layered card demo">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-layers">
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+            <div class="card-layer">
+              <span class="card-copy">60fps or nothing</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>
+            You really thought <br>
+            so, huh?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-topic="tilt-card" data-menu-title="Tilt Layered Card">
+    <small balance="">
+      A stack of translucent layers, translated on the z-axis with <mark>sibling-index()</mark>, driven by registered <mark>@property</mark> plus CSS <mark>trigonometric functions</mark> and
+      <mark>perspective</mark>/<mark>perspective-origin</mark>.
+    </small>
+    <small>
+      <ul>
+        <li>Register numeric custom properties so browser can interpolate them</li>
+        <li class="fragment">Map pointer position into <mark>rotateX</mark> and <mark>rotateY</mark> values</li>
+        <li class="fragment">Let CSS own the transform math instead of re-rendering DOM every frame</li>
+      </ul>
+    </small>
+    <aside class="notes">This layered stack blends 3D transforms with pointer math; each layer translates along z so the card feels volumetric while staying rooted in CSS.</aside>
+  </section>
+  <section data-topic="tilt-card" data-menu-title="Tilt Layered Card">
+    <h4>Depth comes from two tiny rules</h4>
+    <small>
+      <ul>
+        <li><mark>perspective</mark> and <mark>perspective-origin</mark> react to current tilt, so depth follows pointer</li>
+        <li class="fragment">Each layer uses <mark>translateZ()</mark> with <mark>sibling-index()</mark> to create stack spacing</li>
+        <li class="fragment">Same visual trick, much cheaper than repainting separate scenes in JS</li>
+      </ul>
+    </small>
+  </section>
+  <section data-topic="tilt-card" data-menu-title="Tilt Layered Card">
+    <h4>registered <mark>@property</mark></h4>
+    <small balance="">
+      Differently than normal custom properties, the ones registered via <mark>@property</mark> at-rule are transitionable and animatable, allowing to <mark>calculate interpolation</mark> between all
+      the specified values.
+    </small>
+  </section>
+</section>
+
+<!-- Legacy appendix kept on disk, excluded from main deck flow for this talk revision. -->
+
+<section>
+  <section data-transition="convex">
+    <h3>Wrapping up</h3>
+  </section>
+  <section data-transition="convex">
+    <comparison>
+      <left>
+        <h4>CSS first</h4>
+        <small>
+          <ul>
+            <li class="fragment">Great for state changes, entrances, scroll reveal, and choreography</li>
+            <li class="fragment">If you stay on <mark>transform</mark> and <mark>opacity</mark>, the browser flies</li>
+            <li class="fragment">New APIs now cover cases that used to require JS</li>
+          </ul>
+        </small>
+      </left>
+      <right>
+        <h4>JS when needed</h4>
+        <small>
+          <ul>
+            <li class="fragment">Needed for realtime input, gestures, physics, and data orchestration</li>
+            <li class="fragment">It should not fight the renderer with continuous layout read and write work</li>
+            <li class="fragment">Its best role is to provide intent, not move pixels by hand</li>
           </ul>
         </small>
       </right>
     </comparison>
   </section>
   <section data-transition="convex">
-    <h4>Conclusions</h4>
+    <p balance="">The real comparison is not <mark>CSS versus JS</mark>. It is understanding which browser layer you are activating and whether your choice keeps the frame under <mark>16.67ms</mark>.</p>
+  </section>
+  <section data-transition="convex">
+    <small>
+      <ul>
+        <li>Prefer <mark>composition</mark> whenever the visual result allows it</li>
+        <li class="fragment">Measure before you optimize: DevTools, Performance panel, Layers</li>
+        <li class="fragment">Use JavaScript to steer the system, not to rebuild layout on every frame</li>
+      </ul>
+    </small>
   </section>
 </section>
 
@@ -224,7 +939,9 @@
 
   <section class="slide-outro-taf" data-transition="convex">
   <!-- <div sr-only data-menu-title>That's All Folks</div> -->
-  <audio data-autoplay="" src="taf.f9b512b9.mp3"></audio>
+  <audio data-autoplay="" src="taf.f9b512b9.mp3">
+    <track default="" kind="captions" src="taf.eedb31e6.vtt" srclang="en" label="English">
+  </audio>
   <div class="taf-wrapper">
     <div class="circles">
       <div class="circle one"></div>
@@ -241,7 +958,8 @@
         <img src="pixu.06482de6.jpg" alt="Pixu">
       </picture>
     </figure>
-    <svg style="isolation: isolate" viewBox="0 0 566.44 157.5">
+    <svg aria-labelledby="taf-title" role="img" style="isolation: isolate" viewBox="0 0 566.44 157.5">
+      <title id="taf-title">That's all folks title artwork</title>
       <g id="thats-all-folks">
         <path id="Q1" data-name="Q1" d="M14.07,103.92c-1.34,6.6-2,9.89-3.2,16.46l-1.65.87c.14-6,.23-9,.46-15Z"></path>
         <path id="Q2" data-name="Q2" d="M22.06,99.79c-1.4,6.62-2.07,9.91-3.35,16.49l-1.66.86c.21-6,.34-9,.62-15.09Z"></path>
@@ -278,7 +996,6 @@
       </g>
     </svg>
   </div>
-  <!-- <h3>Grazie ❤️!</h3> -->
 </section>
 
   <section pixu="" data-transition="convex">
@@ -288,21 +1005,16 @@
       <img src="./assets/pixu.jpg" alt="Pixu" />
     </picture>
   </figure> -->
-  <h2>Grazie ❤️!</h2>
+  <h2>Thank you!</h2>
 </section>
 
 </section>
 
 
       </div>
-      <a brand="" href="https://www.devdojo.it" target="_blank" rel="noopener noreferrer">
-  <figure>
-    <img src="dev-dojo.3f2f430c.png" alt="Dev Dojo IT Logo">
-  </figure>
-</a>
-
+      <!-- <include src="./brand/brand.html"></include> -->
     </main>
-    <script src="talk-60fps-or-nothing.e9700460.js" type="module"></script>
+    <script src="talk-60fps-or-nothing.2ec3e953.js" type="module"></script>
   
 
 </body></html>

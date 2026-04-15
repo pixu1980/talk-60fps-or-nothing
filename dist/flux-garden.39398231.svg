@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Flux Garden">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101c18"/>
+      <stop offset="100%" stop-color="#204d45"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="160" rx="28" fill="url(#bg)"/>
+  <path d="M52 112c44-30 84-40 128-26 40 12 80 12 128-6" fill="none" stroke="#7ef7c6" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="122" cy="60" r="14" fill="#7ef7c6" opacity=".22"/>
+  <circle cx="240" cy="54" r="10" fill="#a1ffe0" opacity=".22"/>
+  <text x="180" y="84" text-anchor="middle" fill="#f5fffb" font-size="60" font-weight="800" font-family="system-ui, sans-serif">FG</text>
+  <text x="180" y="122" text-anchor="middle" fill="#7ef7c6" font-size="24" font-weight="600" letter-spacing="2" font-family="system-ui, sans-serif">FLUX GARDEN</text>
+</svg>

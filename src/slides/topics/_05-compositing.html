@@ -1,0 +1,28 @@
+<section>
+  <section data-menu-title="Compositing">
+    <h3>CSS is not magic. Compositing is.</h3>
+    <small balance>CSS helps when browser can own timeline, but real win is keeping motion on compositor-friendly properties and away from layout and paint.</small>
+  </section>
+  <section data-menu-title="Compositing">
+    <h4>How to stay GPU friendly</h4>
+    <small>
+      <ul>
+        <li>Prefer <mark>transform</mark> and <mark>opacity</mark> for motion</li>
+        <li class="fragment">Use CSS transitions, animations, <mark>view()</mark>, and <mark>@starting-style</mark> when browser can drive timeline</li>
+        <li class="fragment">Promote layers carefully with <mark>will-change</mark> or stable transforms only where it truly helps</li>
+        <li class="fragment">Let JS set state or CSS custom properties, not geometry on every frame</li>
+      </ul>
+    </small>
+  </section>
+  <section data-menu-title="Compositing">
+    <h4>What breaks the budget</h4>
+    <small>
+      <ul>
+        <li>Animating <mark>width</mark>, <mark>height</mark>, <mark>top</mark>, <mark>left</mark>, or font metrics</li>
+        <li class="fragment">Forced sync layout from read/write DOM work in same turn</li>
+        <li class="fragment">Large paint invalidations from blur, shadow, and complex clipping</li>
+        <li class="fragment">Too many layers, trading main-thread relief for memory and raster cost</li>
+      </ul>
+    </small>
+  </section>
+</section>

@@ -1,34 +1,41 @@
 <section>
   <section data-transition="convex">
-    <h4>Wrapping up</h4>
+    <h3>Wrapping up</h3>
   </section>
   <section data-transition="convex">
     <comparison>
       <left>
-        <h4>Pros</h4>
+        <h4>CSS first</h4>
         <small>
           <ul>
-            <li class="fragment">pro 1</li>
-            <li class="fragment">pro 2</li>
-            <li class="fragment">pro 3</li>
-            <li class="fragment">pro 4</li>
+            <li class="fragment">Great for state changes, entrances, scroll reveal, and choreography</li>
+            <li class="fragment">If you stay on <mark>transform</mark> and <mark>opacity</mark>, the browser flies</li>
+            <li class="fragment">New APIs now cover cases that used to require JS</li>
           </ul>
         </small>
       </left>
       <right>
-        <h4>Cons</h4>
+        <h4>JS when needed</h4>
         <small>
           <ul>
-            <li class="fragment">con 1</li>
-            <li class="fragment">con 2</li>
-            <li class="fragment">con 3</li>
-            <li class="fragment">con 4</li>
+            <li class="fragment">Needed for realtime input, gestures, physics, and data orchestration</li>
+            <li class="fragment">It should not fight the renderer with continuous layout read and write work</li>
+            <li class="fragment">Its best role is to provide intent, not move pixels by hand</li>
           </ul>
         </small>
       </right>
     </comparison>
   </section>
   <section data-transition="convex">
-    <h4>Conclusions</h4>
+    <p balance>The real comparison is not <mark>CSS versus JS</mark>. It is understanding which browser layer you are activating and whether your choice keeps the frame under <mark>16.67ms</mark>.</p>
+  </section>
+  <section data-transition="convex">
+    <small>
+      <ul>
+        <li>Prefer <mark>composition</mark> whenever the visual result allows it</li>
+        <li class="fragment">Measure before you optimize: DevTools, Performance panel, Layers</li>
+        <li class="fragment">Use JavaScript to steer the system, not to rebuild layout on every frame</li>
+      </ul>
+    </small>
   </section>
 </section>

@@ -1,0 +1,103 @@
+<section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <h4 balance>Scroll reveal: <mark>view()</mark> versus observer plus class toggling</h4>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <div class="scroll-view-container">
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/aurora-core.svg" alt="Aurora Core" loading="lazy" />
+          <h5>Aurora Core</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/brick-harbor.svg" alt="Brick Harbor" loading="lazy" />
+          <h5>Brick Harbor</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/cinder-loop.svg" alt="Cinder Loop" loading="lazy" />
+          <h5>Cinder Loop</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/delta-bloom.svg" alt="Delta Bloom" loading="lazy" />
+          <h5>Delta Bloom</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <div class="scroll-view-container">
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/ember-stack.svg" alt="Ember Stack" loading="lazy" />
+          <h5>Ember Stack</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/flux-garden.svg" alt="Flux Garden" loading="lazy" />
+          <h5>Flux Garden</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/glacier-node.svg" alt="Glacier Node" loading="lazy" />
+          <h5>Glacier Node</h5>
+        </div>
+      </div>
+      <div class="scroll-view-card">
+        <div class="card-inner">
+          <img src="./assets/demo-logos/horizon-lab.svg" alt="Horizon Lab" loading="lazy" />
+          <h5>Horizon Lab</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <small balance> When the trigger is the viewport itself, the browser can drive the timeline natively without waking JS on every intersection. </small>
+    <pre><code class="hljs css" data-trim>
+.scroll-view-card {
+  animation: reveal-and-elevate 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-range: entry 35% cover 70%;
+  animation-timeline: view(inline);
+}
+
+@keyframes reveal-and-elevate {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(8rem);
+    filter: blur(8px);
+  }
+}
+    </code></pre>
+  </section>
+  <section data-topic="scroll-view-appearing" data-menu-title="Scroll Driven">
+    <comparison>
+      <left>
+        <h4>CSS timeline</h4>
+        <small>
+          <ul>
+            <li>Legata allo scroll nativo</li>
+            <li>Minor glue code</li>
+            <li>Molto vicina al compositor mindset</li>
+          </ul>
+        </small>
+      </left>
+      <right>
+        <h4>JS observer</h4>
+        <small>
+          <ul>
+            <li>More portable today</li>
+            <li>Useful for analytics or business logic</li>
+            <li>But it often turns into imperative class toggling</li>
+          </ul>
+        </small>
+      </right>
+    </comparison>
+  </section>
+</section>
