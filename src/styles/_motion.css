@@ -66,61 +66,12 @@
 
 		section[data-topic="sponsors"],
 		section[data-topic="scroll-view-appearing"],
-		section[data-topic="tilt-card"],
-		.slide-outro-taf {
+		section[data-topic="tilt-card"] {
 			min-block-size: 38rem;
 		}
 
 		section[data-topic="tilt-card-demo"] {
 			min-block-size: 46rem;
-		}
-
-		.slide-outro-taf {
-			height: 100%;
-			display: grid;
-			place-items: center;
-		}
-
-		.slide-outro-taf .taf-wrapper {
-			height: 38vh;
-			max-width: min(68rem, 76vw);
-		}
-
-		.slide-outro-taf svg {
-			width: 92%;
-			margin-top: -8rem;
-		}
-
-		.slide-outro-taf .circles small {
-			inset: auto 1rem 0.75rem auto;
-		}
-
-		.slide-outro-taf .six {
-			width: 96%;
-		}
-
-		.slide-outro-taf .five {
-			width: 80%;
-		}
-
-		.slide-outro-taf .four {
-			width: 66%;
-		}
-
-		.slide-outro-taf .three {
-			width: 52%;
-		}
-
-		.slide-outro-taf .two {
-			width: 40%;
-		}
-
-		.slide-outro-taf .one {
-			width: 18%;
-		}
-
-		.slide-outro-taf [speaker] {
-			inline-size: 15rem;
 		}
 	}
 }
