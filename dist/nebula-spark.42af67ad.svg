@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Nebula Spark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#150c2f"/>
+      <stop offset="100%" stop-color="#43237c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff9fd6"/>
+      <stop offset="100%" stop-color="#9fe8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="160" rx="28" fill="url(#bg)"/>
+  <circle cx="62" cy="42" r="20" fill="#9fe8ff" opacity=".08"/>
+  <circle cx="302" cy="112" r="26" fill="#ff9fd6" opacity=".08"/>
+  <rect x="28" y="28" width="104" height="104" rx="30" fill="#ffffff" opacity=".04"/>
+  <rect x="28" y="28" width="104" height="104" rx="30" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="1.5"/>
+  <path d="M43 86c0-13 10-24 23-24 8 0 15 4 19 10 4-6 10-10 19-10 13 0 23 11 23 24 0 3-1 6-2 9 10 4 17 14 17 25 0 14-11 24-24 24H64c-12 0-22-10-22-22 0-12 7-22 17-26 0-1-1-3-1-5z" fill="#f4fbff" opacity=".08" stroke="#9fe8ff" stroke-opacity=".45" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M80 55l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#ffe28d"/>
+  <circle cx="94" cy="94" r="3.5" fill="#ff9fd6"/>
+  <circle cx="68" cy="96" r="2.5" fill="#9fe8ff"/>
+  <text x="154" y="74" fill="#f8fbff" font-family="system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="1.1">NEBULA SPARK</text>
+  <path d="M154 96h146" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+</svg>
