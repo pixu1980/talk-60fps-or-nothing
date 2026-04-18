@@ -347,7 +347,7 @@
   <section class="slide-browser-meme" data-menu-title="Reality Check">
     <h4>Why <mark>should we</mark> understand it?</h4>
     <small>
-      <ul>  
+      <ul>
         <li class="fragment">Users <mark>don't judge your code</mark>, they judge the pixels that reach the screen</li>
         <li class="fragment">They notice <mark>lag, input delay, choppy scroll, and layout instability</mark></li>
         <li class="fragment">Understanding the renderer helps you <mark>choose better between</mark> CSS, JS and asset strategy</li>
@@ -384,7 +384,7 @@
       <img style="--i: 12" src="/nebula-spark.6fd4309e.svg" alt="Nebula Spark" class="sponsor-logo">
       <img style="--i: 13" src="/orbit-shift.8c7f49ee.svg" alt="Orbit Shift" class="sponsor-logo">
       <img style="--i: 14" src="/polaris-peak.965f9e6e.svg" alt="Polaris Peak" class="sponsor-logo">
-      <img style="--i: 15" src="/quasar-loop.5584b1d2.svg" alt="Quasar Loop" class="sponsor-logo">  
+      <img style="--i: 15" src="/quasar-loop.5584b1d2.svg" alt="Quasar Loop" class="sponsor-logo">
       <img style="--i: 16" src="/rover-labs.ed2f33d8.svg" alt="Rover Labs" class="sponsor-logo">
       <img style="--i: 17" src="/solstice-systems.7af4e59a.svg" alt="Solstice Systems" class="sponsor-logo">
       <img style="--i: 18" src="/tidal-works.7514f237.svg" alt="Tidal Works" class="sponsor-logo">
@@ -587,7 +587,7 @@
         <div class="card-inner">
           <img src="/umbra-dynamics.196d8ea2.svg" alt="Umbra Dynamics" loading="lazy">
           <h5>Umbra Dynamics</h5>
-        </div>  
+        </div>
       </div>
       <div class="scroll-view-card">
         <div class="card-inner">
@@ -1140,6 +1140,257 @@
   </section>
 </section>
 
+<!-- Slide: Doodle Orbital Motion System -->
+<!-- Speaker notes: The intro doodle uses @property for hue cycling and JS for drag + lemniscate auto-motion + orbit trailing via rAF. -->
+<section>
+  <section data-topic="doodle" data-menu-title="Doodle Motion">
+    <h4><mark>@property</mark> + rAF orbit trailing</h4>
+  </section>
+  <section intro="" aria-label="60fps or nothing visual intro">
+    <figure class="stage" role="figure" aria-label="Performance-first motion system">
+      <div class="system" role="img">
+        <div class="orbit orbit--inner" aria-hidden="true"></div>
+        <div class="orbit orbit--middle" aria-hidden="true"></div>
+        <div class="orbit orbit--outer" aria-hidden="true"></div>
+        <div class="orbit orbit--fourth" aria-hidden="true"></div>
+        <div class="orbit orbit--fifth" aria-hidden="true"></div>
+        <h1 class="title" role="button" aria-label="Drag 60fps or nothing" tabindex="0">60fps or <br>nothing</h1>
+      </div>
+    </figure>
+  </section>
+  <section data-topic="doodle" data-menu-title="Doodle Motion">
+    <small balance="">
+      The intro <mark>doodle</mark> combines a CSS animatable custom property for hue cycling with JS driven drag, auto-motion on a lemniscate curve, and trailing orbits via
+      <mark>requestAnimationFrame</mark>.
+    </small>
+    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|2-5|8-10|14-16|19-22|28-30|34-38">
+@property --doodle-hue {
+  syntax: '&lt;number&gt;';
+  inherits: true;
+  initial-value: 210;
+}
+
+@keyframes hue-cycle {
+  to { --doodle-hue: 570; }
+  /* 360 full cycle + 210 start */
+}
+
+.stage {
+  animation: hue-cycle 6s linear infinite;
+  --doodle-title-x: 50%;
+  --doodle-title-y: 50%;
+}
+
+.title {
+  background: linear-gradient(90deg,
+    oklch(0.75 0.2 calc(var(--doodle-hue) * 1deg)),
+    oklch(0.75 0.2 calc((var(--doodle-hue) + 120) * 1deg)));
+  background-clip: text;
+  color: transparent;
+  cursor: grab;
+  ...
+}
+
+.orbit {
+  left: var(--doodle-orbit-x, var(--doodle-title-x));
+  top: var(--doodle-orbit-y, var(--doodle-title-y));
+  border-color: oklch(0.7 0.15
+    calc(var(--doodle-hue) * 1deg) / 0.3);
+}
+
+.orbit--inner  { --doodle-orbit-rotate:  5deg; }
+.orbit--middle { --doodle-orbit-rotate: 10deg; }
+.orbit--outer  { --doodle-orbit-rotate: 15deg; }
+.orbit--fourth { --doodle-orbit-rotate: 20deg; }
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>@property registers --doodle-hue as a number so CSS can interpolate it in @keyframes</li>
+        <li>The gradient picks up the animated hue to cycle colors smoothly</li>
+        <li>Orbits read --doodle-orbit-x/y which JS updates with trailing interpolation</li>
+        <li>Each orbit ring has a different rotation for visual depth</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="doodle" data-menu-title="Doodle Motion">
+    <small balance="">JS drives the motion: a <mark>lemniscate</mark> (figure 8) path for auto-motion, pointer drag, and per-orbit <mark>lerp trailing</mark> at decreasing speeds.</small>
+    <pre>      <code class="hljs js" data-trim="" data-line-numbers="|1-5|7-16|18-24|26-34">
+const trailConfigs = [
+  { selector: '.orbit--inner',  speed: 0.27 },
+  { selector: '.orbit--middle', speed: 0.20 },
+  { selector: '.orbit--outer',  speed: 0.13 },
+];
+
+// Orbit trailing: each ring lerps toward the title
+const animateOrbitTrail = () =&gt; {
+  orbitTrail.forEach((orbit) =&gt; {
+    orbit.currentX +=
+      (orbit.targetX - orbit.currentX) * orbit.speed;
+    orbit.element.style.setProperty(
+      '--doodle-orbit-x', `${orbit.currentX}%`);
+  });
+  requestAnimationFrame(animateOrbitTrail);
+};
+
+// Lemniscate auto-motion (figure 8 curve)
+const angle = phase * Math.PI * 2;
+const denom = Math.sin(angle) ** 2 + 1;
+const rawX  = Math.cos(angle) / denom;
+const rawY  = (Math.sin(angle) * Math.cos(angle))
+              / denom;
+setPosition(50 + rawX * 36, 50 + rawY * 28);
+
+// Drag writes CSS custom properties directly
+title.addEventListener('pointermove', (e) =&gt; {
+  const rect = stage.getBoundingClientRect();
+  const px = ((e.clientX - rect.left) / rect.width)
+             * 100;
+  const py = ((e.clientY - rect.top) / rect.height)
+             * 100;
+  setPosition(px, py);
+});
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>Each orbit has a decreasing speed factor: inner follows fast, outer lags behind</li>
+        <li>The lemniscate parametric equation creates a smooth infinite figure 8 path</li>
+        <li>setPosition() writes --doodle-title-x/y to both stage and title, then updates orbit targets</li>
+        <li>On user pointer interaction, auto-motion stops and drag takes over</li>
+        <li>All visual output is CSS: JS only sets custom properties</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="doodle" data-menu-title="Doodle Motion">
+    <h4><mark>@property</mark></h4>
+    <small balance="">
+      Registered custom properties with <mark>@property</mark> unlock CSS animation on values that would otherwise be static strings. The browser can interpolate typed values like
+      <mark>&lt;number&gt;</mark>, <mark>&lt;angle&gt;</mark>, and <mark>&lt;color&gt;</mark> across keyframes.
+    </small>
+    <baseline-status featureid="registered-custom-properties"></baseline-status>
+  </section>
+</section>
+
+<!-- Slide: Dive In Stacked Parallax -->
+<!-- Speaker notes: The "Let's Dive In" effect uses a Custom Element that assigns --index to each stack-item and writes --mouse-x/--mouse-y from mousemove. CSS handles all the parallax, blur, and sizing. -->
+<section>
+  <section data-topic="dive-in" data-menu-title="Dive In Parallax">
+    <h4><mark>Custom Element</mark> + CSS parallax</h4>
+  </section>
+  <section class="slide-dive-in" data-auto-animate="">
+    <div sr-only="" data-menu-title="">Let's dive in</div>
+    <dive-in>
+      <stack-container>
+        <stack-item>Let's <mark>dive</mark> in</stack-item>
+        <stack-item>Let's <mark>dive</mark> in</stack-item>
+        <stack-item>Let's <mark>dive</mark> in</stack-item>
+        <stack-item>Let's <mark>dive</mark> in</stack-item>
+        <stack-item>Let's <mark>dive</mark> in</stack-item>
+      </stack-container>
+    </dive-in>
+  </section>
+  <section data-topic="dive-in" data-menu-title="Dive In Parallax">
+    <small balance="">
+      The <mark>dive-in</mark> component stacks text layers with depth. CSS uses <mark>--index</mark>, <mark>--mouse-x</mark>, and <mark>--mouse-y</mark> custom properties to create parallax, blur,
+      and opacity gradients, all without a single animation in JS.
+    </small>
+    <pre>      <code class="hljs css" data-trim="" data-line-numbers="|2-3|6-8|11-14|17-19|22-29">
+stack-container {
+  --mouse-x: 0;
+  --mouse-y: 0;
+  ...
+}
+
+stack-item {
+  --threshold: 0.1 * var(--index);
+
+  position: absolute;
+  transform: translate(-50%, -50%);
+  filter: blur(100%);
+  opacity: calc(1 - (0.2 * var(--index)));
+  will-change: font-size, filter, text-shadow;
+}
+
+stack-container:hover {
+  width: 117rem;
+  height: 50rem;
+
+  stack-item {
+    top:  calc(50% + (var(--mouse-y)
+                      * var(--threshold)));
+    left: calc(50% + (var(--mouse-x)
+                      * var(--threshold)));
+    font-size: calc(15rem
+                    - (1rem * var(--index)));
+    filter: blur(calc(0.1rem * var(--index)));
+  }
+}
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>--index is set per item by JS (reversed order: back layers get higher index)</li>
+        <li>--threshold multiplies --index to create depth-dependent parallax displacement</li>
+        <li>On hover the container expands and items unblur, revealing the stacked parallax</li>
+        <li>Opacity decreases with --index: front layer is fully opaque, back layers fade</li>
+        <li>font-size shrinks with --index to add perspective to the stack</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="dive-in" data-menu-title="Dive In Parallax">
+    <small balance="">
+      The <mark>DiveInElement</mark> custom element does two things: assigns reversed <mark>--index</mark> values and writes mouse offset as CSS variables. All visual logic stays in CSS.
+    </small>
+    <pre>      <code class="hljs js" data-trim="" data-line-numbers="|1-3|5-10|12-21">
+class DiveInElement extends HTMLElement {
+  static { customElements.define('dive-in',
+           DiveInElement); }
+
+  connectedCallback() {
+    const items = [...this.querySelectorAll(
+                    'stack-item')].reverse();
+    items.forEach((item, i) =&gt;
+      item.style.setProperty('--index', i));
+    document.addEventListener('mousemove',
+                              this.handleMouseMove);
+  }
+
+  handleMouseMove(event) {
+    const container =
+      this.querySelector('stack-container');
+    const offsetX =
+      window.innerWidth / 2 - event.clientX;
+    const offsetY =
+      window.innerHeight / 2 - event.clientY;
+    container.style.setProperty('--mouse-x',
+                                `${offsetX}px`);
+    container.style.setProperty('--mouse-y',
+                                `${offsetY}px`);
+  }
+}
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>Items are reversed so the last DOM element (visually on top) gets --index: 0</li>
+        <li>Mouse offset is computed from viewport center, creating natural parallax direction</li>
+        <li>JS only writes three CSS custom properties; CSS does all positioning and effects</li>
+        <li>The custom element self-registers via a static initializer block</li>
+        <li>Cleanup happens in disconnectedCallback (event listener removal)</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="dive-in" data-menu-title="Dive In Parallax">
+    <h4><mark>Custom Elements</mark></h4>
+    <small balance="">
+      The <mark>Custom Elements API</mark> lets you define new HTML elements with their own behavior. Here a custom element is used purely as a <mark>CSS variable bridge</mark>: it reads user input
+      and writes custom properties that CSS consumes for parallax and depth effects.
+    </small>
+    <baseline-status featureid="autonomous-custom-elements"></baseline-status>
+  </section>
+</section>
+
 <section>
   <section data-topic="tilt-card-demo" data-menu-title="Tilt Layered Card">
     <h4>Consider now the chance to <mark>dive into the infinite</mark></h4>
@@ -1278,6 +1529,7 @@
 </section>
 
 
+
 <section>
   <section data-transition="convex">
     <h3>Wrapping up</h3>
@@ -1343,6 +1595,16 @@
       </figcaption>
     </figure>
   </comparison>
+</section>
+
+<section data-transition="convex">
+  <h4>Feedback Link</h4>
+  <figure style="width: 60%; margin: auto">
+    <picture>
+      <source srcset="/feedback.c3856647.webp" type="image/webp">
+      <img src="/feedback.1d353c3f.png" alt="Feedback">
+    </picture>
+  </figure>
 </section>
 
 <!-- <section data-transition="convex">
@@ -1461,7 +1723,7 @@
       <img src="./assets/pixu.jpg" alt="Pixu" />
     </picture>
   </figure> -->
-  <h2>Thank you!</h2>
+  <h2>Thank you ❤️!</h2>
 </section>
 
 </section>

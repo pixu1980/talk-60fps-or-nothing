@@ -39,31 +39,6 @@
 
 @layer speaker-talk {
 	@layer motion-overrides {
-		.slide-dive-in {
-			height: 100% !important;
-			min-block-size: 36rem;
-			display: grid !important;
-			place-items: center;
-		}
-
-		.slide-dive-in stack-container {
-			width: min(42rem, 72vw);
-			height: 7rem;
-		}
-
-		.slide-dive-in stack-container stack-item {
-			font-size: clamp(5rem, 7vw, 7.6rem);
-		}
-
-		.slide-dive-in stack-container:hover {
-			width: min(88rem, 84vw);
-			height: min(28rem, 48vh);
-		}
-
-		.slide-dive-in stack-container:hover stack-item {
-			font-size: calc(12rem - (0.9rem * var(--index)));
-		}
-
 		section[data-topic="sponsors"],
 		section[data-topic="scroll-view-appearing"],
 		section[data-topic="tilt-card"] {

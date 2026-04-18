@@ -44,9 +44,9 @@
 				height: 50vh;
 				border: 2px solid #fff;
 				border-radius: 1rem;
-				
+
 				padding-inline: 5rem;
-				
+
 				pointer-events: none;
 				user-select: none;
 
@@ -115,7 +115,7 @@
 					color: #3c4043;
 					filter: drop-shadow(0 0 12px rgba(0, 245, 255, 0.55));
 				}
-				
+
 				img {
 					height: 100%;
 				}

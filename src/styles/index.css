@@ -6,16 +6,19 @@
 @import "_motion.css";
 
 /* Motion modules - per-slide animations and choreography */
+/* Main slides (/_XX-*.css) */
 @import "_00-fps-basics.css";
+@import "_01-event-loop-frame-budget.css";
 @import "_02-layout-paint-composition.css";
-@import "_00-event-loop-frame-budget.css";
-@import "_00-starting-style.css";
-@import "_01-architecture.css";
-@import "_02-performance.css";
-@import "_03-scroll-view-appearing.css";
-@import "_04-gaussian-curve.css";
-@import "_05-trigonometric-positioning.css";
-@import "_06-sibling-functions.css";
-@import "_08-tilt-layered-card.css";
+@import "_03-performance.css";
+@import "_06-browser-architecture.css";
+
+/* Demo slides (/demos/_XX-*.css) */
+@import "demos/_00-starting-style.css";
+@import "demos/_01-scroll-view-appearing.css";
+@import "demos/_02-gaussian-curve.css";
+@import "demos/_03-trigonometric-positioning.css";
+@import "demos/_04-sibling-functions.css";
+@import "demos/_07-tilt-layered-card.css";
 
 /* 60fps-specific browser deep-dive slides */

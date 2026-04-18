@@ -15277,7 +15277,8 @@
 @layer speakers {
   [speaker="batman"] {
     opacity: .8;
-    filter: blur(2px) grayscale(.4);
+    filter: blur(3px) grayscale(.7);
+    transition: all .2s ease-in-out;
 
     &:hover {
       opacity: 1;
@@ -15425,31 +15426,6 @@
   }
 
   @layer motion-overrides {
-    .slide-dive-in {
-      place-items: center;
-      min-block-size: 36rem;
-      height: 100% !important;
-      display: grid !important;
-    }
-
-    .slide-dive-in stack-container {
-      width: min(42rem, 72vw);
-      height: 7rem;
-    }
-
-    .slide-dive-in stack-container stack-item {
-      font-size: clamp(5rem, 7vw, 7.6rem);
-    }
-
-    .slide-dive-in stack-container:hover {
-      width: min(88rem, 84vw);
-      height: min(28rem, 48vh);
-    }
-
-    .slide-dive-in stack-container:hover stack-item {
-      font-size: calc(12rem - (.9rem * var(--index)));
-    }
-
     section[data-topic="sponsors"], section[data-topic="scroll-view-appearing"], section[data-topic="tilt-card"] {
       min-block-size: 38rem;
     }
@@ -15558,7 +15534,8 @@
         border-radius: 999px;
         position: absolute;
         inset-block-start: calc(var(--fps-track-y) - .45rem);
-        inset-inline-start: max(6%, calc(7% + var(--fps-progress) * 0.82% - var(--fps-trail-width)));
+        inset-inline-start: max(6%,
+					calc(7% + var(--fps-progress) * 0.82% - var(--fps-trail-width)));
       }
 
       .fps-demo-scene:after, .fps-frame-scene:after {
@@ -15569,7 +15546,9 @@
         background: radial-gradient(circle at 35% 35%, #fffffff2, #0000 28%), radial-gradient(circle, #ffba52, #f05b2d 48%, #e02957 100%);
         border-radius: 50%;
         position: absolute;
-        inset-block-start: calc(var(--fps-track-y) - var(--fps-orb-size) * .55);
+        inset-block-start: calc(var(--fps-track-y) -
+					var(--fps-orb-size) *
+					.55);
         inset-inline-start: calc(7% + var(--fps-progress) * 0.82%);
         box-shadow: 0 0 .55rem #ffb44285, 0 0 1.6rem #46ddfb47;
       }
@@ -15897,93 +15876,6 @@
       }
     }
 
-    @layer starting-style {
-      .sponsor-logo-container {
-        --stagger-speed: .5s;
-        --stagger-base: .25s;
-        grid-template-columns: repeat(5, calc(20% - .65rem));
-        grid-auto-rows: 1fr;
-        place-items: center;
-        gap: 1.15rem;
-        margin: 0 auto;
-        display: none;
-      }
-
-      .present:has( > .sponsor-logo-container) {
-        & .sponsor-logo-container {
-          display: grid;
-        }
-
-        & .sponsor-logo {
-          object-fit: contain;
-          will-change: transform, opacity;
-          opacity: 1;
-          transition: opacity var(--stagger-speed) ease-out,
-						transform var(--stagger-speed) cubic-bezier(.34, 1.56, .64, 1);
-          transform: scale(1) translateY(0);
-
-          @starting-style {
-            opacity: 0;
-            transform: scale(.5) translateY(40px);
-          }
-
-          @supports not (transition-delay: calc(sibling-index() * 1s)) {
-            transition-delay: calc((var(--i, 0) + 1) * var(--stagger-base));
-          }
-
-          @supports (transition-delay: calc(sibling-index() * 1s)) {
-            transition-delay: calc((sibling-index()) * var(--stagger-base));
-          }
-        }
-      }
-
-      :has(meta[name="color-scheme"][content="light"]) {
-        & .sponsor-logo[invert] {
-          filter: invert();
-        }
-      }
-    }
-
-    @layer architecture {
-      .architecture-diagram {
-        flex-direction: column;
-        gap: .5rem;
-        margin-top: 2rem;
-        display: flex;
-      }
-
-      .arch-layer {
-        background: oklch(.2 .03 calc(200 + var(--layer, 0) * 20));
-        border-left: 4px solid oklch(.6 .15 calc(200 + var(--layer, 0) * 30));
-        opacity: 1;
-        width: 80%;
-        transition: opacity .4s ease-out,
-					translate .4s var(--ease-overshoot);
-        transition-delay: calc(var(--layer, 0) * .1s);
-        border-radius: 0 8px 8px 0;
-        place-content: space-between;
-        place-items: center;
-        margin: 0 auto;
-        padding: 1rem 1.5rem;
-        display: flex;
-        translate: 0;
-
-        @starting-style {
-          opacity: 0;
-          translate: -20px;
-        }
-      }
-
-      .arch-layer strong {
-        color: oklch(.9 .1 calc(200 + var(--layer, 0) * 30));
-      }
-
-      .arch-layer span {
-        opacity: .8;
-        font-size: 2rem;
-      }
-    }
-
     @layer performance {
       .perf-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -16076,6 +15968,93 @@
       @media (width < 900px) {
         .perf-grid, .perf-grid--two-up, .perf-grid--single {
           grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    @layer architecture {
+      .architecture-diagram {
+        flex-direction: column;
+        gap: .5rem;
+        margin-top: 2rem;
+        display: flex;
+      }
+
+      .arch-layer {
+        background: oklch(.2 .03 calc(200 + var(--layer, 0) * 20));
+        border-left: 4px solid oklch(.6 .15 calc(200 + var(--layer, 0) * 30));
+        opacity: 1;
+        width: 80%;
+        transition: opacity .4s ease-out,
+					translate .4s var(--ease-overshoot);
+        transition-delay: calc(var(--layer, 0) * .1s);
+        border-radius: 0 8px 8px 0;
+        place-content: space-between;
+        place-items: center;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        translate: 0;
+
+        @starting-style {
+          opacity: 0;
+          translate: -20px;
+        }
+      }
+
+      .arch-layer strong {
+        color: oklch(.9 .1 calc(200 + var(--layer, 0) * 30));
+      }
+
+      .arch-layer span {
+        opacity: .8;
+        font-size: 2rem;
+      }
+    }
+
+    @layer starting-style {
+      .sponsor-logo-container {
+        --stagger-speed: .5s;
+        --stagger-base: .25s;
+        grid-template-columns: repeat(5, calc(20% - .65rem));
+        grid-auto-rows: 1fr;
+        place-items: center;
+        gap: 1.15rem;
+        margin: 0 auto;
+        display: none;
+      }
+
+      .present:has( > .sponsor-logo-container) {
+        & .sponsor-logo-container {
+          display: grid;
+        }
+
+        & .sponsor-logo {
+          object-fit: contain;
+          will-change: transform, opacity;
+          opacity: 1;
+          transition: opacity var(--stagger-speed) ease-out,
+						transform var(--stagger-speed) cubic-bezier(.34, 1.56, .64, 1);
+          transform: scale(1) translateY(0);
+
+          @starting-style {
+            opacity: 0;
+            transform: scale(.5) translateY(40px);
+          }
+
+          @supports not (transition-delay: calc(sibling-index() * 1s)) {
+            transition-delay: calc((var(--i, 0) + 1) * var(--stagger-base));
+          }
+
+          @supports (transition-delay: calc(sibling-index() * 1s)) {
+            transition-delay: calc((sibling-index()) * var(--stagger-base));
+          }
+        }
+      }
+
+      :has(meta[name="color-scheme"][content="light"]) {
+        & .sponsor-logo[invert] {
+          filter: invert();
         }
       }
     }
