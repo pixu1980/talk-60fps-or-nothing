@@ -1,0 +1,11 @@
+@layer speakers {
+  [speaker="batman"] {
+    opacity: 0.8;
+    filter: blur(2px) grayscale(0.4);
+    
+    &:hover {
+      opacity: 1;
+      filter: none;
+    }
+  }
+}

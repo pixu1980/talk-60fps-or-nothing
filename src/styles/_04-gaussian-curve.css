@@ -1,4 +1,4 @@
-@layer pixu-talk {
+@layer speaker-talk {
 	@layer topics {
 		@layer gaussian-curve {
 			/* Slide 3: Gaussian Curve - Pure CSS Bell Curve

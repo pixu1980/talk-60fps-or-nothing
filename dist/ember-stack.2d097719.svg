@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Ember Stack">
+  <defs>
+    <linearGradient id="bg-ember-stack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#201015"/>
+      <stop offset="45%" stop-color="#3d1720"/>
+      <stop offset="100%" stop-color="#8c2f36"/>
+    </linearGradient>
+    <linearGradient id="panel-ember-stack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffdfb8"/>
+      <stop offset="100%" stop-color="#ff8f6a"/>
+    </linearGradient>
+    <radialGradient id="glow-ember-stack" cx="50%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#ffd89a" stop-opacity=".9"/>
+      <stop offset="70%" stop-color="#ffd89a" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#ffd89a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="160" rx="28" fill="url(#bg-ember-stack)"/>
+  <rect x="16" y="16" width="328" height="128" rx="22" fill="none" stroke="#fff7ef" stroke-opacity=".08"/>
+  <circle cx="286" cy="42" r="54" fill="url(#glow-ember-stack)"/>
+  <circle cx="304" cy="116" r="32" fill="#ffd89a" fill-opacity=".08"/>
+  <g transform="translate(24 30)">
+    <circle cx="56" cy="50" r="42" fill="url(#panel-ember-stack)" fill-opacity=".13"/>
+    <circle cx="56" cy="50" r="42" fill="none" stroke="#ffd9ad" stroke-opacity=".26"/>
+    <rect x="24" y="30" width="64" height="10" rx="5" fill="#ffdab0"/>
+    <rect x="18" y="46" width="76" height="10" rx="5" fill="#ff9a75"/>
+    <rect x="28" y="62" width="56" height="10" rx="5" fill="#c65144"/>
+    <path d="M52 22c8 6 12 12 12 20-7-2-12-5-16-11 1-4 2-7 4-9z" fill="#ffe39c"/>
+    <path d="M40 30h32" stroke="#fff3dd" stroke-opacity=".42" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <path d="M132 44h160" stroke="#fff1dd" stroke-opacity=".16" stroke-width="2" stroke-linecap="round"/>
+  <text x="132" y="72" fill="#fff8f2" font-family="system-ui, sans-serif" font-size="30" font-weight="800" letter-spacing="1.6">EMBER</text>
+  <text x="132" y="108" fill="#ffd39b" font-family="system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="2.8">STACK</text>
+</svg>

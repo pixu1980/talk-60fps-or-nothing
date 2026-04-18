@@ -1,0 +1,25 @@
+<section>
+  <section data-menu-title="Browser Internals">
+    <h3>A browser is not a window: it is a multi-process system</h3>
+    <small balance> Browser process, renderer process, GPU process, network, and storage: this is where you first see why a frame is never "just CSS". </small>
+  </section>
+  <section data-menu-title="Browser Internals">
+    <small>
+      <ul>
+        <li><mark>Browser process</mark>: UI, tab lifecycle, security, coordination</li>
+        <li><mark>Renderer process</mark>: HTML, CSS, JS, layout, paint, compositing</li>
+        <li><mark>GPU process</mark>: raster work and final composition</li>
+        <li><mark>IPC</mark>: every hop between processes has a real cost</li>
+      </ul>
+    </small>
+  </section>
+  <section data-menu-title="Browser Internals">
+    <small>
+      <ul>
+        <li>Processes talk through <mark>IPC</mark>, while threads share memory inside the same process</li>
+        <li class="fragment">The main thread and compositor thread have different responsibilities</li>
+        <li class="fragment">If you saturate the main thread, the browser cannot read input or prepare the frame in time</li>
+      </ul>
+    </small>
+  </section>
+</section>

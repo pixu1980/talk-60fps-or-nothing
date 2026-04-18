@@ -1,0 +1,97 @@
+<!-- Slide 5: Sponsors Grid Initial Entrance -->
+<!-- Speaker notes: All sponsor logos enter with staggered @starting-style. Each logo has a CSS variable --i for delay. -->
+<section>
+  <section data-topic="sponsors" data-menu-title="Sponsors">
+    <h4><mark>@starting-style</mark> with our "Sponsors"</h4>
+  </section>
+  <section data-topic="sponsors" data-menu-title="Sponsors">
+    <div class="sponsor-logo-container">
+      <img style="--i: 0" src="./assets/sponsors/aurora-core.svg" alt="Aurora Core" class="sponsor-logo" />
+      <img style="--i: 1" src="./assets/sponsors/brick-harbor.svg" alt="Brick Harbor" class="sponsor-logo" />
+      <img style="--i: 2" src="./assets/sponsors/cinder-loop.svg" alt="Cinder Loop" class="sponsor-logo" />
+      <img style="--i: 3" src="./assets/sponsors/delta-bloom.svg" alt="Delta Bloom" class="sponsor-logo" />
+      <img style="--i: 4" src="./assets/sponsors/ember-stack.svg" alt="Ember Stack" class="sponsor-logo" />
+      <img style="--i: 5" src="./assets/sponsors/flux-garden.svg" alt="Flux Garden" class="sponsor-logo" />
+      <img style="--i: 6" src="./assets/sponsors/glacier-node.svg" alt="Glacier Node" class="sponsor-logo" />
+      <img style="--i: 7" src="./assets/sponsors/horizon-labs.svg" alt="Horizon Labs" class="sponsor-logo" />
+      <img style="--i: 8" src="./assets/sponsors/ion-press.svg" alt="Ion Press" class="sponsor-logo" />
+      <img style="--i: 9" src="./assets/sponsors/juno-wave.svg" alt="Juno Wave" class="sponsor-logo" />
+      <img style="--i: 10" src="./assets/sponsors/kelp-vector.svg" alt="Kelp Vector" class="sponsor-logo" />
+      <img style="--i: 11" src="./assets/sponsors/lumen-ship.svg" alt="Lumen Ship" class="sponsor-logo" />
+      <img style="--i: 12" src="./assets/sponsors/nebula-spark.svg" alt="Nebula Spark" class="sponsor-logo" />
+      <img style="--i: 13" src="./assets/sponsors/orbit-shift.svg" alt="Orbit Shift" class="sponsor-logo" />
+      <img style="--i: 14" src="./assets/sponsors/polaris-peak.svg" alt="Polaris Peak" class="sponsor-logo" />
+      <img style="--i: 15" src="./assets/sponsors/quasar-loop.svg" alt="Quasar Loop" class="sponsor-logo" />  
+      <img style="--i: 16" src="./assets/sponsors/rover-labs.svg" alt="Rover Labs" class="sponsor-logo" />
+      <img style="--i: 17" src="./assets/sponsors/solstice-systems.svg" alt="Solstice Systems" class="sponsor-logo" />
+      <img style="--i: 18" src="./assets/sponsors/tidal-works.svg" alt="Tidal Works" class="sponsor-logo" />
+      <img style="--i: 19" src="./assets/sponsors/umbra-dynamics.svg" alt="Umbra Dynamics " class="sponsor-logo" />
+      <img style="--i: 20" src="./assets/sponsors/vega-systems.svg" alt="Vega Systems" class="sponsor-logo" />
+      <img style="--i: 21" src="./assets/sponsors/wavefront-studios.svg" alt="Wavefront Studios" class="sponsor-logo" />
+      <img style="--i: 22" src="./assets/sponsors/xenon-labs.svg" alt="Xenon Labs" class="sponsor-logo" />
+      <img style="--i: 23" src="./assets/sponsors/y-studios.svg" alt="Y Studios" class="sponsor-logo" />
+      <img style="--i: 24" src="./assets/sponsors/zenith-solutions.svg" alt="Zenith Solutions" class="sponsor-logo" />
+    </div>
+  </section>
+  <section data-topic="sponsors" data-menu-title="Sponsors">
+    <small balance>A staggered entrance animation done with <mark>@starting-style</mark> and a simple per-item delay based on <mark>sibling-index()</mark> with a custom property fallback.</small>
+    <pre>
+      <code class="hljs css" data-trim data-line-numbers="|2|20-23|13-14|16-18|25-28|30-40">
+.sponsor-logo-container {
+  --stagger-base: 0.25s;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  
+  ...
+}
+
+.sponsor-logo {
+  ...
+  
+  opacity: 1;
+  transform: scale(1) translateY(0);
+
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.5) translateY(40px);
+  }
+
+  @supports (--index: calc(sibling-index() * 1s)) {
+    transition-delay: 
+      calc(sibling-index() * var(--stagger-base));
+  }
+
+  @supports not (--index: calc(sibling-index() * 1s)) {
+    /*
+      Fallback: explicit --i on elements 
+      (or via nth-child rules elsewhere).
+    */
+    transition-delay: 
+      calc((var(--i, 0) + 1) * var(--stagger-base));
+  }
+}
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>Roll call: logos arrive in waves, like an impulse traveling left to right</li>
+        <li>Each logo has a micro tilt and settle, so the grid feels alive but not chaotic</li>
+        <li>The stagger uses --i for delay calculation: 80ms between each logo</li>
+        <li>@starting-style handles the initial hidden state</li>
+        <li>API focus: grid layout, :nth-child for stagger, @starting-style</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="sponsors" data-menu-title="Sponsors">
+    <h4><mark>@starting-style</mark></h4>
+    <small balance>
+      Entry animations without JS are finally possible thanks to <mark>@starting-style</mark> at-rule: the CSS selector defines a starting style, then transitions it to the <mark>normal styles</mark>.
+    </small>
+    <baseline-status featureId="starting-style"></baseline-status>
+  </section>
+</section>

@@ -1,11 +1,13 @@
 @import "npm:@pixu-talks/fonts";
 @import "npm:@pixu-talks/theme";
 
+@import "_speakers.css";
 @import "_doodle.css";
 @import "_motion.css";
 
 /* Motion modules - per-slide animations and choreography */
 @import "_00-fps-basics.css";
+@import "_02-layout-paint-composition.css";
 @import "_00-event-loop-frame-budget.css";
 @import "_00-starting-style.css";
 @import "_01-architecture.css";
@@ -17,4 +19,3 @@
 @import "_08-tilt-layered-card.css";
 
 /* 60fps-specific browser deep-dive slides */
-@import "_08-legacy-browser-deck.css";

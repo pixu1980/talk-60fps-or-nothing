@@ -5,7 +5,7 @@
 	initial-value: 210;
 }
 
-@layer pixu-talk {
+@layer speaker-talk {
 	@layer doodle {
 		/* Animatable hue property for color cycling */
 

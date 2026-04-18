@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Juno Wave">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e1d31"/>
+      <stop offset="100%" stop-color="#4f7f95"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8ff4ff"/>
+      <stop offset="100%" stop-color="#ffd36a"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="160" rx="28" fill="url(#bg)"/>
+  <circle cx="62" cy="42" r="18" fill="#8ff4ff" opacity=".07"/>
+  <circle cx="302" cy="114" r="28" fill="#ffd36a" opacity=".08"/>
+  <rect x="28" y="28" width="104" height="104" rx="30" fill="#ffffff" opacity=".04"/>
+  <rect x="28" y="28" width="104" height="104" rx="30" fill="none" stroke="#ffffff" stroke-opacity=".12" stroke-width="1.5"/>
+  <path d="M62 52c16 0 28 13 28 28 0 11-6 20-15 25 4 2 8 3 13 3 16 0 29-13 29-29 0-15-12-27-27-27-5 0-10 1-14 4-3-2-8-4-14-4z" fill="#f7fbff" opacity=".09" stroke="#8ff4ff" stroke-opacity=".45" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M44 95c10 0 15-18 30-18s16 18 31 18 16-18 31-18 16 18 31 18 16-18 31-18 16 18 31 18" fill="none" stroke="#ffd36a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M78 50c14 8 22 20 22 34 0 10-3 19-9 26" fill="none" stroke="#8ff4ff" stroke-width="5" stroke-linecap="round"/>
+  <text x="154" y="74" fill="#fffaf0" font-family="system-ui, sans-serif" font-size="22" font-weight="800" letter-spacing="1.1">JUNO WAVE</text>
+  <path d="M154 96h146" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+</svg>

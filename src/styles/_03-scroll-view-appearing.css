@@ -1,6 +1,6 @@
 /* Scroll View Appearing Animation - _05-scroll-view-appearing.css */
 
-@layer pixu-talk {
+@layer speaker-talk {
 	@layer topics {
 		/* @keyframes appear-in {
 			from {
@@ -34,10 +34,9 @@
 
 		/* Scroll container with horizontal scroll */
 		.scroll-view-container {
-			display: grid;
-			grid-auto-flow: column;
-			grid-auto-columns: minmax(160px, 1fr);
-			width: min(70%, 52rem);
+			display: flex;
+			block-size: 25rem;
+			inline-size: 100%;
 			margin: 0 auto;
 			gap: 1rem;
 			padding: 1rem;
@@ -51,7 +50,6 @@
 				rgba(255, 149, 0, 0.05)
 			);
 			border: 1px solid rgba(0, 245, 255, 0.2);
-			height: 220px;
 
 			@media (max-width: 900px) {
 				grid-auto-columns: minmax(150px, 1fr);

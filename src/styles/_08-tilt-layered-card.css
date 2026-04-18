@@ -1,4 +1,4 @@
-@layer pixu-talk {
+@layer speaker-talk {
 	@layer topics {
 		@layer tilt-layered-card {
 			@property --tilt-card--pos-x {
@@ -23,7 +23,6 @@
 				display: grid;
 				place-items: center;
 				perspective: var(--tilt-card--perspective);
-
 				cursor: grab;
 				touch-action: none;
 			}
@@ -41,10 +40,13 @@
 				--tilt-card--y: calc(var(--tilt-card--pos-x, 0.1) * 105deg);
 
 				position: relative;
-				width: min(49rem, 72vw);
-				height: min(18rem, 35vh);
+				width: 30vw;
+				height: 50vh;
 				border: 2px solid #fff;
 				border-radius: 1rem;
+				
+				padding-inline: 5rem;
+				
 				pointer-events: none;
 				user-select: none;
 
@@ -87,7 +89,7 @@
 				padding: clamp(1rem, 1.8vw, 1.75rem);
 
 				display: flex;
-				flex-flow: column;
+				flex-flow: row nowrap;
 				gap: 0;
 				place-content: center;
 				place-items: center;
@@ -112,6 +114,10 @@
 					letter-spacing: -0.05em;
 					color: #3c4043;
 					filter: drop-shadow(0 0 12px rgba(0, 245, 255, 0.55));
+				}
+				
+				img {
+					height: 100%;
 				}
 			}
 

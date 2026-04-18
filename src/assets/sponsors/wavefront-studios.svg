@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Wavefront Studios">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090c18"/>
+      <stop offset="56%" stop-color="#222f69"/>
+      <stop offset="100%" stop-color="#4b67c6"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.42" r="0.42">
+      <stop offset="0%" stop-color="#dce9ff" stop-opacity=".3"/>
+      <stop offset="60%" stop-color="#8fe8ff" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#8fe8ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbff"/>
+      <stop offset="100%" stop-color="#8fe8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="160" rx="28" fill="url(#bg)"/>
+  <rect x="14" y="14" width="332" height="132" rx="22" fill="none" stroke="#dce9ff" stroke-opacity=".11"/>
+  <circle cx="180" cy="62" r="44" fill="url(#halo)"/>
+  <circle cx="180" cy="62" r="34" fill="#16224e" opacity=".72" stroke="#dce9ff" stroke-opacity=".18"/>
+  <path d="M152 78c8-12 18-18 28-18s20 6 28 18" fill="none" stroke="url(#wave)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M146 68c10-18 22-26 34-26s24 8 34 26" fill="none" stroke="#8fe8ff" stroke-opacity=".75" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M140 58c13-24 28-34 40-34s27 10 40 34" fill="none" stroke="#dce9ff" stroke-opacity=".42" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="180" cy="62" r="5.5" fill="#f7fbff"/>
+  <circle cx="180" cy="62" r="18" fill="none" stroke="#8fe8ff" stroke-opacity=".4" stroke-width="3"/>
+  <circle cx="180" cy="62" r="28" fill="none" stroke="#dce9ff" stroke-opacity=".18" stroke-width="3"/>
+  <text x="180" y="120" text-anchor="middle" fill="#f8fbff" font-size="22" font-weight="700" letter-spacing="2.1" font-family="system-ui, sans-serif">WAVEFRONT STUDIOS</text>
+  <path d="M122 132h116" stroke="#8fe8ff" stroke-opacity=".42" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

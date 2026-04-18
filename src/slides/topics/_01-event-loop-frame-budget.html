@@ -1,0 +1,33 @@
+<section>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3>A <mark>60Hz screen</mark> gives <mark>16.67ms</mark></h3>
+    <small balance>
+      A <mark>60Hz display</mark> refreshes 60 times per second, so one frame slot is <mark>1000 / 60 = 16.67ms</mark>. Miss that slot and the browser shows the previous frame again. On
+      <mark>120Hz</mark>, the budget drops to <mark>8.33ms</mark>.
+    </small>
+  </section>
+  <section data-menu-title="Event Loop + Frame Budget">
+    <h3 balance><mark>Before rendering</mark> pixels, event loop <mark>gets a turn</mark></h3>
+    <small balance class="fragment">
+      The browser event loop <mark>runs</mark> a task, <mark>flushes</mark> microtasks, then gives <mark>rendering</mark> a chance. If your code overstays, <mark>the next frame waits</mark>.
+    </small>
+    <div class="event-loop-flow" role="img" aria-label="Task queue, microtasks, requestAnimationFrame, and rendering steps">
+      <article class="loop-card fragment">
+        <strong>Task queue</strong>
+        <small>input, timers, event handlers</small>
+      </article>
+      <article class="loop-card fragment">
+        <strong>Microtasks</strong>
+        <small>promises, MutationObserver</small>
+      </article>
+      <article class="loop-card fragment">
+        <strong>requestAnimationFrame</strong>
+        <small>last safe JavaScript before render</small>
+      </article>
+      <article class="loop-card fragment">
+        <strong>Render work</strong>
+        <small>style, layout, paint, composition</small>
+      </article>
+    </div>
+  </section>
+</section>

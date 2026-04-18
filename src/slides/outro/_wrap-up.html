@@ -8,9 +8,9 @@
         <h4>CSS first</h4>
         <small>
           <ul>
-            <li class="fragment">Great for state changes, entrances, scroll reveal, and choreography</li>
+            <li class="fragment">Great for <mark>state changes, entrances, scroll reveal, and choreography</mark></li>
             <li class="fragment">If you stay on <mark>transform</mark> and <mark>opacity</mark>, the browser flies</li>
-            <li class="fragment">New APIs now cover cases that used to require JS</li>
+            <li class="fragment">New APIs now cover cases that <mark>used to require JS</mark></li>
           </ul>
         </small>
       </left>
@@ -18,18 +18,18 @@
         <h4>JS when needed</h4>
         <small>
           <ul>
-            <li class="fragment">Needed for realtime input, gestures, physics, and data orchestration</li>
-            <li class="fragment">It should not fight the renderer with continuous layout read and write work</li>
-            <li class="fragment">Its best role is to provide intent, not move pixels by hand</li>
+            <li class="fragment">Needed for <mark>realtime input, gestures, physics, and data orchestration</mark></li>
+            <li class="fragment">It should not fight the <mark>renderer</mark> with layout read and write work</li>
+            <li class="fragment">Its best role is to <mark>provide intent</mark> not to move pixels "<mark>by hand</mark>"</li>
           </ul>
         </small>
       </right>
     </comparison>
   </section>
   <section data-transition="convex">
-    <p balance>The real comparison is not <mark>CSS versus JS</mark>. It is understanding which browser layer you are activating and whether your choice keeps the frame under <mark>16.67ms</mark>.</p>
+    <p balance>The real comparison is not <mark>CSS vs JS</mark>. It's understanding which browser layer you are activating and whether your choice keeps the frame under <mark>16.67ms</mark>.</p>
   </section>
-  <section data-transition="convex">
+  <!-- <section data-transition="convex">
     <small>
       <ul>
         <li>Prefer <mark>composition</mark> whenever the visual result allows it</li>
@@ -37,5 +37,5 @@
         <li class="fragment">Use JavaScript to steer the system, not to rebuild layout on every frame</li>
       </ul>
     </small>
-  </section>
+  </section> -->
 </section>

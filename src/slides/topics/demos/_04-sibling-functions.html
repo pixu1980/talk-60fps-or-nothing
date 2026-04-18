@@ -1,0 +1,109 @@
+<!-- Slide: Sibling Functions - Dynamic Circular Arrangement -->
+<!-- Speaker notes: Demonstrates sibling-index() and sibling-count() for dynamic circular layout. No JavaScript, pure CSS calculations. -->
+<section>
+  <section data-topic="sibling-functions" data-menu-title="Sibling Functions">
+    <h4 balance>
+      <mark>Sponsors</mark> in two circles<br />
+      <small>(NOTE: works well in chromium based browsers only)</small>
+    </h4>
+  </section>
+  <section data-topic="sibling-functions" data-menu-title="Sibling Functions">
+    <div class="sibling-containers">
+      <div class="sibling-container">
+        <img src="./assets/sponsors/aurora-core.svg" alt="Aurora Core" class="sibling-logo" />
+        <img src="./assets/sponsors/brick-harbor.svg" alt="Brick Harbor" class="sibling-logo" />
+        <img src="./assets/sponsors/cinder-loop.svg" alt="Cinder Loop" class="sibling-logo" />
+        <img src="./assets/sponsors/delta-bloom.svg" alt="Delta Bloom" class="sibling-logo" />
+        <img src="./assets/sponsors/ember-stack.svg" alt="Ember Stack" class="sibling-logo" />
+        <img src="./assets/sponsors/flux-garden.svg" alt="Flux Garden" class="sibling-logo" />
+        <img src="./assets/sponsors/glacier-node.svg" alt="Glacier Node" class="sibling-logo" />
+        <img src="./assets/sponsors/horizon-labs.svg" alt="Horizon Labs" class="sibling-logo" />
+        <!-- <img src="./assets/sponsors/ion-press.svg" alt="Ion Press" class="sibling-logo" />
+        <img src="./assets/sponsors/juno-wave.svg" alt="Juno Wave" class="sibling-logo" />
+        <img src="./assets/sponsors/kelp-vector.svg" alt="Kelp Vector" class="sibling-logo" />
+        <img src="./assets/sponsors/lumen-ship.svg" alt="Lumen Ship" class="sibling-logo" />
+        <img src="./assets/sponsors/nebula-spark.svg" alt="Nebula Spark" class="sibling-logo" /> -->
+      </div>
+      <div class="sibling-container">
+        <img src="./assets/sponsors/orbit-shift.svg" alt="Orbit Shift" class="sibling-logo" />
+        <img src="./assets/sponsors/polaris-peak.svg" alt="Polaris Peak" class="sibling-logo" />
+        <img src="./assets/sponsors/quasar-loop.svg" alt="Quasar Loop" class="sibling-logo" />
+        <img src="./assets/sponsors/rover-labs.svg" alt="Rover Labs" class="sibling-logo" />
+        <img src="./assets/sponsors/solstice-systems.svg" alt="Solstice Systems" class="sibling-logo" />
+        <img src="./assets/sponsors/tidal-works.svg" alt="Tidal Works" class="sibling-logo" />
+        <img src="./assets/sponsors/umbra-dynamics.svg" alt="Umbra Dynamics" class="sibling-logo" />
+        <!-- <img src="./assets/sponsors/vega-systems.svg" alt="Vega Systems" class="sibling-logo" />
+        <img src="./assets/sponsors/wavefront-studios.svg" alt="Wavefront Studios" class="sibling-logo" />
+        <img src="./assets/sponsors/xenon-labs.svg" alt="Xenon Labs" class="sibling-logo" />
+        <img src="./assets/sponsors/y-studios.svg" alt="Y Studios" class="sibling-logo" />
+        <img src="./assets/sponsors/zenith-solutions.svg" alt="Zenith Solutions" class="sibling-logo" /> -->
+      </div>
+    </div>
+  </section>
+  <section data-topic="sibling-functions" data-menu-title="Sibling Functions">
+    <small balance>
+      A circular arrangement calculated purely with <mark>sibling-index()</mark> and <mark>sibling-count()</mark>. Positioning items in circles is done using <mark>asin()</mark> and
+      <mark>sibling-count()</mark> functions.
+    </small>
+    <pre>
+      <code class="hljs css" data-trim data-line-numbers="|2-4|6-8|10-12|14-16|18-24|26-29|31-38">
+.sibling-logo {
+  /* arc angle per logo uses asin() to calculate
+    angle subtended by each logo+gap at circle center */
+  --sibling-arc-angle: calc(2 * asin((var(--sibling-logo-size) + var(--sibling-logo-gap)) / (2 * var(--sibling-circle-radius))) - 1turn / sibling-count());
+
+  /* logo circle radius calculated responsively
+    using min() and container query units */
+  --sibling-circle-radius: min(50cqw - var(--sibling-logo-size) / 2, (var(--sibling-logo-size) + var(--sibling-logo-gap)) / (2 * sin(0.5turn / sibling-count())));
+
+  /* current logo angle dividing full rotation
+    by sibling-count() to distribute items evenly */
+  --sibling-current-angle: calc(1turn * sibling-index() / sibling-count() + var(--sibling-expand-offset, 0deg));
+
+  /* next logo angle used to create smooth visual
+    transition between adjacent logos */
+  --sibling-next-angle: calc(1turn * (sibling-index() + 1) / sibling-count() + var(--sibling-next-expand-offset, 0deg));
+
+  /* transform chain: 
+    rotate → translate to radius → counter-rotate
+    this positions element on circle while keeping image upright */
+  transform: 
+    rotate(calc(-1 * var(--sibling-current-angle)))
+    translate(var(--sibling-circle-radius))
+    rotate(var(--sibling-current-angle));
+
+  /* smooth animation of position and next-angle on hover */
+  transition:
+    --sibling-current-angle 0.4s linear,
+    --sibling-next-angle 0.4s linear;
+
+  /* radial mask creates smooth circle boundary without harsh edges
+    uses trigonometric coordinates (cos/sin) to calculate
+    mask gradient position based on current and next element angles */
+  mask: radial-gradient(
+    50% 50% at calc(50% + var(--sibling-circle-radius) * (cos(var(--sibling-next-angle)) - cos(var(--sibling-current-angle)))) calc(50% + var(--sibling-circle-radius) * (sin(var(--sibling-current-angle)) - sin(var(--sibling-next-angle)))),
+    #fff0 calc(100% - 1px + var(--sibling-logo-gap)),
+    #fff calc(100% + var(--sibling-logo-gap))
+  );
+
+  ...
+}
+      </code>
+    </pre>
+    <aside class="notes">
+      <ul>
+        <li>No JavaScript loops: sibling-index() and sibling-count() do the heavy lifting</li>
+        <li>Each image knows its position in the circle automatically</li>
+        <li>Hover on the container expands all; hover on individual resets it</li>
+        <li>Uses trig: sin and asin to compute radius and angles for perfect circular packing</li>
+        <li>Container queries (cqw) adapt radius to viewport</li>
+        <li>Pure CSS, fully responsive, scales to any number of siblings</li>
+      </ul>
+    </aside>
+  </section>
+  <section data-topic="sibling-functions" data-menu-title="Sibling Functions">
+    <h4><mark>sibling-index()</mark> and <mark>sibling-count()</mark></h4>
+    <small balance> Sibling functions allow CSS to know the position and total count of elements in their parent. <mark>No JavaScript needed</mark> </small>
+    <baseline-status featureId="sibling-count"></baseline-status>
+  </section>
+</section>

@@ -1,0 +1,22 @@
+<section>
+  <section data-menu-title="Layout Paint Composition">
+    <h3>So what <mark>really matters</mark> here?</h3>
+    <div class="browser-three-stage">
+      <article class="stage-card stage-card--layout fragment">
+        <h4>Layout (width, height, top, left, font-size, ...)</h4>
+        <small>Harms performance when recalculated frequently.</small>
+        <small>Avoid forced synchronous layouts (offsetWidth, getComputedStyle, etc.)</small>
+      </article>
+      <article class="stage-card stage-card--paint fragment">
+        <h4>Paint (background, box-shadow, ...)</h4>
+        <small>Draws fills, borders, text, and shadows. Apparently harmless combinations can invalidate large areas.</small>
+        <small>Shadows, blur, clipping, and complex backgrounds are often the first suspects.</small>
+      </article>
+      <article class="stage-card stage-card--composition fragment">
+        <h4>Composition (transforms, opacity, ...)</h4>
+        <small>Reassembles already rasterized layers, can create frames without blocking the main thread.</small>
+        <small>But layers are not free: too many layers consume memory and raster time</small>
+      </article>
+    </div>
+  </section>
+</section>
