@@ -729,7 +729,7 @@ var _07TiltLayeredCardJs = require("./_07-tilt-layered-card.js");
     (0, _07TiltLayeredCardJs.initTiltLayeredCard)();
 });
 
-},{"@pixu-talks/core":"iP4Wg","./baseline-status/baseline-status.js":"1sNcI","./_00-fps-basics.js":"6aCxr","./_slide-hooks.js":"292LN","./_07-tilt-layered-card.js":"iJGvL","./_05-doodle-motion.js":"5zoFq"}],"iP4Wg":[function(require,module,exports,__globalThis) {
+},{"@pixu-talks/core":"iP4Wg","./baseline-status/baseline-status.js":"1sNcI","./_05-doodle-motion.js":"5zoFq","./_00-fps-basics.js":"6aCxr","./_slide-hooks.js":"292LN","./_07-tilt-layered-card.js":"iJGvL"}],"iP4Wg":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _indexJs = require("./polyfills/index.js");
 var _revealJs = require("reveal.js");
@@ -33419,226 +33419,7 @@ function svgToImgTag(svg, { width, height, className = "browser-icon" } = {}) {
     return `<img class="${escapeAttr(className)}" alt="" aria-hidden="true" role="presentation" src="${escapeAttr(src)}" width="${escapeAttr(String(w))}" height="${escapeAttr(String(h))}" />`;
 }
 
-},{"./baseline-status.constants.js":"cxNiv","@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"6aCxr":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "initFpsBasics", ()=>initFpsBasics);
-const LOOP_DURATION_MS = 1000;
-const normalizeProgress = (progress)=>{
-    const wrappedProgress = progress % 100;
-    return wrappedProgress < 0 ? wrappedProgress + 100 : wrappedProgress;
-};
-const formatProgress = (progress)=>`${progress.toFixed(1)}%`;
-const formatFrameBudget = (fps)=>`${(1000 / fps).toFixed(2)}ms per frame`;
-const setPlayingState = (button, isPlaying)=>{
-    button.setAttribute("aria-pressed", String(isPlaying));
-    button.textContent = isPlaying ? "Pause image" : "Play image";
-};
-const createRenderer = (elements, state)=>()=>{
-        const progress = normalizeProgress(state.progress);
-        const sampleStep = 100 / state.fps;
-        elements.preview.style.setProperty("--fps-progress", progress.toFixed(3));
-        elements.positionInput.value = progress.toFixed(1);
-        elements.positionOutput.textContent = formatProgress(progress);
-        elements.rateOutput.textContent = `${state.fps}fps`;
-        elements.statusRate.textContent = `${state.fps}fps`;
-        elements.statusBudget.textContent = formatFrameBudget(state.fps);
-        elements.frames.forEach((frame, index)=>{
-            const frameProgress = normalizeProgress(progress + index * sampleStep);
-            frame.root.style.setProperty("--fps-progress", frameProgress.toFixed(3));
-            frame.progress.textContent = formatProgress(frameProgress);
-        });
-    };
-const createStopPlayback = (state, playButton)=>()=>{
-        state.playing = false;
-        state.lastTimestamp = 0;
-        state.frameAccumulator = 0;
-        if (state.rafId) {
-            cancelAnimationFrame(state.rafId);
-            state.rafId = 0;
-        }
-        setPlayingState(playButton, false);
-    };
-const initDemo = (root)=>{
-    const positionInput = root.querySelector("[data-fps-position]");
-    const positionOutput = root.querySelector("[data-fps-position-output]");
-    const rateInput = root.querySelector("[data-fps-rate]");
-    const rateOutput = root.querySelector("[data-fps-rate-output]");
-    const playButton = root.querySelector("[data-fps-play]");
-    const preview = root.querySelector("[data-fps-preview]");
-    const statusRate = root.querySelector("[data-fps-status-rate]");
-    const statusBudget = root.querySelector("[data-fps-status-budget]");
-    if (!(positionInput instanceof HTMLInputElement && rateInput instanceof HTMLInputElement && positionOutput instanceof HTMLOutputElement && rateOutput instanceof HTMLOutputElement && playButton instanceof HTMLButtonElement && preview instanceof HTMLElement && statusRate instanceof HTMLElement && statusBudget instanceof HTMLElement)) return;
-    const frames = [
-        ...root.querySelectorAll("[data-fps-frame]")
-    ].map((frame)=>{
-        const progress = frame.querySelector("[data-fps-frame-progress]");
-        if (!(frame instanceof HTMLElement) || !(progress instanceof HTMLElement)) return null;
-        return {
-            root: frame,
-            progress
-        };
-    }).filter(Boolean);
-    if (frames.length === 0) return;
-    const state = {
-        fps: Number(rateInput.value),
-        progress: Number(positionInput.value),
-        playing: false,
-        lastTimestamp: 0,
-        frameAccumulator: 0,
-        rafId: 0
-    };
-    const render = createRenderer({
-        frames,
-        playButton,
-        positionInput,
-        positionOutput,
-        preview,
-        rateOutput,
-        statusBudget,
-        statusRate
-    }, state);
-    const stopPlayback = createStopPlayback(state, playButton);
-    const stepPlayback = (timestamp)=>{
-        if (!state.playing) return;
-        if (state.lastTimestamp === 0) state.lastTimestamp = timestamp;
-        const delta = timestamp - state.lastTimestamp;
-        const frameDuration = LOOP_DURATION_MS / state.fps;
-        state.lastTimestamp = timestamp;
-        state.frameAccumulator += delta;
-        let shouldRender = false;
-        while(state.frameAccumulator >= frameDuration){
-            state.frameAccumulator -= frameDuration;
-            state.progress = normalizeProgress(state.progress + 100 / state.fps);
-            shouldRender = true;
-        }
-        if (shouldRender) render();
-        state.rafId = requestAnimationFrame(stepPlayback);
-    };
-    positionInput.addEventListener("input", ()=>{
-        state.progress = Number(positionInput.value);
-        state.frameAccumulator = 0;
-        render();
-    });
-    rateInput.addEventListener("input", ()=>{
-        state.fps = Number(rateInput.value);
-        state.frameAccumulator = 0;
-        render();
-    });
-    playButton.addEventListener("click", ()=>{
-        if (state.playing) {
-            stopPlayback();
-            return;
-        }
-        state.playing = true;
-        state.lastTimestamp = 0;
-        state.frameAccumulator = 0;
-        setPlayingState(playButton, true);
-        state.rafId = requestAnimationFrame(stepPlayback);
-    });
-    document.addEventListener("visibilitychange", ()=>{
-        if (document.hidden) stopPlayback();
-    });
-    if (typeof Reveal !== "undefined") Reveal.on("slidechanged", ()=>{
-        if (!root.closest(".present")) stopPlayback();
-    });
-    setPlayingState(playButton, false);
-    render();
-};
-const initFpsBasics = ()=>{
-    const demos = document.querySelectorAll("[data-fps-demo]");
-    demos.forEach((demo)=>{
-        if (demo instanceof HTMLElement) initDemo(demo);
-    });
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"292LN":[function(require,module,exports,__globalThis) {
-/**
- * Reveal slide hooks
- *
- * Purpose:
- * - Add a minimal accessibility enhancement when the slide changes.
- *
- * DOM contract:
- * - When Reveal is available, on each slide change:
- *   - Find `.motion-title` inside the active slide.
- *   - Set `aria-live="polite"` so screen readers can announce it.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "initSlideHooks", ()=>initSlideHooks);
-const initSlideHooks = ()=>{
-    if (typeof Reveal === "undefined") return;
-    Reveal.on("slidechanged", (event)=>{
-        const currentSlide = event.currentSlide;
-        const title = currentSlide?.querySelector(".motion-title");
-        if (title) title.setAttribute("aria-live", "polite");
-    });
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"iJGvL":[function(require,module,exports,__globalThis) {
-/**
- * Tilt Layered Card interactions
- *
- * Purpose:
- * - Track pointer position and expose it to CSS as --tilt-card--pos-x and --tilt-card--pos-y.
- *
- * DOM contract:
- * - Requires one or more elements matching `.card-container`.
- * - Each container receives CSS custom properties:
- *   - --tilt-card--pos-x: number in range [-1, 1]
- *   - --tilt-card--pos-y: number in range [-1, 1]
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "initTiltLayeredCard", ()=>initTiltLayeredCard);
-const clamp = (value, min, max)=>Math.min(max, Math.max(min, value));
-const initTiltLayeredCard = ()=>{
-    const containers = document.querySelectorAll(".card-container");
-    if (containers.length === 0) return;
-    containers.forEach((container)=>{
-        let isDragging = false;
-        const updateFromPointer = (event)=>{
-            const rect = container.getBoundingClientRect();
-            const x = clamp((event.clientX - rect.left) / rect.width * 2 - 1, -1, 1);
-            const y = clamp((event.clientY - rect.top) / rect.height * 2 - 1, -1, 1);
-            container.style.setProperty("--tilt-card--pos-x", x.toFixed(3));
-            container.style.setProperty("--tilt-card--pos-y", y.toFixed(3));
-        };
-        const resetPointer = ()=>{
-            container.style.removeProperty("--tilt-card--pos-x");
-            container.style.removeProperty("--tilt-card--pos-y");
-        };
-        container.addEventListener("pointerdown", (event)=>{
-            if (event.button !== 0) return;
-            isDragging = true;
-            container.classList.add("is-dragging");
-            container.setPointerCapture(event.pointerId);
-            updateFromPointer(event);
-        });
-        container.addEventListener("pointermove", (event)=>{
-            if (!isDragging) return;
-            updateFromPointer(event);
-        });
-        const stopDrag = (event)=>{
-            if (!isDragging) return;
-            isDragging = false;
-            container.classList.remove("is-dragging");
-            resetPointer();
-            try {
-                container.releasePointerCapture(event.pointerId);
-            } catch  {
-            // Ignore if capture was already released.
-            }
-        };
-        container.addEventListener("pointerup", stopDrag);
-        container.addEventListener("pointercancel", stopDrag);
-        container.addEventListener("pointerleave", ()=>{
-            if (isDragging) return;
-            resetPointer();
-        });
-    });
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"5zoFq":[function(require,module,exports,__globalThis) {
+},{"./baseline-status.constants.js":"cxNiv","@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"5zoFq":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "initDoodleMotionDemo", ()=>initDoodleMotionDemo);
@@ -33856,6 +33637,225 @@ const initDoodleMotionDemo = ()=>{
     if (stages.length === 0) return;
     stages.forEach((stage)=>{
         initDoodleStage(stage);
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"6aCxr":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initFpsBasics", ()=>initFpsBasics);
+const LOOP_DURATION_MS = 1000;
+const normalizeProgress = (progress)=>{
+    const wrappedProgress = progress % 100;
+    return wrappedProgress < 0 ? wrappedProgress + 100 : wrappedProgress;
+};
+const formatProgress = (progress)=>`${progress.toFixed(1)}%`;
+const formatFrameBudget = (fps)=>`${(1000 / fps).toFixed(2)}ms per frame`;
+const setPlayingState = (button, isPlaying)=>{
+    button.setAttribute("aria-pressed", String(isPlaying));
+    button.textContent = isPlaying ? "Pause image" : "Play image";
+};
+const createRenderer = (elements, state)=>()=>{
+        const progress = normalizeProgress(state.progress);
+        const sampleStep = 100 / state.fps;
+        elements.preview.style.setProperty("--fps-progress", progress.toFixed(3));
+        elements.positionInput.value = progress.toFixed(1);
+        elements.positionOutput.textContent = formatProgress(progress);
+        elements.rateOutput.textContent = `${state.fps}fps`;
+        elements.statusRate.textContent = `${state.fps}fps`;
+        elements.statusBudget.textContent = formatFrameBudget(state.fps);
+        elements.frames.forEach((frame, index)=>{
+            const frameProgress = normalizeProgress(progress + index * sampleStep);
+            frame.root.style.setProperty("--fps-progress", frameProgress.toFixed(3));
+            frame.progress.textContent = formatProgress(frameProgress);
+        });
+    };
+const createStopPlayback = (state, playButton)=>()=>{
+        state.playing = false;
+        state.lastTimestamp = 0;
+        state.frameAccumulator = 0;
+        if (state.rafId) {
+            cancelAnimationFrame(state.rafId);
+            state.rafId = 0;
+        }
+        setPlayingState(playButton, false);
+    };
+const initDemo = (root)=>{
+    const positionInput = root.querySelector("[data-fps-position]");
+    const positionOutput = root.querySelector("[data-fps-position-output]");
+    const rateInput = root.querySelector("[data-fps-rate]");
+    const rateOutput = root.querySelector("[data-fps-rate-output]");
+    const playButton = root.querySelector("[data-fps-play]");
+    const preview = root.querySelector("[data-fps-preview]");
+    const statusRate = root.querySelector("[data-fps-status-rate]");
+    const statusBudget = root.querySelector("[data-fps-status-budget]");
+    if (!(positionInput instanceof HTMLInputElement && rateInput instanceof HTMLInputElement && positionOutput instanceof HTMLOutputElement && rateOutput instanceof HTMLOutputElement && playButton instanceof HTMLButtonElement && preview instanceof HTMLElement && statusRate instanceof HTMLElement && statusBudget instanceof HTMLElement)) return;
+    const frames = [
+        ...root.querySelectorAll("[data-fps-frame]")
+    ].map((frame)=>{
+        const progress = frame.querySelector("[data-fps-frame-progress]");
+        if (!(frame instanceof HTMLElement) || !(progress instanceof HTMLElement)) return null;
+        return {
+            root: frame,
+            progress
+        };
+    }).filter(Boolean);
+    if (frames.length === 0) return;
+    const state = {
+        fps: Number(rateInput.value),
+        progress: Number(positionInput.value),
+        playing: false,
+        lastTimestamp: 0,
+        frameAccumulator: 0,
+        rafId: 0
+    };
+    const render = createRenderer({
+        frames,
+        playButton,
+        positionInput,
+        positionOutput,
+        preview,
+        rateOutput,
+        statusBudget,
+        statusRate
+    }, state);
+    const stopPlayback = createStopPlayback(state, playButton);
+    const stepPlayback = (timestamp)=>{
+        if (!state.playing) return;
+        if (state.lastTimestamp === 0) state.lastTimestamp = timestamp;
+        const delta = timestamp - state.lastTimestamp;
+        const frameDuration = LOOP_DURATION_MS / state.fps;
+        state.lastTimestamp = timestamp;
+        state.frameAccumulator += delta;
+        let shouldRender = false;
+        while(state.frameAccumulator >= frameDuration){
+            state.frameAccumulator -= frameDuration;
+            state.progress = normalizeProgress(state.progress + 100 / state.fps);
+            shouldRender = true;
+        }
+        if (shouldRender) render();
+        state.rafId = requestAnimationFrame(stepPlayback);
+    };
+    positionInput.addEventListener("input", ()=>{
+        state.progress = Number(positionInput.value);
+        state.frameAccumulator = 0;
+        render();
+    });
+    rateInput.addEventListener("input", ()=>{
+        state.fps = Number(rateInput.value);
+        state.frameAccumulator = 0;
+        render();
+    });
+    playButton.addEventListener("click", ()=>{
+        if (state.playing) {
+            stopPlayback();
+            return;
+        }
+        state.playing = true;
+        state.lastTimestamp = 0;
+        state.frameAccumulator = 0;
+        setPlayingState(playButton, true);
+        state.rafId = requestAnimationFrame(stepPlayback);
+    });
+    document.addEventListener("visibilitychange", ()=>{
+        if (document.hidden) stopPlayback();
+    });
+    if (typeof Reveal !== "undefined") Reveal.on("slidechanged", ()=>{
+        if (!root.closest(".present")) stopPlayback();
+    });
+    setPlayingState(playButton, false);
+    render();
+};
+const initFpsBasics = ()=>{
+    const demos = document.querySelectorAll("[data-fps-demo]");
+    demos.forEach((demo)=>{
+        if (demo instanceof HTMLElement) initDemo(demo);
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"292LN":[function(require,module,exports,__globalThis) {
+/**
+ * Reveal slide hooks
+ *
+ * Purpose:
+ * - Add a minimal accessibility enhancement when the slide changes.
+ *
+ * DOM contract:
+ * - When Reveal is available, on each slide change:
+ *   - Find `.motion-title` inside the active slide.
+ *   - Set `aria-live="polite"` so screen readers can announce it.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initSlideHooks", ()=>initSlideHooks);
+const initSlideHooks = ()=>{
+    if (typeof Reveal === "undefined") return;
+    Reveal.on("slidechanged", (event)=>{
+        const currentSlide = event.currentSlide;
+        const title = currentSlide?.querySelector(".motion-title");
+        if (title) title.setAttribute("aria-live", "polite");
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"1egVF"}],"iJGvL":[function(require,module,exports,__globalThis) {
+/**
+ * Tilt Layered Card interactions
+ *
+ * Purpose:
+ * - Track pointer position and expose it to CSS as --tilt-card--pos-x and --tilt-card--pos-y.
+ *
+ * DOM contract:
+ * - Requires one or more elements matching `.card-container`.
+ * - Each container receives CSS custom properties:
+ *   - --tilt-card--pos-x: number in range [-1, 1]
+ *   - --tilt-card--pos-y: number in range [-1, 1]
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "initTiltLayeredCard", ()=>initTiltLayeredCard);
+const clamp = (value, min, max)=>Math.min(max, Math.max(min, value));
+const initTiltLayeredCard = ()=>{
+    const containers = document.querySelectorAll(".card-container");
+    if (containers.length === 0) return;
+    containers.forEach((container)=>{
+        let isDragging = false;
+        const updateFromPointer = (event)=>{
+            const rect = container.getBoundingClientRect();
+            const x = clamp((event.clientX - rect.left) / rect.width * 2 - 1, -1, 1);
+            const y = clamp((event.clientY - rect.top) / rect.height * 2 - 1, -1, 1);
+            container.style.setProperty("--tilt-card--pos-x", x.toFixed(3));
+            container.style.setProperty("--tilt-card--pos-y", y.toFixed(3));
+        };
+        const resetPointer = ()=>{
+            container.style.removeProperty("--tilt-card--pos-x");
+            container.style.removeProperty("--tilt-card--pos-y");
+        };
+        container.addEventListener("pointerdown", (event)=>{
+            if (event.button !== 0) return;
+            isDragging = true;
+            container.classList.add("is-dragging");
+            container.setPointerCapture(event.pointerId);
+            updateFromPointer(event);
+        });
+        container.addEventListener("pointermove", (event)=>{
+            if (!isDragging) return;
+            updateFromPointer(event);
+        });
+        const stopDrag = (event)=>{
+            if (!isDragging) return;
+            isDragging = false;
+            container.classList.remove("is-dragging");
+            resetPointer();
+            try {
+                container.releasePointerCapture(event.pointerId);
+            } catch  {
+            // Ignore if capture was already released.
+            }
+        };
+        container.addEventListener("pointerup", stopDrag);
+        container.addEventListener("pointercancel", stopDrag);
+        container.addEventListener("pointerleave", ()=>{
+            if (isDragging) return;
+            resetPointer();
+        });
     });
 };
 
