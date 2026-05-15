@@ -339,12 +339,12 @@ function $parcel$interopDefault(a) {
 
 
 //#region js/utils/util.ts
-var $41a34c1f82b9918d$var$e = (e, t)=>{
+var $4aa888c367b643f0$var$e = (e, t)=>{
     for(let n in t)e[n] = t[n];
     return e;
-}, $41a34c1f82b9918d$var$t = (e, t)=>Array.from(e.querySelectorAll(t)), $41a34c1f82b9918d$var$n = (e, t, n)=>{
+}, $4aa888c367b643f0$var$t = (e, t)=>Array.from(e.querySelectorAll(t)), $4aa888c367b643f0$var$n = (e, t, n)=>{
     n ? e.classList.add(t) : e.classList.remove(t);
-}, $41a34c1f82b9918d$var$r = (e)=>{
+}, $4aa888c367b643f0$var$r = (e)=>{
     if (typeof e == "string") {
         if (e === "null") return null;
         if (e === "true") return !0;
@@ -352,23 +352,23 @@ var $41a34c1f82b9918d$var$e = (e, t)=>{
         if (e.match(/^-?[\d\.]+$/)) return parseFloat(e);
     }
     return e;
-}, $41a34c1f82b9918d$var$i = (e, t)=>{
+}, $4aa888c367b643f0$var$i = (e, t)=>{
     e.style.transform = t;
-}, $41a34c1f82b9918d$var$a = (e, t)=>{
+}, $4aa888c367b643f0$var$a = (e, t)=>{
     let n = e.matches || e.matchesSelector || e.msMatchesSelector;
     return !!(n && n.call(e, t));
-}, $41a34c1f82b9918d$var$o = (e, t)=>{
+}, $4aa888c367b643f0$var$o = (e, t)=>{
     if (e && typeof e.closest == "function") return e.closest(t);
     for(; e;){
-        if ($41a34c1f82b9918d$var$a(e, t)) return e;
+        if ($4aa888c367b643f0$var$a(e, t)) return e;
         e = e.parentElement;
     }
     return null;
-}, $41a34c1f82b9918d$var$s = (e)=>{
+}, $4aa888c367b643f0$var$s = (e)=>{
     e = e || document.documentElement;
     let t = e.requestFullscreen || e.webkitRequestFullscreen || e.webkitRequestFullScreen || e.mozRequestFullScreen || e.msRequestFullscreen;
     t && t.apply(e);
-}, $41a34c1f82b9918d$var$c = (e, t, n, r = "")=>{
+}, $4aa888c367b643f0$var$c = (e, t, n, r = "")=>{
     let i = e.querySelectorAll("." + n);
     for(let t = 0; t < i.length; t++){
         let n = i[t];
@@ -376,10 +376,10 @@ var $41a34c1f82b9918d$var$e = (e, t)=>{
     }
     let a = document.createElement(t);
     return a.className = n, a.innerHTML = r, e.appendChild(a), a;
-}, $41a34c1f82b9918d$var$l = (e)=>{
+}, $4aa888c367b643f0$var$l = (e)=>{
     let t = document.createElement("style");
     return e && e.length > 0 && t.appendChild(document.createTextNode(e)), document.head.appendChild(t), t;
-}, $41a34c1f82b9918d$var$u = ()=>{
+}, $4aa888c367b643f0$var$u = ()=>{
     let e = {};
     location.search.replace(/[A-Z0-9]+?=([\w\.%-]*)/gi, (t)=>{
         let n = t.split("=").shift(), r = t.split("=").pop();
@@ -387,28 +387,28 @@ var $41a34c1f82b9918d$var$e = (e, t)=>{
     });
     for(let t in e){
         let n = e[t];
-        e[t] = $41a34c1f82b9918d$var$r(unescape(n));
+        e[t] = $4aa888c367b643f0$var$r(unescape(n));
     }
     return e.dependencies !== void 0 && delete e.dependencies, e;
-}, $41a34c1f82b9918d$var$d = (e, t = 0)=>{
+}, $4aa888c367b643f0$var$d = (e, t = 0)=>{
     if (e) {
         var n;
         let r, i = e.style.height;
         return e.style.height = "0px", e.parentElement && (e.parentElement.style.height = "auto"), r = t - (((n = e.parentElement) == null ? void 0 : n.offsetHeight) || 0), e.style.height = i + "px", e.parentElement && e.parentElement.style.removeProperty("height"), r;
     }
     return t;
-}, $41a34c1f82b9918d$var$f = {
+}, $4aa888c367b643f0$var$f = {
     mp4: "video/mp4",
     m4a: "video/mp4",
     ogv: "video/ogg",
     mpeg: "video/mpeg",
     webm: "video/webm"
-}, $41a34c1f82b9918d$var$p = (e = "")=>{
+}, $4aa888c367b643f0$var$p = (e = "")=>{
     let t = e.split(".").pop();
-    return t ? $41a34c1f82b9918d$var$f[t] : void 0;
-}, $41a34c1f82b9918d$var$m = (e = "")=>encodeURI(e).replace(/%5B/g, "[").replace(/%5D/g, "]").replace(/[!'()*]/g, (e)=>`%${e.charCodeAt(0).toString(16).toUpperCase()}`), $41a34c1f82b9918d$var$h = navigator.userAgent, $41a34c1f82b9918d$var$g = /(iphone|ipod|ipad|android)/gi.test($41a34c1f82b9918d$var$h) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
-/chrome/i.test($41a34c1f82b9918d$var$h) && /edge/i.test($41a34c1f82b9918d$var$h);
-var $41a34c1f82b9918d$var$_ = /android/gi.test($41a34c1f82b9918d$var$h), $41a34c1f82b9918d$var$v = function(e) {
+    return t ? $4aa888c367b643f0$var$f[t] : void 0;
+}, $4aa888c367b643f0$var$m = (e = "")=>encodeURI(e).replace(/%5B/g, "[").replace(/%5D/g, "]").replace(/[!'()*]/g, (e)=>`%${e.charCodeAt(0).toString(16).toUpperCase()}`), $4aa888c367b643f0$var$h = navigator.userAgent, $4aa888c367b643f0$var$g = /(iphone|ipod|ipad|android)/gi.test($4aa888c367b643f0$var$h) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+/chrome/i.test($4aa888c367b643f0$var$h) && /edge/i.test($4aa888c367b643f0$var$h);
+var $4aa888c367b643f0$var$_ = /android/gi.test($4aa888c367b643f0$var$h), $4aa888c367b643f0$var$v = function(e) {
     if (e) {
         var t = function(e) {
             return [].slice.call(e);
@@ -537,36 +537,36 @@ var $41a34c1f82b9918d$var$_ = /android/gi.test($41a34c1f82b9918d$var$h), $41a34c
 }(typeof window > "u" ? null : window);
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/typeof.js
-function $41a34c1f82b9918d$var$y(e) {
+function $4aa888c367b643f0$var$y(e) {
     "@babel/helpers - typeof";
-    return $41a34c1f82b9918d$var$y = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+    return $4aa888c367b643f0$var$y = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
         return typeof e;
     } : function(e) {
         return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-    }, $41a34c1f82b9918d$var$y(e);
+    }, $4aa888c367b643f0$var$y(e);
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/toPrimitive.js
-function $41a34c1f82b9918d$var$b(e, t) {
-    if ($41a34c1f82b9918d$var$y(e) != "object" || !e) return e;
+function $4aa888c367b643f0$var$b(e, t) {
+    if ($4aa888c367b643f0$var$y(e) != "object" || !e) return e;
     var n = e[Symbol.toPrimitive];
     if (n !== void 0) {
         var r = n.call(e, t || "default");
-        if ($41a34c1f82b9918d$var$y(r) != "object") return r;
+        if ($4aa888c367b643f0$var$y(r) != "object") return r;
         throw TypeError("@@toPrimitive must return a primitive value.");
     }
     return (t === "string" ? String : Number)(e);
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/toPropertyKey.js
-function $41a34c1f82b9918d$var$x(e) {
-    var t = $41a34c1f82b9918d$var$b(e, "string");
-    return $41a34c1f82b9918d$var$y(t) == "symbol" ? t : t + "";
+function $4aa888c367b643f0$var$x(e) {
+    var t = $4aa888c367b643f0$var$b(e, "string");
+    return $4aa888c367b643f0$var$y(t) == "symbol" ? t : t + "";
 }
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/defineProperty.js
-function $41a34c1f82b9918d$var$S(e, t, n) {
-    return (t = $41a34c1f82b9918d$var$x(t)) in e ? Object.defineProperty(e, t, {
+function $4aa888c367b643f0$var$S(e, t, n) {
+    return (t = $4aa888c367b643f0$var$x(t)) in e ? Object.defineProperty(e, t, {
         value: n,
         enumerable: !0,
         configurable: !0,
@@ -575,9 +575,9 @@ function $41a34c1f82b9918d$var$S(e, t, n) {
 }
 //#endregion
 //#region js/controllers/slidecontent.js
-var $41a34c1f82b9918d$var$ee = class {
+var $4aa888c367b643f0$var$ee = class {
     constructor(e){
-        $41a34c1f82b9918d$var$S(this, "allowedToPlayAudio", null), this.Reveal = e, this.startEmbeddedMedia = this.startEmbeddedMedia.bind(this), this.startEmbeddedIframe = this.startEmbeddedIframe.bind(this), this.preventIframeAutoFocus = this.preventIframeAutoFocus.bind(this), this.ensureMobileMediaPlaying = this.ensureMobileMediaPlaying.bind(this), this.failedAudioPlaybackTargets = /* @__PURE__ */ new Set(), this.failedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.failedMutedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.renderMediaPlayButton();
+        $4aa888c367b643f0$var$S(this, "allowedToPlayAudio", null), this.Reveal = e, this.startEmbeddedMedia = this.startEmbeddedMedia.bind(this), this.startEmbeddedIframe = this.startEmbeddedIframe.bind(this), this.preventIframeAutoFocus = this.preventIframeAutoFocus.bind(this), this.ensureMobileMediaPlaying = this.ensureMobileMediaPlaying.bind(this), this.failedAudioPlaybackTargets = /* @__PURE__ */ new Set(), this.failedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.failedMutedVideoPlaybackTargets = /* @__PURE__ */ new Set(), this.renderMediaPlayButton();
     }
     renderMediaPlayButton() {
         this.mediaPlayButton = document.createElement("button"), this.mediaPlayButton.className = "r-overlay-button r-media-play-button", this.mediaPlayButton.addEventListener("click", ()=>{
@@ -603,14 +603,14 @@ var $41a34c1f82b9918d$var$ee = class {
             let t = r.replace(/\s*!important\s*$/, "").trim();
             e.style.setProperty("display", t, "important");
         } else e.style.display = r;
-        $41a34c1f82b9918d$var$t(e, "img[data-src], video[data-src], audio[data-src], iframe[data-src]").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, "img[data-src], video[data-src], audio[data-src], iframe[data-src]").forEach((e)=>{
             let t = e.tagName === "IFRAME";
             (!t || this.shouldPreload(e)) && (e.setAttribute("src", e.getAttribute("data-src")), e.setAttribute("data-lazy-loaded", ""), e.removeAttribute("data-src"), t && e.addEventListener("load", this.preventIframeAutoFocus));
-        }), $41a34c1f82b9918d$var$t(e, "video, audio").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(e, "video, audio").forEach((e)=>{
             let n = 0;
-            $41a34c1f82b9918d$var$t(e, "source[data-src]").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "source[data-src]").forEach((e)=>{
                 e.setAttribute("src", e.getAttribute("data-src")), e.removeAttribute("data-src"), e.setAttribute("data-lazy-loaded", ""), n += 1;
-            }), $41a34c1f82b9918d$var$g && e.tagName === "VIDEO" && e.setAttribute("playsinline", ""), n > 0 && e.load();
+            }), $4aa888c367b643f0$var$g && e.tagName === "VIDEO" && e.setAttribute("playsinline", ""), n > 0 && e.load();
         });
         let i = e.slideBackgroundElement;
         if (i) {
@@ -619,13 +619,13 @@ var $41a34c1f82b9918d$var$ee = class {
             if (i.hasAttribute("data-loaded") === !1) {
                 i.setAttribute("data-loaded", "true");
                 let a = e.getAttribute("data-background-image"), o = e.getAttribute("data-background-video"), s = e.hasAttribute("data-background-video-loop"), c = e.hasAttribute("data-background-video-muted");
-                if (a) /^data:/.test(a.trim()) ? t.style.backgroundImage = `url(${a.trim()})` : t.style.backgroundImage = a.split(",").map((e)=>`url(${$41a34c1f82b9918d$var$m(decodeURI(e.trim()))})`).join(",");
+                if (a) /^data:/.test(a.trim()) ? t.style.backgroundImage = `url(${a.trim()})` : t.style.backgroundImage = a.split(",").map((e)=>`url(${$4aa888c367b643f0$var$m(decodeURI(e.trim()))})`).join(",");
                 else if (o) {
                     let e = document.createElement("video");
-                    s && e.setAttribute("loop", ""), (c || this.Reveal.isSpeakerNotes()) && (e.muted = !0), $41a34c1f82b9918d$var$g && e.setAttribute("playsinline", ""), o.split(",").forEach((t)=>{
+                    s && e.setAttribute("loop", ""), (c || this.Reveal.isSpeakerNotes()) && (e.muted = !0), $4aa888c367b643f0$var$g && e.setAttribute("playsinline", ""), o.split(",").forEach((t)=>{
                         let n = document.createElement("source");
                         n.setAttribute("src", t);
-                        let r = $41a34c1f82b9918d$var$p(t);
+                        let r = $4aa888c367b643f0$var$p(t);
                         r && n.setAttribute("type", r), e.appendChild(n);
                     }), t.appendChild(e);
                 } else if (r && n.excludeIframes !== !0) {
@@ -640,7 +640,7 @@ var $41a34c1f82b9918d$var$ee = class {
     }
     layout(e) {
         Array.from(e.querySelectorAll(".r-fit-text")).forEach((e)=>{
-            $41a34c1f82b9918d$var$v(e, {
+            $4aa888c367b643f0$var$v(e, {
                 minSize: 24,
                 maxSize: this.Reveal.getConfig().height * .8,
                 observeMutations: !1,
@@ -651,17 +651,17 @@ var $41a34c1f82b9918d$var$ee = class {
     unload(e) {
         e.style.display = "none";
         let n = this.Reveal.getSlideBackground(e);
-        n && (n.style.display = "none", $41a34c1f82b9918d$var$t(n, "iframe[src]").forEach((e)=>{
+        n && (n.style.display = "none", $4aa888c367b643f0$var$t(n, "iframe[src]").forEach((e)=>{
             e.removeAttribute("src");
-        })), $41a34c1f82b9918d$var$t(e, "video[data-lazy-loaded][src], audio[data-lazy-loaded][src], iframe[data-lazy-loaded][src]").forEach((e)=>{
+        })), $4aa888c367b643f0$var$t(e, "video[data-lazy-loaded][src], audio[data-lazy-loaded][src], iframe[data-lazy-loaded][src]").forEach((e)=>{
             e.setAttribute("data-src", e.getAttribute("src")), e.removeAttribute("src");
-        }), $41a34c1f82b9918d$var$t(e, "video[data-lazy-loaded] source[src], audio source[src]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(e, "video[data-lazy-loaded] source[src], audio source[src]").forEach((e)=>{
             e.setAttribute("data-src", e.getAttribute("src")), e.removeAttribute("src");
         });
     }
     formatEmbeddedContent() {
         let e = (e, n, r)=>{
-            $41a34c1f82b9918d$var$t(this.Reveal.getSlidesElement(), "iframe[" + e + "*=\"" + n + "\"]").forEach((t)=>{
+            $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), "iframe[" + e + "*=\"" + n + "\"]").forEach((t)=>{
                 let n = t.getAttribute(e);
                 n && n.indexOf(r) === -1 && t.setAttribute(e, n + (/\?/.test(n) ? "&" : "?") + r);
             });
@@ -671,23 +671,23 @@ var $41a34c1f82b9918d$var$ee = class {
     startEmbeddedContent(e) {
         if (e) {
             let n = this.Reveal.isSpeakerNotes();
-            $41a34c1f82b9918d$var$t(e, "img[src$=\".gif\"]").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "img[src$=\".gif\"]").forEach((e)=>{
                 e.setAttribute("src", e.getAttribute("src"));
-            }), $41a34c1f82b9918d$var$t(e, "video, audio").forEach((e)=>{
-                if ($41a34c1f82b9918d$var$o(e, ".fragment") && !$41a34c1f82b9918d$var$o(e, ".fragment.visible")) return;
+            }), $4aa888c367b643f0$var$t(e, "video, audio").forEach((e)=>{
+                if ($4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible")) return;
                 let t = this.Reveal.getConfig().autoPlayMedia;
-                if (typeof t != "boolean" && (t = e.hasAttribute("data-autoplay") || !!$41a34c1f82b9918d$var$o(e, ".slide-background")), t && typeof e.play == "function") {
+                if (typeof t != "boolean" && (t = e.hasAttribute("data-autoplay") || !!$4aa888c367b643f0$var$o(e, ".slide-background")), t && typeof e.play == "function") {
                     if (n && !e.muted) return;
                     e.readyState > 1 ? this.startEmbeddedMedia({
                         target: e
-                    }) : $41a34c1f82b9918d$var$g ? (e.addEventListener("canplay", this.ensureMobileMediaPlaying), this.playMediaElement(e)) : (e.removeEventListener("loadeddata", this.startEmbeddedMedia), e.addEventListener("loadeddata", this.startEmbeddedMedia));
+                    }) : $4aa888c367b643f0$var$g ? (e.addEventListener("canplay", this.ensureMobileMediaPlaying), this.playMediaElement(e)) : (e.removeEventListener("loadeddata", this.startEmbeddedMedia), e.addEventListener("loadeddata", this.startEmbeddedMedia));
                 }
-            }), n || ($41a34c1f82b9918d$var$t(e, "iframe[src]").forEach((e)=>{
-                $41a34c1f82b9918d$var$o(e, ".fragment") && !$41a34c1f82b9918d$var$o(e, ".fragment.visible") || this.startEmbeddedIframe({
+            }), n || ($4aa888c367b643f0$var$t(e, "iframe[src]").forEach((e)=>{
+                $4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible") || this.startEmbeddedIframe({
                     target: e
                 });
-            }), $41a34c1f82b9918d$var$t(e, "iframe[data-src]").forEach((e)=>{
-                $41a34c1f82b9918d$var$o(e, ".fragment") && !$41a34c1f82b9918d$var$o(e, ".fragment.visible") || e.getAttribute("src") !== e.getAttribute("data-src") && (e.removeEventListener("load", this.startEmbeddedIframe), e.addEventListener("load", this.startEmbeddedIframe), e.setAttribute("src", e.getAttribute("data-src")));
+            }), $4aa888c367b643f0$var$t(e, "iframe[data-src]").forEach((e)=>{
+                $4aa888c367b643f0$var$o(e, ".fragment") && !$4aa888c367b643f0$var$o(e, ".fragment.visible") || e.getAttribute("src") !== e.getAttribute("data-src") && (e.removeEventListener("load", this.startEmbeddedIframe), e.addEventListener("load", this.startEmbeddedIframe), e.setAttribute("src", e.getAttribute("data-src")));
             }));
         }
     }
@@ -699,7 +699,7 @@ var $41a34c1f82b9918d$var$ee = class {
         }, 1e3);
     }
     startEmbeddedMedia(e) {
-        let t = !!$41a34c1f82b9918d$var$o(e.target, "html"), n = !!$41a34c1f82b9918d$var$o(e.target, ".present");
+        let t = !!$4aa888c367b643f0$var$o(e.target, "html"), n = !!$4aa888c367b643f0$var$o(e.target, ".present");
         t && n && (e.target.paused || e.target.ended) && (e.target.currentTime = 0, this.playMediaElement(e.target)), e.target.removeEventListener("loadeddata", this.startEmbeddedMedia);
     }
     playMediaElement(e) {
@@ -710,7 +710,7 @@ var $41a34c1f82b9918d$var$ee = class {
             if (t.name === "NotAllowedError") {
                 if (this.allowedToPlayAudio = !1, e.tagName === "VIDEO") {
                     this.onVideoPlaybackNotAllowed(e);
-                    let t = !!$41a34c1f82b9918d$var$o(e, "html"), n = !!$41a34c1f82b9918d$var$o(e, ".present"), r = e.muted;
+                    let t = !!$4aa888c367b643f0$var$o(e, "html"), n = !!$4aa888c367b643f0$var$o(e, ".present"), r = e.muted;
                     t && n && !r && (e.setAttribute("data-muted-by-reveal", "true"), e.muted = !0, e.play().catch(()=>{
                         this.onMutedVideoPlaybackNotAllowed(e);
                     }));
@@ -721,25 +721,25 @@ var $41a34c1f82b9918d$var$ee = class {
     startEmbeddedIframe(e) {
         let t = e.target;
         if (this.preventIframeAutoFocus(e), t && t.contentWindow) {
-            let n = !!$41a34c1f82b9918d$var$o(e.target, "html"), r = !!$41a34c1f82b9918d$var$o(e.target, ".present");
+            let n = !!$4aa888c367b643f0$var$o(e.target, "html"), r = !!$4aa888c367b643f0$var$o(e.target, ".present");
             if (n && r) {
                 let e = this.Reveal.getConfig().autoPlayMedia;
-                typeof e != "boolean" && (e = t.hasAttribute("data-autoplay") || !!$41a34c1f82b9918d$var$o(t, ".slide-background")), /youtube\.com\/embed\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"playVideo\",\"args\":\"\"}", "*") : /player\.vimeo\.com\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"method\":\"play\"}", "*") : t.contentWindow.postMessage("slide:start", "*");
+                typeof e != "boolean" && (e = t.hasAttribute("data-autoplay") || !!$4aa888c367b643f0$var$o(t, ".slide-background")), /youtube\.com\/embed\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"playVideo\",\"args\":\"\"}", "*") : /player\.vimeo\.com\//.test(t.getAttribute("src")) && e ? t.contentWindow.postMessage("{\"method\":\"play\"}", "*") : t.contentWindow.postMessage("slide:start", "*");
             }
         }
     }
     stopEmbeddedContent(n, r = {}) {
-        r = $41a34c1f82b9918d$var$e({
+        r = $4aa888c367b643f0$var$e({
             unloadIframes: !0
-        }, r), n && n.parentNode && ($41a34c1f82b9918d$var$t(n, "video, audio").forEach((e)=>{
-            !e.hasAttribute("data-ignore") && typeof e.pause == "function" && (e.setAttribute("data-paused-by-reveal", ""), e.pause(), $41a34c1f82b9918d$var$g && e.removeEventListener("canplay", this.ensureMobileMediaPlaying));
-        }), $41a34c1f82b9918d$var$t(n, "iframe").forEach((e)=>{
+        }, r), n && n.parentNode && ($4aa888c367b643f0$var$t(n, "video, audio").forEach((e)=>{
+            !e.hasAttribute("data-ignore") && typeof e.pause == "function" && (e.setAttribute("data-paused-by-reveal", ""), e.pause(), $4aa888c367b643f0$var$g && e.removeEventListener("canplay", this.ensureMobileMediaPlaying));
+        }), $4aa888c367b643f0$var$t(n, "iframe").forEach((e)=>{
             e.contentWindow && e.contentWindow.postMessage("slide:stop", "*"), e.removeEventListener("load", this.preventIframeAutoFocus), e.removeEventListener("load", this.startEmbeddedIframe);
-        }), $41a34c1f82b9918d$var$t(n, "iframe[src*=\"youtube.com/embed/\"]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(n, "iframe[src*=\"youtube.com/embed/\"]").forEach((e)=>{
             !e.hasAttribute("data-ignore") && e.contentWindow && typeof e.contentWindow.postMessage == "function" && e.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"pauseVideo\",\"args\":\"\"}", "*");
-        }), $41a34c1f82b9918d$var$t(n, "iframe[src*=\"player.vimeo.com/\"]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(n, "iframe[src*=\"player.vimeo.com/\"]").forEach((e)=>{
             !e.hasAttribute("data-ignore") && e.contentWindow && typeof e.contentWindow.postMessage == "function" && e.contentWindow.postMessage("{\"method\":\"pause\"}", "*");
-        }), r.unloadIframes === !0 && $41a34c1f82b9918d$var$t(n, "iframe[data-src]").forEach((e)=>{
+        }), r.unloadIframes === !0 && $4aa888c367b643f0$var$t(n, "iframe[data-src]").forEach((e)=>{
             e.setAttribute("src", "about:blank"), e.removeAttribute("src");
         }));
     }
@@ -783,7 +783,7 @@ var $41a34c1f82b9918d$var$ee = class {
     afterSlideChanged() {
         this.clearMediaPlaybackErrors();
     }
-}, $41a34c1f82b9918d$var$C = ".slides section", $41a34c1f82b9918d$var$w = ".slides>section", $41a34c1f82b9918d$var$te = ".slides>section.present>section", $41a34c1f82b9918d$var$T = ".backgrounds>.slide-background", $41a34c1f82b9918d$var$E = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener|showPreview|previewIframe/, $41a34c1f82b9918d$var$ne = class {
+}, $4aa888c367b643f0$var$C = ".slides section", $4aa888c367b643f0$var$w = ".slides>section", $4aa888c367b643f0$var$te = ".slides>section.present>section", $4aa888c367b643f0$var$T = ".backgrounds>.slide-background", $4aa888c367b643f0$var$E = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener|showPreview|previewIframe/, $4aa888c367b643f0$var$ne = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -832,7 +832,7 @@ var $41a34c1f82b9918d$var$ee = class {
     destroy() {
         this.element.remove();
     }
-}, $41a34c1f82b9918d$var$re = class {
+}, $4aa888c367b643f0$var$re = class {
     constructor(e){
         this.Reveal = e, this.onInput = this.onInput.bind(this), this.onBlur = this.onBlur.bind(this), this.onKeyDown = this.onKeyDown.bind(this);
     }
@@ -887,7 +887,7 @@ var $41a34c1f82b9918d$var$ee = class {
     onBlur() {
         setTimeout(()=>this.hide(), 1);
     }
-}, $41a34c1f82b9918d$var$D = (e)=>{
+}, $4aa888c367b643f0$var$D = (e)=>{
     let t = e.match(/^#([0-9a-f]{3})$/i);
     if (t && t[1]) {
         let e = t[1];
@@ -919,7 +919,7 @@ var $41a34c1f82b9918d$var$ee = class {
         b: parseInt(i[3], 10),
         a: parseFloat(i[4])
     } : null;
-}, $41a34c1f82b9918d$var$ie = (e)=>(typeof e == "string" && (e = $41a34c1f82b9918d$var$D(e)), e ? (e.r * 299 + e.g * 587 + e.b * 114) / 1e3 : null), $41a34c1f82b9918d$var$ae = class {
+}, $4aa888c367b643f0$var$ie = (e)=>(typeof e == "string" && (e = $4aa888c367b643f0$var$D(e)), e ? (e.r * 299 + e.g * 587 + e.b * 114) / 1e3 : null), $4aa888c367b643f0$var$ae = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -929,7 +929,7 @@ var $41a34c1f82b9918d$var$ee = class {
     create() {
         this.element.innerHTML = "", this.element.classList.add("no-transition"), this.Reveal.getHorizontalSlides().forEach((e)=>{
             let n = this.createBackground(e, this.element);
-            $41a34c1f82b9918d$var$t(e, "section").forEach((e)=>{
+            $4aa888c367b643f0$var$t(e, "section").forEach((e)=>{
                 this.createBackground(e, n), n.classList.add("stack");
             });
         }), this.Reveal.getConfig().parallaxBackgroundImage ? (this.element.style.backgroundImage = "url(\"" + this.Reveal.getConfig().parallaxBackgroundImage + "\")", this.element.style.backgroundSize = this.Reveal.getConfig().parallaxBackgroundSize, this.element.style.backgroundRepeat = this.Reveal.getConfig().parallaxBackgroundRepeat, this.element.style.backgroundPosition = this.Reveal.getConfig().parallaxBackgroundPosition, setTimeout(()=>{
@@ -962,13 +962,13 @@ var $41a34c1f82b9918d$var$ee = class {
     }
     getContrastClass(e) {
         let t = e.slideBackgroundElement, n = e.getAttribute("data-background-color");
-        if (!n || !$41a34c1f82b9918d$var$D(n)) {
+        if (!n || !$4aa888c367b643f0$var$D(n)) {
             let e = window.getComputedStyle(t);
             e && e.backgroundColor && (n = e.backgroundColor);
         }
         if (n) {
-            let e = $41a34c1f82b9918d$var$D(n);
-            if (e && e.a !== 0) return $41a34c1f82b9918d$var$ie(n) < 128 ? "has-dark-background" : "has-light-background";
+            let e = $4aa888c367b643f0$var$D(n);
+            if (e && e.a !== 0) return $4aa888c367b643f0$var$ie(n) < 128 ? "has-dark-background" : "has-light-background";
         }
         return null;
     }
@@ -983,7 +983,7 @@ var $41a34c1f82b9918d$var$ee = class {
     update(e = !1) {
         let n = this.Reveal.getConfig(), r = this.Reveal.getCurrentSlide(), i = this.Reveal.getIndices(), a = null, o = n.rtl ? "future" : "past", s = n.rtl ? "past" : "future";
         if (Array.from(this.element.childNodes).forEach((n, r)=>{
-            n.classList.remove("past", "present", "future"), r < i.h ? n.classList.add(o) : r > i.h ? n.classList.add(s) : (n.classList.add("present"), a = n), (e || r === i.h) && $41a34c1f82b9918d$var$t(n, ".slide-background").forEach((e, t)=>{
+            n.classList.remove("past", "present", "future"), r < i.h ? n.classList.add(o) : r > i.h ? n.classList.add(s) : (n.classList.add("present"), a = n), (e || r === i.h) && $4aa888c367b643f0$var$t(n, ".slide-background").forEach((e, t)=>{
                 e.classList.remove("past", "present", "future");
                 let n = typeof i.v == "number" ? i.v : 0;
                 t < n ? e.classList.add("past") : t > n ? e.classList.add("future") : (e.classList.add("present"), r === i.h && (a = e));
@@ -1029,7 +1029,7 @@ var $41a34c1f82b9918d$var$ee = class {
     destroy() {
         this.element.remove();
     }
-}, $41a34c1f82b9918d$var$O = 0, $41a34c1f82b9918d$var$oe = class {
+}, $4aa888c367b643f0$var$O = 0, $4aa888c367b643f0$var$oe = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -1037,17 +1037,17 @@ var $41a34c1f82b9918d$var$ee = class {
         this.reset();
         let n = this.Reveal.getSlides(), r = n.indexOf(t), i = n.indexOf(e);
         if (e && t && e.hasAttribute("data-auto-animate") && t.hasAttribute("data-auto-animate") && e.getAttribute("data-auto-animate-id") === t.getAttribute("data-auto-animate-id") && !(r > i ? t : e).hasAttribute("data-auto-animate-restart")) {
-            this.autoAnimateStyleSheet = this.autoAnimateStyleSheet || $41a34c1f82b9918d$var$l();
+            this.autoAnimateStyleSheet = this.autoAnimateStyleSheet || $4aa888c367b643f0$var$l();
             let n = this.getAutoAnimateOptions(t);
             e.dataset.autoAnimate = "pending", t.dataset.autoAnimate = "pending", n.slideDirection = r > i ? "forward" : "backward";
             let a = e.style.display === "none";
             a && (e.style.display = this.Reveal.getConfig().display);
-            let o = this.getAutoAnimatableElements(e, t).map((e)=>this.autoAnimateElements(e.from, e.to, e.options || {}, n, $41a34c1f82b9918d$var$O++));
+            let o = this.getAutoAnimatableElements(e, t).map((e)=>this.autoAnimateElements(e.from, e.to, e.options || {}, n, $4aa888c367b643f0$var$O++));
             if (a && (e.style.display = "none"), t.dataset.autoAnimateUnmatched !== "false" && this.Reveal.getConfig().autoAnimateUnmatched === !0) {
                 let e = n.duration * .8, r = n.duration * .2;
                 this.getUnmatchedAutoAnimateElements(t).forEach((e)=>{
                     let t = this.getAutoAnimateOptions(e, n), r = "unmatched";
-                    (t.duration !== n.duration || t.delay !== n.delay) && (r = "unmatched-" + $41a34c1f82b9918d$var$O++, o.push(`[data-auto-animate="running"] [data-auto-animate-target="${r}"] { transition: opacity ${t.duration}s ease ${t.delay}s; }`)), e.dataset.autoAnimateTarget = r;
+                    (t.duration !== n.duration || t.delay !== n.delay) && (r = "unmatched-" + $4aa888c367b643f0$var$O++, o.push(`[data-auto-animate="running"] [data-auto-animate-target="${r}"] { transition: opacity ${t.duration}s ease ${t.delay}s; }`)), e.dataset.autoAnimateTarget = r;
                 }, this), o.push(`[data-auto-animate="running"] [data-auto-animate-target="unmatched"] { transition: opacity ${e}s ease ${r}s; }`);
             }
             this.autoAnimateStyleSheet.innerHTML = o.join(""), requestAnimationFrame(()=>{
@@ -1063,9 +1063,9 @@ var $41a34c1f82b9918d$var$ee = class {
         }
     }
     reset() {
-        $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), "[data-auto-animate]:not([data-auto-animate=\"\"])").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), "[data-auto-animate]:not([data-auto-animate=\"\"])").forEach((e)=>{
             e.dataset.autoAnimate = "";
-        }), $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), "[data-auto-animate-target]").forEach((e)=>{
+        }), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), "[data-auto-animate-target]").forEach((e)=>{
             delete e.dataset.autoAnimateTarget;
         }), this.autoAnimateStyleSheet && this.autoAnimateStyleSheet.parentNode && (this.autoAnimateStyleSheet.parentNode.removeChild(this.autoAnimateStyleSheet), this.autoAnimateStyleSheet = null);
     }
@@ -1106,8 +1106,8 @@ var $41a34c1f82b9918d$var$ee = class {
             duration: this.Reveal.getConfig().autoAnimateDuration,
             delay: 0
         };
-        if (r = $41a34c1f82b9918d$var$e(r, n), t.parentNode) {
-            let e = $41a34c1f82b9918d$var$o(t.parentNode, "[data-auto-animate-target]");
+        if (r = $4aa888c367b643f0$var$e(r, n), t.parentNode) {
+            let e = $4aa888c367b643f0$var$o(t.parentNode, "[data-auto-animate-target]");
             e && (r = this.getAutoAnimateOptions(e, r));
         }
         return t.dataset.autoAnimateEasing && (r.easing = t.dataset.autoAnimateEasing), t.dataset.autoAnimateDuration && (r.duration = parseFloat(t.dataset.autoAnimateDuration)), t.dataset.autoAnimateDelay && (r.delay = parseFloat(t.dataset.autoAnimateDelay)), r;
@@ -1154,9 +1154,9 @@ var $41a34c1f82b9918d$var$ee = class {
     getAutoAnimatePairs(e, t) {
         let n = [], r = "h1, h2, h3, h4, h5, h6, p, li";
         return this.findAutoAnimateMatches(n, e, t, "[data-id]", (e)=>e.nodeName + ":::" + e.getAttribute("data-id")), this.findAutoAnimateMatches(n, e, t, r, (e)=>e.nodeName + ":::" + e.textContent.trim()), this.findAutoAnimateMatches(n, e, t, "img, video, iframe", (e)=>e.nodeName + ":::" + (e.getAttribute("src") || e.getAttribute("data-src"))), this.findAutoAnimateMatches(n, e, t, "pre", (e)=>e.nodeName + ":::" + e.textContent.trim()), n.forEach((e)=>{
-            $41a34c1f82b9918d$var$a(e.from, r) ? e.options = {
+            $4aa888c367b643f0$var$a(e.from, r) ? e.options = {
                 scale: !1
-            } : $41a34c1f82b9918d$var$a(e.from, "pre") && (e.options = {
+            } : $4aa888c367b643f0$var$a(e.from, "pre") && (e.options = {
                 scale: !1,
                 styles: [
                     "width",
@@ -1210,7 +1210,7 @@ var $41a34c1f82b9918d$var$ee = class {
             return !t.hasAttribute("data-auto-animate-target") && !n && e.push(t), t.querySelector("[data-auto-animate-target]") && (e = e.concat(this.getUnmatchedAutoAnimateElements(t))), e;
         }, []);
     }
-}, $41a34c1f82b9918d$var$k = 500, $41a34c1f82b9918d$var$A = 4, $41a34c1f82b9918d$var$se = 6, $41a34c1f82b9918d$var$j = 8, $41a34c1f82b9918d$var$ce = class {
+}, $4aa888c367b643f0$var$k = 500, $4aa888c367b643f0$var$A = 4, $4aa888c367b643f0$var$se = 6, $4aa888c367b643f0$var$j = 8, $4aa888c367b643f0$var$ce = class {
     constructor(e){
         this.Reveal = e, this.active = !1, this.activatedCallbacks = [], this.onScroll = this.onScroll.bind(this);
     }
@@ -1218,7 +1218,7 @@ var $41a34c1f82b9918d$var$ee = class {
         if (this.active) return;
         let e = this.Reveal.getState();
         this.active = !0, this.slideHTMLBeforeActivation = this.Reveal.getSlidesElement().innerHTML;
-        let n = $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), $41a34c1f82b9918d$var$w), r = $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), $41a34c1f82b9918d$var$T);
+        let n = $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$w), r = $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$T);
         this.viewportElement.classList.add("loading-scroll-mode", "reveal-scroll");
         let i, a = window.getComputedStyle(this.viewportElement);
         a && a.background && (i = a.background);
@@ -1240,7 +1240,7 @@ var $41a34c1f82b9918d$var$ee = class {
             this.Reveal.isVerticalStack(e) ? e.querySelectorAll("section").forEach((e, n)=>{
                 l(e, t, n, !0);
             }) : l(e, t, 0);
-        }, this), this.createProgressBar(), $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), ".stack").forEach((e)=>e.remove()), o.forEach((e)=>s.appendChild(e)), this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()), this.Reveal.layout(), this.Reveal.setState(e), this.activatedCallbacks.forEach((e)=>e()), this.activatedCallbacks = [], this.restoreScrollPosition(), this.viewportElement.classList.remove("loading-scroll-mode"), this.viewportElement.addEventListener("scroll", this.onScroll, {
+        }, this), this.createProgressBar(), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), ".stack").forEach((e)=>e.remove()), o.forEach((e)=>s.appendChild(e)), this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()), this.Reveal.layout(), this.Reveal.setState(e), this.activatedCallbacks.forEach((e)=>e()), this.activatedCallbacks = [], this.restoreScrollPosition(), this.viewportElement.classList.remove("loading-scroll-mode"), this.viewportElement.addEventListener("scroll", this.onScroll, {
             passive: !0
         });
     }
@@ -1351,9 +1351,9 @@ var $41a34c1f82b9918d$var$ee = class {
     syncProgressBar() {
         this.progressBarInner.querySelectorAll(".scrollbar-slide").forEach((e)=>e.remove());
         let e = this.viewportElement.scrollHeight, t = this.viewportElement.offsetHeight, n = t / e;
-        this.progressBarHeight = this.progressBarInner.offsetHeight, this.playheadHeight = Math.max(n * this.progressBarHeight, $41a34c1f82b9918d$var$j), this.progressBarScrollableHeight = this.progressBarHeight - this.playheadHeight;
-        let r = t / e * this.progressBarHeight, i = Math.min(r / 8, $41a34c1f82b9918d$var$A);
-        this.progressBarPlayhead.style.height = this.playheadHeight - i + "px", r > $41a34c1f82b9918d$var$se ? this.slideTriggers.forEach((e)=>{
+        this.progressBarHeight = this.progressBarInner.offsetHeight, this.playheadHeight = Math.max(n * this.progressBarHeight, $4aa888c367b643f0$var$j), this.progressBarScrollableHeight = this.progressBarHeight - this.playheadHeight;
+        let r = t / e * this.progressBarHeight, i = Math.min(r / 8, $4aa888c367b643f0$var$A);
+        this.progressBarPlayhead.style.height = this.playheadHeight - i + "px", r > $4aa888c367b643f0$var$se ? this.slideTriggers.forEach((e)=>{
             let { page: t } = e;
             t.progressBarSlide = document.createElement("div"), t.progressBarSlide.className = "scrollbar-slide", t.progressBarSlide.style.top = e.range[0] * this.progressBarHeight + "px", t.progressBarSlide.style.height = (e.range[1] - e.range[0]) * this.progressBarHeight - i + "px", t.progressBarSlide.classList.toggle("has-triggers", t.scrollTriggers.length > 0), this.progressBarInner.appendChild(t.progressBarSlide), t.scrollTriggerElements = t.scrollTriggers.map((n, r)=>{
                 let a = document.createElement("div");
@@ -1380,7 +1380,7 @@ var $41a34c1f82b9918d$var$ee = class {
     showProgressBar() {
         this.progressBar.classList.add("visible"), clearTimeout(this.hideProgressBarTimeout), this.Reveal.getConfig().scrollProgress === "auto" && !this.draggingProgressBar && (this.hideProgressBarTimeout = setTimeout(()=>{
             this.progressBar && this.progressBar.classList.remove("visible");
-        }, $41a34c1f82b9918d$var$k));
+        }, $4aa888c367b643f0$var$k));
     }
     prev() {
         this.viewportElement.scrollTop -= this.scrollTriggerHeight;
@@ -1444,7 +1444,7 @@ var $41a34c1f82b9918d$var$ee = class {
 };
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/asyncToGenerator.js
-function $41a34c1f82b9918d$var$M(e, t, n, r, i, a, o) {
+function $4aa888c367b643f0$var$M(e, t, n, r, i, a, o) {
     try {
         var s = e[a](o), c = s.value;
     } catch (e) {
@@ -1453,16 +1453,16 @@ function $41a34c1f82b9918d$var$M(e, t, n, r, i, a, o) {
     }
     s.done ? t(c) : Promise.resolve(c).then(r, i);
 }
-function $41a34c1f82b9918d$var$N(e) {
+function $4aa888c367b643f0$var$N(e) {
     return function() {
         var t = this, n = arguments;
         return new Promise(function(r, i) {
             var a = e.apply(t, n);
             function o(e) {
-                $41a34c1f82b9918d$var$M(a, r, i, o, s, "next", e);
+                $4aa888c367b643f0$var$M(a, r, i, o, s, "next", e);
             }
             function s(e) {
-                $41a34c1f82b9918d$var$M(a, r, i, o, s, "throw", e);
+                $4aa888c367b643f0$var$M(a, r, i, o, s, "throw", e);
             }
             o(void 0);
         });
@@ -1470,15 +1470,15 @@ function $41a34c1f82b9918d$var$N(e) {
 }
 //#endregion
 //#region js/controllers/printview.js
-var $41a34c1f82b9918d$var$le = class {
+var $4aa888c367b643f0$var$le = class {
     constructor(e){
         this.Reveal = e;
     }
     activate() {
         var e = this;
-        return $41a34c1f82b9918d$var$N(function*() {
-            let n = e.Reveal.getConfig(), r = $41a34c1f82b9918d$var$t(e.Reveal.getRevealElement(), $41a34c1f82b9918d$var$C), i = n.slideNumber && /all|print/i.test(n.showSlideNumber), a = e.Reveal.getComputedSlideSize(window.innerWidth, window.innerHeight), o = Math.floor(a.width * (1 + n.margin)), s = Math.floor(a.height * (1 + n.margin)), c = a.width, u = a.height;
-            yield new Promise(requestAnimationFrame), $41a34c1f82b9918d$var$l("@page{size:" + o + "px " + s + "px; margin: 0px;}"), $41a34c1f82b9918d$var$l(".reveal section>img, .reveal section>video, .reveal section>iframe{max-width: " + c + "px; max-height:" + u + "px}"), document.documentElement.classList.add("reveal-print", "print-pdf"), document.body.style.width = o + "px", document.body.style.height = s + "px";
+        return $4aa888c367b643f0$var$N(function*() {
+            let n = e.Reveal.getConfig(), r = $4aa888c367b643f0$var$t(e.Reveal.getRevealElement(), $4aa888c367b643f0$var$C), i = n.slideNumber && /all|print/i.test(n.showSlideNumber), a = e.Reveal.getComputedSlideSize(window.innerWidth, window.innerHeight), o = Math.floor(a.width * (1 + n.margin)), s = Math.floor(a.height * (1 + n.margin)), c = a.width, u = a.height;
+            yield new Promise(requestAnimationFrame), $4aa888c367b643f0$var$l("@page{size:" + o + "px " + s + "px; margin: 0px;}"), $4aa888c367b643f0$var$l(".reveal section>img, .reveal section>video, .reveal section>iframe{max-width: " + c + "px; max-height:" + u + "px}"), document.documentElement.classList.add("reveal-print", "print-pdf"), document.body.style.width = o + "px", document.body.style.height = s + "px";
             let d = e.Reveal.getViewportElement(), f;
             if (d) {
                 let e = window.getComputedStyle(d);
@@ -1521,7 +1521,7 @@ var $41a34c1f82b9918d$var$le = class {
                                 e.classList.remove("visible", "current-fragment");
                             });
                         });
-                    } else $41a34c1f82b9918d$var$t(_, ".fragment:not(.fade-out)").forEach(function(e) {
+                    } else $4aa888c367b643f0$var$t(_, ".fragment:not(.fade-out)").forEach(function(e) {
                         e.classList.add("visible");
                     });
                 }
@@ -1533,7 +1533,7 @@ var $41a34c1f82b9918d$var$le = class {
     isActive() {
         return this.Reveal.getConfig().view === "print";
     }
-}, $41a34c1f82b9918d$var$ue = class {
+}, $4aa888c367b643f0$var$ue = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -1541,12 +1541,12 @@ var $41a34c1f82b9918d$var$le = class {
         e.fragments === !1 ? this.disable() : t.fragments === !1 && this.enable();
     }
     disable() {
-        $41a34c1f82b9918d$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
             e.classList.add("visible"), e.classList.remove("current-fragment");
         });
     }
     enable() {
-        $41a34c1f82b9918d$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(this.Reveal.getSlidesElement(), ".fragment").forEach((e)=>{
             e.classList.remove("visible"), e.classList.remove("current-fragment");
         });
     }
@@ -1583,7 +1583,7 @@ var $41a34c1f82b9918d$var$le = class {
     }
     sortAll() {
         this.Reveal.getHorizontalSlides().forEach((e)=>{
-            let n = $41a34c1f82b9918d$var$t(e, "section");
+            let n = $4aa888c367b643f0$var$t(e, "section");
             n.forEach((e, t)=>{
                 this.sort(e.querySelectorAll(".fragment"));
             }, this), n.length === 0 && this.sort(e.querySelectorAll(".fragment"));
@@ -1657,13 +1657,13 @@ var $41a34c1f82b9918d$var$le = class {
     prev() {
         return this.goto(null, -1);
     }
-}, $41a34c1f82b9918d$var$de = class {
+}, $4aa888c367b643f0$var$de = class {
     constructor(e){
         this.Reveal = e, this.active = !1, this.onSlideClicked = this.onSlideClicked.bind(this);
     }
     activate() {
         if (this.Reveal.getConfig().overview && !this.Reveal.isScrollView() && !this.isActive()) {
-            this.active = !0, this.Reveal.getRevealElement().classList.add("overview"), this.Reveal.cancelAutoSlide(), this.Reveal.getSlidesElement().appendChild(this.Reveal.getBackgroundsElement()), $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), $41a34c1f82b9918d$var$C).forEach((e)=>{
+            this.active = !0, this.Reveal.getRevealElement().classList.add("overview"), this.Reveal.cancelAutoSlide(), this.Reveal.getSlidesElement().appendChild(this.Reveal.getBackgroundsElement()), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$C).forEach((e)=>{
                 e.classList.contains("stack") || e.addEventListener("click", this.onSlideClicked, !0);
             });
             let e = this.Reveal.getComputedSlideSize();
@@ -1681,12 +1681,12 @@ var $41a34c1f82b9918d$var$le = class {
     }
     layout() {
         this.Reveal.getHorizontalSlides().forEach((e, n)=>{
-            e.setAttribute("data-index-h", n), $41a34c1f82b9918d$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), e.classList.contains("stack") && $41a34c1f82b9918d$var$t(e, "section").forEach((e, t)=>{
-                e.setAttribute("data-index-h", n), e.setAttribute("data-index-v", t), $41a34c1f82b9918d$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
+            e.setAttribute("data-index-h", n), $4aa888c367b643f0$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), e.classList.contains("stack") && $4aa888c367b643f0$var$t(e, "section").forEach((e, t)=>{
+                e.setAttribute("data-index-h", n), e.setAttribute("data-index-v", t), $4aa888c367b643f0$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
             });
         }), Array.from(this.Reveal.getBackgroundsElement().childNodes).forEach((e, n)=>{
-            $41a34c1f82b9918d$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), $41a34c1f82b9918d$var$t(e, ".slide-background").forEach((e, t)=>{
-                $41a34c1f82b9918d$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
+            $4aa888c367b643f0$var$i(e, "translate3d(" + n * this.overviewSlideWidth + "px, 0, 0)"), $4aa888c367b643f0$var$t(e, ".slide-background").forEach((e, t)=>{
+                $4aa888c367b643f0$var$i(e, "translate3d(0, " + t * this.overviewSlideHeight + "px, 0)");
             });
         });
     }
@@ -1704,10 +1704,10 @@ var $41a34c1f82b9918d$var$le = class {
         if (this.Reveal.getConfig().overview) {
             this.active = !1, this.Reveal.getRevealElement().classList.remove("overview"), this.Reveal.getRevealElement().classList.add("overview-deactivating"), setTimeout(()=>{
                 this.Reveal.getRevealElement().classList.remove("overview-deactivating");
-            }, 1), this.Reveal.getRevealElement().appendChild(this.Reveal.getBackgroundsElement()), $41a34c1f82b9918d$var$t(this.Reveal.getRevealElement(), $41a34c1f82b9918d$var$C).forEach((e)=>{
-                $41a34c1f82b9918d$var$i(e, ""), e.removeEventListener("click", this.onSlideClicked, !0);
-            }), $41a34c1f82b9918d$var$t(this.Reveal.getBackgroundsElement(), ".slide-background").forEach((e)=>{
-                $41a34c1f82b9918d$var$i(e, "");
+            }, 1), this.Reveal.getRevealElement().appendChild(this.Reveal.getBackgroundsElement()), $4aa888c367b643f0$var$t(this.Reveal.getRevealElement(), $4aa888c367b643f0$var$C).forEach((e)=>{
+                $4aa888c367b643f0$var$i(e, ""), e.removeEventListener("click", this.onSlideClicked, !0);
+            }), $4aa888c367b643f0$var$t(this.Reveal.getBackgroundsElement(), ".slide-background").forEach((e)=>{
+                $4aa888c367b643f0$var$i(e, "");
             }), this.Reveal.transformSlides({
                 overview: ""
             });
@@ -1739,7 +1739,7 @@ var $41a34c1f82b9918d$var$le = class {
             }
         }
     }
-}, $41a34c1f82b9918d$var$fe = class {
+}, $4aa888c367b643f0$var$fe = class {
     constructor(e){
         this.Reveal = e, this.shortcuts = {}, this.bindings = {}, this.onDocumentKeyDown = this.onDocumentKeyDown.bind(this);
     }
@@ -1863,12 +1863,12 @@ var $41a34c1f82b9918d$var$le = class {
             66,
             86,
             190
-        ].includes(n) || n === 191 && !e.shiftKey ? this.Reveal.togglePause() : n === 70 ? $41a34c1f82b9918d$var$s(t.embedded ? this.Reveal.getViewportElement() : document.documentElement) : n === 65 ? t.autoSlideStoppable && this.Reveal.toggleAutoSlide(r) : n === 71 ? t.jumpToSlide && this.Reveal.toggleJumpToSlide() : n === 67 && this.Reveal.isOverlayOpen() ? this.Reveal.closeOverlay() : (n === 63 || n === 191) && e.shiftKey || n === 112 ? this.Reveal.toggleHelp() : f = !1), f ? e.preventDefault && e.preventDefault() : n === 27 || n === 79 ? (this.Reveal.closeOverlay() === !1 && this.Reveal.overview.toggle(), e.preventDefault && e.preventDefault()) : n === 13 && this.Reveal.overview.isActive() && (this.Reveal.overview.deactivate(), e.preventDefault && e.preventDefault()), this.Reveal.cueAutoSlide();
+        ].includes(n) || n === 191 && !e.shiftKey ? this.Reveal.togglePause() : n === 70 ? $4aa888c367b643f0$var$s(t.embedded ? this.Reveal.getViewportElement() : document.documentElement) : n === 65 ? t.autoSlideStoppable && this.Reveal.toggleAutoSlide(r) : n === 71 ? t.jumpToSlide && this.Reveal.toggleJumpToSlide() : n === 67 && this.Reveal.isOverlayOpen() ? this.Reveal.closeOverlay() : (n === 63 || n === 191) && e.shiftKey || n === 112 ? this.Reveal.toggleHelp() : f = !1), f ? e.preventDefault && e.preventDefault() : n === 27 || n === 79 ? (this.Reveal.closeOverlay() === !1 && this.Reveal.overview.toggle(), e.preventDefault && e.preventDefault()) : n === 13 && this.Reveal.overview.isActive() && (this.Reveal.overview.deactivate(), e.preventDefault && e.preventDefault()), this.Reveal.cueAutoSlide();
     }
 };
 //#endregion
 //#region \0@oxc-project+runtime@0.124.0/helpers/objectSpread2.js
-function $41a34c1f82b9918d$var$P(e, t) {
+function $4aa888c367b643f0$var$P(e, t) {
     var n = Object.keys(e);
     if (Object.getOwnPropertySymbols) {
         var r = Object.getOwnPropertySymbols(e);
@@ -1878,12 +1878,12 @@ function $41a34c1f82b9918d$var$P(e, t) {
     }
     return n;
 }
-function $41a34c1f82b9918d$var$F(e) {
+function $4aa888c367b643f0$var$F(e) {
     for(var t = 1; t < arguments.length; t++){
         var n = arguments[t] == null ? {} : arguments[t];
-        t % 2 ? $41a34c1f82b9918d$var$P(Object(n), !0).forEach(function(t) {
-            $41a34c1f82b9918d$var$S(e, t, n[t]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : $41a34c1f82b9918d$var$P(Object(n)).forEach(function(t) {
+        t % 2 ? $4aa888c367b643f0$var$P(Object(n), !0).forEach(function(t) {
+            $4aa888c367b643f0$var$S(e, t, n[t]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n)) : $4aa888c367b643f0$var$P(Object(n)).forEach(function(t) {
             Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
         });
     }
@@ -1891,9 +1891,9 @@ function $41a34c1f82b9918d$var$F(e) {
 }
 //#endregion
 //#region js/controllers/location.js
-var $41a34c1f82b9918d$var$pe = class {
+var $4aa888c367b643f0$var$pe = class {
     constructor(e){
-        $41a34c1f82b9918d$var$S(this, "MAX_REPLACE_STATE_FREQUENCY", 1e3), this.Reveal = e, this.writeURLTimeout = 0, this.replaceStateTimestamp = 0, this.onWindowHashChange = this.onWindowHashChange.bind(this);
+        $4aa888c367b643f0$var$S(this, "MAX_REPLACE_STATE_FREQUENCY", 1e3), this.Reveal = e, this.writeURLTimeout = 0, this.replaceStateTimestamp = 0, this.onWindowHashChange = this.onWindowHashChange.bind(this);
     }
     bind() {
         window.addEventListener("hashchange", this.onWindowHashChange, !1);
@@ -1910,7 +1910,7 @@ var $41a34c1f82b9918d$var$pe = class {
                 let t = decodeURIComponent(n);
                 e = (document.getElementById(t) || document.querySelector(`[data-id="${t}"]`)).closest(".slides section");
             } catch (e) {}
-            if (e) return $41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F({}, this.Reveal.getIndices(e)), {}, {
+            if (e) return $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, this.Reveal.getIndices(e)), {}, {
                 f: t
             });
         } else {
@@ -1955,7 +1955,7 @@ var $41a34c1f82b9918d$var$pe = class {
     onWindowHashChange(e) {
         this.readURL();
     }
-}, $41a34c1f82b9918d$var$me = class {
+}, $4aa888c367b643f0$var$me = class {
     constructor(e){
         this.Reveal = e, this.onNavigateLeftClicked = this.onNavigateLeftClicked.bind(this), this.onNavigateRightClicked = this.onNavigateRightClicked.bind(this), this.onNavigateUpClicked = this.onNavigateUpClicked.bind(this), this.onNavigateDownClicked = this.onNavigateDownClicked.bind(this), this.onNavigatePrevClicked = this.onNavigatePrevClicked.bind(this), this.onNavigateNextClicked = this.onNavigateNextClicked.bind(this), this.onEnterFullscreen = this.onEnterFullscreen.bind(this);
     }
@@ -1964,7 +1964,7 @@ var $41a34c1f82b9918d$var$pe = class {
         this.element = document.createElement("aside"), this.element.className = "controls", this.element.innerHTML = `<button class="navigate-left" aria-label="${e ? "next slide" : "previous slide"}"><div class="controls-arrow"></div></button>
 			<button class="navigate-right" aria-label="${e ? "previous slide" : "next slide"}"><div class="controls-arrow"></div></button>
 			<button class="navigate-up" aria-label="above slide"><div class="controls-arrow"></div></button>
-			<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>`, this.Reveal.getRevealElement().appendChild(this.element), this.controlsLeft = $41a34c1f82b9918d$var$t(n, ".navigate-left"), this.controlsRight = $41a34c1f82b9918d$var$t(n, ".navigate-right"), this.controlsUp = $41a34c1f82b9918d$var$t(n, ".navigate-up"), this.controlsDown = $41a34c1f82b9918d$var$t(n, ".navigate-down"), this.controlsPrev = $41a34c1f82b9918d$var$t(n, ".navigate-prev"), this.controlsNext = $41a34c1f82b9918d$var$t(n, ".navigate-next"), this.controlsFullscreen = $41a34c1f82b9918d$var$t(n, ".enter-fullscreen"), this.controlsRightArrow = this.element.querySelector(".navigate-right"), this.controlsLeftArrow = this.element.querySelector(".navigate-left"), this.controlsDownArrow = this.element.querySelector(".navigate-down");
+			<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>`, this.Reveal.getRevealElement().appendChild(this.element), this.controlsLeft = $4aa888c367b643f0$var$t(n, ".navigate-left"), this.controlsRight = $4aa888c367b643f0$var$t(n, ".navigate-right"), this.controlsUp = $4aa888c367b643f0$var$t(n, ".navigate-up"), this.controlsDown = $4aa888c367b643f0$var$t(n, ".navigate-down"), this.controlsPrev = $4aa888c367b643f0$var$t(n, ".navigate-prev"), this.controlsNext = $4aa888c367b643f0$var$t(n, ".navigate-next"), this.controlsFullscreen = $4aa888c367b643f0$var$t(n, ".enter-fullscreen"), this.controlsRightArrow = this.element.querySelector(".navigate-right"), this.controlsLeftArrow = this.element.querySelector(".navigate-left"), this.controlsDownArrow = this.element.querySelector(".navigate-down");
     }
     configure(e, t) {
         let n = e.controls === "speaker" || e.controls === "speaker-only";
@@ -1975,7 +1975,7 @@ var $41a34c1f82b9918d$var$pe = class {
             "touchstart",
             "click"
         ];
-        $41a34c1f82b9918d$var$_ && (e = [
+        $4aa888c367b643f0$var$_ && (e = [
             "touchend"
         ]), e.forEach((e)=>{
             this.controlsLeft.forEach((t)=>t.addEventListener(e, this.onNavigateLeftClicked, !1)), this.controlsRight.forEach((t)=>t.addEventListener(e, this.onNavigateRightClicked, !1)), this.controlsUp.forEach((t)=>t.addEventListener(e, this.onNavigateUpClicked, !1)), this.controlsDown.forEach((t)=>t.addEventListener(e, this.onNavigateDownClicked, !1)), this.controlsPrev.forEach((t)=>t.addEventListener(e, this.onNavigatePrevClicked, !1)), this.controlsNext.forEach((t)=>t.addEventListener(e, this.onNavigateNextClicked, !1)), this.controlsFullscreen.forEach((t)=>t.addEventListener(e, this.onEnterFullscreen, !1));
@@ -2061,9 +2061,9 @@ var $41a34c1f82b9918d$var$pe = class {
     }
     onEnterFullscreen(e) {
         let t = this.Reveal.getConfig(), n = this.Reveal.getViewportElement();
-        $41a34c1f82b9918d$var$s(t.embedded ? n : n.parentElement);
+        $4aa888c367b643f0$var$s(t.embedded ? n : n.parentElement);
     }
-}, $41a34c1f82b9918d$var$he = class {
+}, $4aa888c367b643f0$var$he = class {
     constructor(e){
         this.Reveal = e, this.onProgressClicked = this.onProgressClicked.bind(this);
     }
@@ -2098,7 +2098,7 @@ var $41a34c1f82b9918d$var$pe = class {
     destroy() {
         this.element.remove();
     }
-}, $41a34c1f82b9918d$var$ge = class {
+}, $4aa888c367b643f0$var$ge = class {
     constructor(e){
         this.Reveal = e, this.lastMouseWheelStep = 0, this.cursorHidden = !1, this.cursorInactiveTimeout = 0, this.onDocumentCursorActive = this.onDocumentCursorActive.bind(this), this.onDocumentMouseScroll = this.onDocumentMouseScroll.bind(this);
     }
@@ -2124,7 +2124,7 @@ var $41a34c1f82b9918d$var$pe = class {
             t > 0 ? this.Reveal.next() : t < 0 && this.Reveal.prev();
         }
     }
-}, $41a34c1f82b9918d$var$_e = (e, t)=>{
+}, $4aa888c367b643f0$var$_e = (e, t)=>{
     let n = document.createElement("script");
     n.type = "text/javascript", n.async = !1, n.defer = !1, n.src = e, typeof t == "function" && (n.onload = (e)=>{
         e.type === "load" && (n.onload = n.onerror = null, t());
@@ -2133,7 +2133,7 @@ var $41a34c1f82b9918d$var$pe = class {
     });
     let r = document.querySelector("head");
     r && r.insertBefore(n, r.lastChild);
-}, $41a34c1f82b9918d$var$ve = class {
+}, $4aa888c367b643f0$var$ve = class {
     constructor(e){
         this.Reveal = e, this.state = "idle", this.registeredPlugins = {}, this.asyncDependencies = [];
     }
@@ -2148,7 +2148,7 @@ var $41a34c1f82b9918d$var$pe = class {
                     t && typeof t.callback == "function" && t.callback(), --r === 0 && this.initPlugins().then(e);
                 };
                 n.forEach((e)=>{
-                    typeof e.id == "string" ? (this.registerPlugin(e), t(e)) : typeof e.src == "string" ? $41a34c1f82b9918d$var$_e(e.src, ()=>t(e)) : (console.warn("Unrecognized plugin format", e), t());
+                    typeof e.id == "string" ? (this.registerPlugin(e), t(e)) : typeof e.src == "string" ? $4aa888c367b643f0$var$_e(e.src, ()=>t(e)) : (console.warn("Unrecognized plugin format", e), t());
                 });
             } else this.initPlugins().then(e);
         });
@@ -2173,7 +2173,7 @@ var $41a34c1f82b9918d$var$pe = class {
     }
     loadAsync() {
         return this.state = "loaded", this.asyncDependencies.length && this.asyncDependencies.forEach((e)=>{
-            $41a34c1f82b9918d$var$_e(e.src, e.callback);
+            $4aa888c367b643f0$var$_e(e.src, e.callback);
         }), Promise.resolve();
     }
     registerPlugin(e) {
@@ -2195,7 +2195,7 @@ var $41a34c1f82b9918d$var$pe = class {
             typeof e.destroy == "function" && e.destroy();
         }), this.registeredPlugins = {}, this.asyncDependencies = [];
     }
-}, $41a34c1f82b9918d$var$ye = class {
+}, $4aa888c367b643f0$var$ye = class {
     constructor(e){
         this.Reveal = e, this.onSlidesClicked = this.onSlidesClicked.bind(this), this.iframeTriggerSelector = null, this.mediaTriggerSelector = "[data-preview-image], [data-preview-video]", this.stateProps = [
             "previewIframe",
@@ -2351,7 +2351,7 @@ var $41a34c1f82b9918d$var$pe = class {
     destroy() {
         this.close();
     }
-}, $41a34c1f82b9918d$var$I = 40, $41a34c1f82b9918d$var$be = class {
+}, $4aa888c367b643f0$var$I = 40, $4aa888c367b643f0$var$be = class {
     constructor(e){
         this.Reveal = e, this.touchStartX = 0, this.touchStartY = 0, this.touchStartCount = 0, this.touchCaptured = !1, this.onPointerDown = this.onPointerDown.bind(this), this.onPointerMove = this.onPointerMove.bind(this), this.onPointerUp = this.onPointerUp.bind(this), this.onTouchStart = this.onTouchStart.bind(this), this.onTouchMove = this.onTouchMove.bind(this), this.onTouchEnd = this.onTouchEnd.bind(this);
     }
@@ -2364,7 +2364,7 @@ var $41a34c1f82b9918d$var$pe = class {
         e.removeEventListener("pointerdown", this.onPointerDown, !1), e.removeEventListener("pointermove", this.onPointerMove, !1), e.removeEventListener("pointerup", this.onPointerUp, !1), e.removeEventListener("MSPointerDown", this.onPointerDown, !1), e.removeEventListener("MSPointerMove", this.onPointerMove, !1), e.removeEventListener("MSPointerUp", this.onPointerUp, !1), e.removeEventListener("touchstart", this.onTouchStart, !1), e.removeEventListener("touchmove", this.onTouchMove, !1), e.removeEventListener("touchend", this.onTouchEnd, !1);
     }
     isSwipePrevented(e) {
-        if ($41a34c1f82b9918d$var$a(e, "video[controls], audio[controls]")) return !0;
+        if ($4aa888c367b643f0$var$a(e, "video[controls], audio[controls]")) return !0;
         for(; e && typeof e.hasAttribute == "function";){
             if (e.hasAttribute("data-prevent-swipe")) return !0;
             e = e.parentNode;
@@ -2378,7 +2378,7 @@ var $41a34c1f82b9918d$var$pe = class {
     onTouchMove(e) {
         if (this.isSwipePrevented(e.target)) return !0;
         let t = this.Reveal.getConfig();
-        if (this.touchCaptured) $41a34c1f82b9918d$var$_ && e.preventDefault();
+        if (this.touchCaptured) $4aa888c367b643f0$var$_ && e.preventDefault();
         else {
             this.Reveal.onUserInput(e);
             let n = e.touches[0].clientX, r = e.touches[0].clientY;
@@ -2386,7 +2386,7 @@ var $41a34c1f82b9918d$var$pe = class {
                 let i = this.Reveal.availableRoutes({
                     includeFragments: !0
                 }), a = n - this.touchStartX, o = r - this.touchStartY;
-                a > $41a34c1f82b9918d$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.next() : this.Reveal.prev() : this.Reveal.left()) : a < -$41a34c1f82b9918d$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.prev() : this.Reveal.next() : this.Reveal.right()) : o > $41a34c1f82b9918d$var$I && i.up ? (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.prev() : this.Reveal.up()) : o < -$41a34c1f82b9918d$var$I && i.down && (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.next() : this.Reveal.down()), t.embedded ? (this.touchCaptured || this.Reveal.isVerticalSlide()) && e.preventDefault() : e.preventDefault();
+                a > $4aa888c367b643f0$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.next() : this.Reveal.prev() : this.Reveal.left()) : a < -$4aa888c367b643f0$var$I && Math.abs(a) > Math.abs(o) ? (this.touchCaptured = !0, t.navigationMode === "linear" ? t.rtl ? this.Reveal.prev() : this.Reveal.next() : this.Reveal.right()) : o > $4aa888c367b643f0$var$I && i.up ? (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.prev() : this.Reveal.up()) : o < -$4aa888c367b643f0$var$I && i.down && (this.touchCaptured = !0, t.navigationMode === "linear" ? this.Reveal.next() : this.Reveal.down()), t.embedded ? (this.touchCaptured || this.Reveal.isVerticalSlide()) && e.preventDefault() : e.preventDefault();
             }
         }
     }
@@ -2417,7 +2417,7 @@ var $41a34c1f82b9918d$var$pe = class {
             }
         ], this.onTouchEnd(e));
     }
-}, $41a34c1f82b9918d$var$L = "focus", $41a34c1f82b9918d$var$R = "blur", $41a34c1f82b9918d$var$xe = class {
+}, $4aa888c367b643f0$var$L = "focus", $4aa888c367b643f0$var$R = "blur", $4aa888c367b643f0$var$xe = class {
     constructor(e){
         this.Reveal = e, this.onRevealPointerDown = this.onRevealPointerDown.bind(this), this.onDocumentPointerDown = this.onDocumentPointerDown.bind(this);
     }
@@ -2431,13 +2431,13 @@ var $41a34c1f82b9918d$var$pe = class {
         this.Reveal.getRevealElement().removeEventListener("pointerdown", this.onRevealPointerDown, !1), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1);
     }
     focus() {
-        this.state !== $41a34c1f82b9918d$var$L && (this.Reveal.getRevealElement().classList.add("focused"), document.addEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $41a34c1f82b9918d$var$L;
+        this.state !== $4aa888c367b643f0$var$L && (this.Reveal.getRevealElement().classList.add("focused"), document.addEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $4aa888c367b643f0$var$L;
     }
     blur() {
-        this.state !== $41a34c1f82b9918d$var$R && (this.Reveal.getRevealElement().classList.remove("focused"), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $41a34c1f82b9918d$var$R;
+        this.state !== $4aa888c367b643f0$var$R && (this.Reveal.getRevealElement().classList.remove("focused"), document.removeEventListener("pointerdown", this.onDocumentPointerDown, !1)), this.state = $4aa888c367b643f0$var$R;
     }
     isFocused() {
-        return this.state === $41a34c1f82b9918d$var$L;
+        return this.state === $4aa888c367b643f0$var$L;
     }
     destroy() {
         this.Reveal.getRevealElement().classList.remove("focused");
@@ -2446,10 +2446,10 @@ var $41a34c1f82b9918d$var$pe = class {
         this.focus();
     }
     onDocumentPointerDown(e) {
-        let t = $41a34c1f82b9918d$var$o(e.target, ".reveal");
+        let t = $4aa888c367b643f0$var$o(e.target, ".reveal");
         (!t || t !== this.Reveal.getRevealElement()) && this.blur();
     }
-}, $41a34c1f82b9918d$var$Se = class {
+}, $4aa888c367b643f0$var$Se = class {
     constructor(e){
         this.Reveal = e;
     }
@@ -2479,7 +2479,7 @@ var $41a34c1f82b9918d$var$pe = class {
     destroy() {
         this.element.remove();
     }
-}, $41a34c1f82b9918d$var$Ce = class {
+}, $4aa888c367b643f0$var$Ce = class {
     constructor(e, t){
         this.diameter = 100, this.diameter2 = this.diameter / 2, this.thickness = 6, this.playing = !1, this.progress = 0, this.progressOffset = 1, this.container = e, this.progressCheck = t, this.canvas = document.createElement("canvas"), this.canvas.className = "playback", this.canvas.width = this.diameter, this.canvas.height = this.diameter, this.canvas.style.width = this.diameter2 + "px", this.canvas.style.height = this.diameter2 + "px", this.context = this.canvas.getContext("2d"), this.container.appendChild(this.canvas), this.render();
     }
@@ -2506,7 +2506,7 @@ var $41a34c1f82b9918d$var$pe = class {
     destroy() {
         this.playing = !1, this.canvas.parentNode && this.container.removeChild(this.canvas);
     }
-}, $41a34c1f82b9918d$var$we = {
+}, $4aa888c367b643f0$var$we = {
     width: 960,
     height: 700,
     margin: .04,
@@ -2596,10 +2596,10 @@ var $41a34c1f82b9918d$var$pe = class {
     pdfPageHeightOffset: -1,
     dependencies: [],
     plugins: []
-}, $41a34c1f82b9918d$var$Te = "6.0.1";
+}, $4aa888c367b643f0$var$Te = "6.0.1";
 //#endregion
 //#region js/reveal.js
-function $41a34c1f82b9918d$var$z(a, s) {
+function $4aa888c367b643f0$var$z(a, s) {
     arguments.length < 2 && (s = arguments[0], a = document.querySelector(".reveal"));
     let l = {}, f = {}, p = !1, m = !1, h, _, v, y, b = {
         hasNavigatedHorizontally: !1,
@@ -2607,15 +2607,15 @@ function $41a34c1f82b9918d$var$z(a, s) {
     }, x = [], S = 1, T = {
         layout: "",
         overview: ""
-    }, D = {}, ie = "idle", O = 0, k, A = 0, se = -1, j = !1, M = new $41a34c1f82b9918d$var$ee(l), N = new $41a34c1f82b9918d$var$ne(l), P = new $41a34c1f82b9918d$var$re(l), _e = new $41a34c1f82b9918d$var$oe(l), I = new $41a34c1f82b9918d$var$ae(l), L = new $41a34c1f82b9918d$var$ce(l), R = new $41a34c1f82b9918d$var$le(l), z = new $41a34c1f82b9918d$var$ue(l), B = new $41a34c1f82b9918d$var$de(l), V = new $41a34c1f82b9918d$var$fe(l), H = new $41a34c1f82b9918d$var$pe(l), U = new $41a34c1f82b9918d$var$me(l), W = new $41a34c1f82b9918d$var$he(l), Ee = new $41a34c1f82b9918d$var$ge(l), G = new $41a34c1f82b9918d$var$ve(l), K = new $41a34c1f82b9918d$var$ye(l), q = new $41a34c1f82b9918d$var$xe(l), De = new $41a34c1f82b9918d$var$be(l), J = new $41a34c1f82b9918d$var$Se(l);
+    }, D = {}, ie = "idle", O = 0, k, A = 0, se = -1, j = !1, M = new $4aa888c367b643f0$var$ee(l), N = new $4aa888c367b643f0$var$ne(l), P = new $4aa888c367b643f0$var$re(l), _e = new $4aa888c367b643f0$var$oe(l), I = new $4aa888c367b643f0$var$ae(l), L = new $4aa888c367b643f0$var$ce(l), R = new $4aa888c367b643f0$var$le(l), z = new $4aa888c367b643f0$var$ue(l), B = new $4aa888c367b643f0$var$de(l), V = new $4aa888c367b643f0$var$fe(l), H = new $4aa888c367b643f0$var$pe(l), U = new $4aa888c367b643f0$var$me(l), W = new $4aa888c367b643f0$var$he(l), Ee = new $4aa888c367b643f0$var$ge(l), G = new $4aa888c367b643f0$var$ve(l), K = new $4aa888c367b643f0$var$ye(l), q = new $4aa888c367b643f0$var$xe(l), De = new $4aa888c367b643f0$var$be(l), J = new $4aa888c367b643f0$var$Se(l);
     function Oe(e) {
         if (!a) throw "Unable to find presentation root (<div class=\"reveal\">).";
         if (p) throw "Reveal.js has already been initialized.";
         if (p = !0, D.wrapper = a, D.slides = a.querySelector(".slides"), !D.slides) throw "Unable to find slides container (<div class=\"slides\">).";
-        return f = $41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F({}, $41a34c1f82b9918d$var$we), f), s), e), $41a34c1f82b9918d$var$u()), /print-pdf/gi.test(window.location.search) && (f.view = "print"), ke(), window.addEventListener("load", X, !1), G.load(f.plugins, f.dependencies).then(Ae), new Promise((e)=>l.on("ready", e));
+        return f = $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, $4aa888c367b643f0$var$we), f), s), e), $4aa888c367b643f0$var$u()), /print-pdf/gi.test(window.location.search) && (f.view = "print"), ke(), window.addEventListener("load", X, !1), G.load(f.plugins, f.dependencies).then(Ae), new Promise((e)=>l.on("ready", e));
     }
     function ke() {
-        f.embedded === !0 ? D.viewport = $41a34c1f82b9918d$var$o(a, ".reveal-viewport") || a : (D.viewport = document.body, document.documentElement.classList.add("reveal-full-page")), D.viewport.classList.add("reveal-viewport");
+        f.embedded === !0 ? D.viewport = $4aa888c367b643f0$var$o(a, ".reveal-viewport") || a : (D.viewport = document.body, document.documentElement.classList.add("reveal-full-page")), D.viewport.classList.add("reveal-viewport");
     }
     function Ae() {
         p !== !1 && (m = !0, Me(), Ne(), Be(), Re(), ze(), _t(), Ve(), I.update(!0), je(), H.readURL(), setTimeout(()=>{
@@ -2634,13 +2634,13 @@ function $41a34c1f82b9918d$var$z(a, s) {
         (e || t) && (e ? Ue() : De.unbind(), D.viewport.classList.add("loading-scroll-mode"), e ? document.readyState === "complete" ? R.activate() : window.addEventListener("load", ()=>R.activate()) : L.activate());
     }
     function Me() {
-        f.showHiddenSlides || $41a34c1f82b9918d$var$t(D.wrapper, "section[data-visibility=\"hidden\"]").forEach((e)=>{
+        f.showHiddenSlides || $4aa888c367b643f0$var$t(D.wrapper, "section[data-visibility=\"hidden\"]").forEach((e)=>{
             let t = e.parentNode;
             t.childElementCount === 1 && /section/i.test(t.nodeName) ? t.remove() : e.remove();
         });
     }
     function Ne() {
-        D.slides.classList.add("no-transition"), $41a34c1f82b9918d$var$g ? D.wrapper.classList.add("no-hover") : D.wrapper.classList.remove("no-hover"), I.render(), N.render(), P.render(), U.render(), W.render(), J.render(), D.pauseOverlay = $41a34c1f82b9918d$var$c(D.wrapper, "div", "pause-overlay", f.controls ? "<button class=\"resume-button\">Resume presentation</button>" : null), D.statusElement = Pe(), D.wrapper.setAttribute("role", "application");
+        D.slides.classList.add("no-transition"), $4aa888c367b643f0$var$g ? D.wrapper.classList.add("no-hover") : D.wrapper.classList.remove("no-hover"), I.render(), N.render(), P.render(), U.render(), W.render(), J.render(), D.pauseOverlay = $4aa888c367b643f0$var$c(D.wrapper, "div", "pause-overlay", f.controls ? "<button class=\"resume-button\">Resume presentation</button>" : null), D.statusElement = Pe(), D.wrapper.setAttribute("role", "application");
     }
     function Pe() {
         let e = D.wrapper.querySelector(".aria-status");
@@ -2695,10 +2695,10 @@ function $41a34c1f82b9918d$var$z(a, s) {
         f.postMessage && window.addEventListener("message", Jt, !1);
     }
     function Ve(t) {
-        let r = $41a34c1f82b9918d$var$F({}, f);
-        if (typeof t == "object" && $41a34c1f82b9918d$var$e(f, t), l.isReady() === !1) return;
-        let i = D.wrapper.querySelectorAll($41a34c1f82b9918d$var$C).length;
-        D.wrapper.classList.remove(r.transition), D.wrapper.classList.add(f.transition), D.wrapper.setAttribute("data-transition-speed", f.transitionSpeed), D.wrapper.setAttribute("data-background-transition", f.backgroundTransition), D.viewport.style.setProperty("--slide-width", typeof f.width == "string" ? f.width : f.width + "px"), D.viewport.style.setProperty("--slide-height", typeof f.height == "string" ? f.height : f.height + "px"), f.shuffle && vt(), $41a34c1f82b9918d$var$n(D.wrapper, "embedded", f.embedded), $41a34c1f82b9918d$var$n(D.wrapper, "rtl", f.rtl), $41a34c1f82b9918d$var$n(D.wrapper, "center", f.center), f.pause === !1 && st(), _e.reset(), k && (k.destroy(), k = null), i > 1 && f.autoSlide && f.autoSlideStoppable && (k = new $41a34c1f82b9918d$var$Ce(D.wrapper, ()=>Math.min(Math.max((Date.now() - se) / O, 0), 1)), k.on("click", en), j = !1), f.navigationMode === "default" ? D.wrapper.removeAttribute("data-navigation-mode") : D.wrapper.setAttribute("data-navigation-mode", f.navigationMode), J.configure(f, r), q.configure(f, r), Ee.configure(f, r), U.configure(f, r), W.configure(f, r), V.configure(f, r), z.configure(f, r), N.configure(f, r), ht();
+        let r = $4aa888c367b643f0$var$F({}, f);
+        if (typeof t == "object" && $4aa888c367b643f0$var$e(f, t), l.isReady() === !1) return;
+        let i = D.wrapper.querySelectorAll($4aa888c367b643f0$var$C).length;
+        D.wrapper.classList.remove(r.transition), D.wrapper.classList.add(f.transition), D.wrapper.setAttribute("data-transition-speed", f.transitionSpeed), D.wrapper.setAttribute("data-background-transition", f.backgroundTransition), D.viewport.style.setProperty("--slide-width", typeof f.width == "string" ? f.width : f.width + "px"), D.viewport.style.setProperty("--slide-height", typeof f.height == "string" ? f.height : f.height + "px"), f.shuffle && vt(), $4aa888c367b643f0$var$n(D.wrapper, "embedded", f.embedded), $4aa888c367b643f0$var$n(D.wrapper, "rtl", f.rtl), $4aa888c367b643f0$var$n(D.wrapper, "center", f.center), f.pause === !1 && st(), _e.reset(), k && (k.destroy(), k = null), i > 1 && f.autoSlide && f.autoSlideStoppable && (k = new $4aa888c367b643f0$var$Ce(D.wrapper, ()=>Math.min(Math.max((Date.now() - se) / O, 0), 1)), k.on("click", en), j = !1), f.navigationMode === "default" ? D.wrapper.removeAttribute("data-navigation-mode") : D.wrapper.setAttribute("data-navigation-mode", f.navigationMode), J.configure(f, r), q.configure(f, r), Ee.configure(f, r), U.configure(f, r), W.configure(f, r), V.configure(f, r), z.configure(f, r), N.configure(f, r), ht();
     }
     function He() {
         window.addEventListener("resize", Zt, !1), f.touch && De.bind(), f.keyboard && V.bind(), f.progress && W.bind(), f.respondToHashChanges && H.bind(), U.bind(), q.bind(), D.slides.addEventListener("click", Xt, !1), D.slides.addEventListener("transitionend", Yt, !1), D.pauseOverlay.addEventListener("click", st, !1), f.focusBodyOnPageVisibilityChange && document.addEventListener("visibilitychange", Qt, !1);
@@ -2707,7 +2707,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         De.unbind(), q.unbind(), V.unbind(), U.unbind(), W.unbind(), H.unbind(), window.removeEventListener("resize", Zt, !1), D.slides.removeEventListener("click", Xt, !1), D.slides.removeEventListener("transitionend", Yt, !1), D.pauseOverlay.removeEventListener("click", st, !1);
     }
     function We() {
-        p = !1, m !== !1 && (Ue(), Rt(), J.destroy(), q.destroy(), K.destroy(), G.destroy(), Ee.destroy(), U.destroy(), W.destroy(), I.destroy(), N.destroy(), P.destroy(), document.removeEventListener("fullscreenchange", $t), document.removeEventListener("webkitfullscreenchange", $t), document.removeEventListener("visibilitychange", Qt, !1), window.removeEventListener("message", Jt, !1), window.removeEventListener("load", X, !1), D.pauseOverlay && D.pauseOverlay.remove(), D.statusElement && D.statusElement.remove(), document.documentElement.classList.remove("reveal-full-page"), D.wrapper.classList.remove("ready", "center", "has-horizontal-slides", "has-vertical-slides"), D.wrapper.removeAttribute("data-transition-speed"), D.wrapper.removeAttribute("data-background-transition"), D.viewport.classList.remove("reveal-viewport"), D.viewport.style.removeProperty("--slide-width"), D.viewport.style.removeProperty("--slide-height"), D.slides.style.removeProperty("width"), D.slides.style.removeProperty("height"), D.slides.style.removeProperty("zoom"), D.slides.style.removeProperty("left"), D.slides.style.removeProperty("top"), D.slides.style.removeProperty("bottom"), D.slides.style.removeProperty("right"), D.slides.style.removeProperty("transform"), Array.from(D.wrapper.querySelectorAll($41a34c1f82b9918d$var$C)).forEach((e)=>{
+        p = !1, m !== !1 && (Ue(), Rt(), J.destroy(), q.destroy(), K.destroy(), G.destroy(), Ee.destroy(), U.destroy(), W.destroy(), I.destroy(), N.destroy(), P.destroy(), document.removeEventListener("fullscreenchange", $t), document.removeEventListener("webkitfullscreenchange", $t), document.removeEventListener("visibilitychange", Qt, !1), window.removeEventListener("message", Jt, !1), window.removeEventListener("load", X, !1), D.pauseOverlay && D.pauseOverlay.remove(), D.statusElement && D.statusElement.remove(), document.documentElement.classList.remove("reveal-full-page"), D.wrapper.classList.remove("ready", "center", "has-horizontal-slides", "has-vertical-slides"), D.wrapper.removeAttribute("data-transition-speed"), D.wrapper.removeAttribute("data-background-transition"), D.viewport.classList.remove("reveal-viewport"), D.viewport.style.removeProperty("--slide-width"), D.viewport.style.removeProperty("--slide-height"), D.slides.style.removeProperty("width"), D.slides.style.removeProperty("height"), D.slides.style.removeProperty("zoom"), D.slides.style.removeProperty("left"), D.slides.style.removeProperty("top"), D.slides.style.removeProperty("bottom"), D.slides.style.removeProperty("right"), D.slides.style.removeProperty("transform"), Array.from(D.wrapper.querySelectorAll($4aa888c367b643f0$var$C)).forEach((e)=>{
             e.style.removeProperty("display"), e.style.removeProperty("top"), e.removeAttribute("hidden"), e.removeAttribute("aria-hidden");
         }));
     }
@@ -2718,11 +2718,11 @@ function $41a34c1f82b9918d$var$z(a, s) {
         a.removeEventListener(e, t, n);
     }
     function qe(e) {
-        typeof e.layout == "string" && (T.layout = e.layout), typeof e.overview == "string" && (T.overview = e.overview), T.layout ? $41a34c1f82b9918d$var$i(D.slides, T.layout + " " + T.overview) : $41a34c1f82b9918d$var$i(D.slides, T.overview);
+        typeof e.layout == "string" && (T.layout = e.layout), typeof e.overview == "string" && (T.overview = e.overview), T.layout ? $4aa888c367b643f0$var$i(D.slides, T.layout + " " + T.overview) : $4aa888c367b643f0$var$i(D.slides, T.overview);
     }
     function Y({ target: t = D.wrapper, type: n, data: r, bubbles: i = !0 }) {
         let a = document.createEvent("HTMLEvents", 1, 2);
-        return a.initEvent(n, i, !0), $41a34c1f82b9918d$var$e(a, r), t.dispatchEvent(a), t === D.wrapper && Ye(n), a;
+        return a.initEvent(n, i, !0), $4aa888c367b643f0$var$e(a, r), t.dispatchEvent(a), t === D.wrapper && Ye(n), a;
     }
     function Je(e) {
         Y({
@@ -2743,21 +2743,21 @@ function $41a34c1f82b9918d$var$z(a, s) {
                 eventName: t,
                 state: Ft()
             };
-            $41a34c1f82b9918d$var$e(r, n), window.parent.postMessage(JSON.stringify(r), "*");
+            $4aa888c367b643f0$var$e(r, n), window.parent.postMessage(JSON.stringify(r), "*");
         }
     }
     function X() {
         if (D.wrapper && !R.isActive()) {
             let e = D.viewport.offsetWidth, t = D.viewport.offsetHeight;
             if (!f.disableLayout) {
-                $41a34c1f82b9918d$var$g && !f.embedded && document.documentElement.style.setProperty("--vh", window.innerHeight * .01 + "px");
+                $4aa888c367b643f0$var$g && !f.embedded && document.documentElement.style.setProperty("--vh", window.innerHeight * .01 + "px");
                 let n = L.isActive() ? Qe(e, t) : Qe(), r = S;
                 Xe(f.width, f.height), D.slides.style.width = n.width + "px", D.slides.style.height = n.height + "px", S = Math.min(n.presentationWidth / n.width, n.presentationHeight / n.height), S = Math.max(S, f.minScale), S = Math.min(S, f.maxScale), S === 1 || L.isActive() ? (D.slides.style.zoom = "", D.slides.style.left = "", D.slides.style.top = "", D.slides.style.bottom = "", D.slides.style.right = "", qe({
                     layout: ""
                 })) : (D.slides.style.zoom = "", D.slides.style.left = "50%", D.slides.style.top = "50%", D.slides.style.bottom = "auto", D.slides.style.right = "auto", qe({
                     layout: "translate(-50%, -50%) scale(" + S + ")"
                 }));
-                let i = Array.from(D.wrapper.querySelectorAll($41a34c1f82b9918d$var$C));
+                let i = Array.from(D.wrapper.querySelectorAll($4aa888c367b643f0$var$C));
                 for(let e = 0, t = i.length; e < t; e++){
                     let t = i[e];
                     t.style.display !== "none" && (f.center || t.classList.contains("center") ? t.classList.contains("stack") ? t.style.top = 0 : t.style.top = Math.max((n.height - t.scrollHeight) / 2, 0) + "px" : t.style.top = "");
@@ -2775,8 +2775,8 @@ function $41a34c1f82b9918d$var$z(a, s) {
         }
     }
     function Xe(e, n) {
-        $41a34c1f82b9918d$var$t(D.slides, "section > .stretch, section > .r-stretch").forEach((t)=>{
-            let r = $41a34c1f82b9918d$var$d(t, n);
+        $4aa888c367b643f0$var$t(D.slides, "section > .stretch, section > .r-stretch").forEach((t)=>{
+            let r = $4aa888c367b643f0$var$d(t, n);
             if (/(img|video)/gi.test(t.nodeName)) {
                 let n = t.naturalWidth || t.videoWidth, i = t.naturalHeight || t.videoHeight, a = Math.min(e / n, r / i);
                 t.style.width = n * a + "px", t.style.height = i * a + "px";
@@ -2864,7 +2864,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
             }
         }).defaultPrevented) return;
         v = y;
-        let i = D.wrapper.querySelectorAll($41a34c1f82b9918d$var$w);
+        let i = D.wrapper.querySelectorAll($4aa888c367b643f0$var$w);
         if (L.isActive()) {
             let n = L.getSlideByIndices(e, t);
             n && L.scrollToSlide(n);
@@ -2875,7 +2875,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         let o = x.concat();
         x.length = 0;
         let s = h || 0, c = _ || 0;
-        h = yt($41a34c1f82b9918d$var$w, e === void 0 ? h : e), _ = yt($41a34c1f82b9918d$var$te, t === void 0 ? _ : t);
+        h = yt($4aa888c367b643f0$var$w, e === void 0 ? h : e), _ = yt($4aa888c367b643f0$var$te, t === void 0 ? _ : t);
         let l = h !== s || _ !== c;
         l || (v = null);
         let u = i[h], d = u.querySelectorAll("section");
@@ -2914,7 +2914,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         }), Je();
     }
     function ht() {
-        Ue(), He(), X(), O = f.autoSlide, Lt(), I.create(), H.writeURL(), f.sortFragmentsOnSync === !0 && z.sortAll(), h !== void 0 && (h = yt($41a34c1f82b9918d$var$w, h), _ = yt($41a34c1f82b9918d$var$te, _)), U.update(), W.update(), St(), J.update(), J.updateVisibility(), K.update(), I.update(!0), N.update(), M.formatEmbeddedContent(), f.autoPlayMedia === !1 ? M.stopEmbeddedContent(y, {
+        Ue(), He(), X(), O = f.autoSlide, Lt(), I.create(), H.writeURL(), f.sortFragmentsOnSync === !0 && z.sortAll(), h !== void 0 && (h = yt($4aa888c367b643f0$var$w, h), _ = yt($4aa888c367b643f0$var$te, _)), U.update(), W.update(), St(), J.update(), J.updateVisibility(), K.update(), I.update(!0), N.update(), M.formatEmbeddedContent(), f.autoPlayMedia === !1 ? M.stopEmbeddedContent(y, {
             unloadIframes: !1
         }) : M.startEmbeddedContent(y), B.isActive() && B.layout(), Y({
             type: "sync"
@@ -2930,7 +2930,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
     }
     function _t() {
         $().forEach((e)=>{
-            $41a34c1f82b9918d$var$t(e, "section").forEach((e, t)=>{
+            $4aa888c367b643f0$var$t(e, "section").forEach((e, t)=>{
                 t > 0 && (e.classList.remove("present"), e.classList.remove("past"), e.classList.add("future"), e.setAttribute("aria-hidden", "true"));
             });
         });
@@ -2944,7 +2944,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         });
     }
     function yt(e, n) {
-        let r = $41a34c1f82b9918d$var$t(D.wrapper, e), i = r.length, a = L.isActive() || R.isActive(), o = !1, s = !1;
+        let r = $4aa888c367b643f0$var$t(D.wrapper, e), i = r.length, a = L.isActive() || R.isActive(), o = !1, s = !1;
         if (i) {
             f.loop && (n >= i && (o = !0), n %= i, n < 0 && (n = i + n, s = !0)), n = Math.max(Math.min(n, i - 1), 0);
             for(let e = 0; e < i; e++){
@@ -2967,12 +2967,12 @@ function $41a34c1f82b9918d$var$z(a, s) {
         return n;
     }
     function bt(e) {
-        $41a34c1f82b9918d$var$t(e, ".fragment").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, ".fragment").forEach((e)=>{
             e.classList.add("visible"), e.classList.remove("current-fragment");
         });
     }
     function xt(e) {
-        $41a34c1f82b9918d$var$t(e, ".fragment.visible").forEach((e)=>{
+        $4aa888c367b643f0$var$t(e, ".fragment.visible").forEach((e)=>{
             e.classList.remove("visible", "current-fragment");
         });
     }
@@ -2980,9 +2980,9 @@ function $41a34c1f82b9918d$var$z(a, s) {
         let e = $(), n = e.length, r, i;
         if (n && h !== void 0) {
             let a = B.isActive(), o = a ? 10 : f.viewDistance;
-            $41a34c1f82b9918d$var$g && (o = a ? 6 : f.mobileViewDistance), R.isActive() && (o = Number.MAX_VALUE);
+            $4aa888c367b643f0$var$g && (o = a ? 6 : f.mobileViewDistance), R.isActive() && (o = Number.MAX_VALUE);
             for(let s = 0; s < n; s++){
-                let c = e[s], l = $41a34c1f82b9918d$var$t(c, "section"), u = l.length;
+                let c = e[s], l = $4aa888c367b643f0$var$t(c, "section"), u = l.length;
                 if (r = Math.abs((h || 0) - s) || 0, f.loop && (r = Math.abs(((h || 0) - s) % (n - o)) || 0), r < o ? M.load(c) : M.unload(c), u) {
                     let e = a ? 0 : et(c);
                     for(let t = 0; t < u; t++){
@@ -2995,7 +2995,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         }
     }
     function Q({ includeFragments: e = !1 } = {}) {
-        let t = D.wrapper.querySelectorAll($41a34c1f82b9918d$var$w), n = D.wrapper.querySelectorAll($41a34c1f82b9918d$var$te), r = {
+        let t = D.wrapper.querySelectorAll($4aa888c367b643f0$var$w), n = D.wrapper.querySelectorAll($4aa888c367b643f0$var$te), r = {
             left: h > 0,
             right: h < t.length - 1,
             up: _ > 0,
@@ -3041,7 +3041,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
             if (L.isActive()) n = parseInt(e.getAttribute("data-index-h"), 10), e.getAttribute("data-index-v") && (r = parseInt(e.getAttribute("data-index-v"), 10));
             else {
                 let i = tt(e), a = i ? e.parentNode : e, o = $();
-                n = Math.max(o.indexOf(a), 0), r = void 0, i && (r = Math.max($41a34c1f82b9918d$var$t(e.parentNode, "section").indexOf(e), 0));
+                n = Math.max(o.indexOf(a), 0), r = void 0, i && (r = Math.max($4aa888c367b643f0$var$t(e.parentNode, "section").indexOf(e), 0));
             }
         }
         if (!e && y && y.querySelectorAll(".fragment").length > 0) {
@@ -3055,16 +3055,16 @@ function $41a34c1f82b9918d$var$z(a, s) {
         };
     }
     function Et() {
-        return $41a34c1f82b9918d$var$t(D.wrapper, $41a34c1f82b9918d$var$C + ":not(.stack):not([data-visibility=\"uncounted\"])");
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$C + ":not(.stack):not([data-visibility=\"uncounted\"])");
     }
     function $() {
-        return $41a34c1f82b9918d$var$t(D.wrapper, $41a34c1f82b9918d$var$w);
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w);
     }
     function Dt() {
-        return $41a34c1f82b9918d$var$t(D.wrapper, ".slides>section>section");
+        return $4aa888c367b643f0$var$t(D.wrapper, ".slides>section>section");
     }
     function Ot() {
-        return $41a34c1f82b9918d$var$t(D.wrapper, $41a34c1f82b9918d$var$w + ".stack");
+        return $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".stack");
     }
     function kt() {
         return $().length > 1;
@@ -3095,7 +3095,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
     }
     function Ft() {
         let e = Tt();
-        return $41a34c1f82b9918d$var$F({
+        return $4aa888c367b643f0$var$F({
             indexh: e.h,
             indexv: e.v,
             indexf: e.f,
@@ -3105,15 +3105,15 @@ function $41a34c1f82b9918d$var$z(a, s) {
     }
     function It(e) {
         if (typeof e == "object") {
-            Z($41a34c1f82b9918d$var$r(e.indexh), $41a34c1f82b9918d$var$r(e.indexv), $41a34c1f82b9918d$var$r(e.indexf));
-            let t = $41a34c1f82b9918d$var$r(e.paused), n = $41a34c1f82b9918d$var$r(e.overview);
+            Z($4aa888c367b643f0$var$r(e.indexh), $4aa888c367b643f0$var$r(e.indexv), $4aa888c367b643f0$var$r(e.indexf));
+            let t = $4aa888c367b643f0$var$r(e.paused), n = $4aa888c367b643f0$var$r(e.overview);
             typeof t == "boolean" && t !== lt() && ct(t), typeof n == "boolean" && n !== B.isActive() && B.toggle(n), K.setState(e);
         }
     }
     function Lt() {
         if (Rt(), y && f.autoSlide !== !1) {
             let e = y.querySelector(".current-fragment[data-autoslide]"), n = e ? e.getAttribute("data-autoslide") : null, r = y.parentNode ? y.parentNode.getAttribute("data-autoslide") : null, i = y.getAttribute("data-autoslide");
-            n ? O = parseInt(n, 10) : i ? O = parseInt(i, 10) : r ? O = parseInt(r, 10) : (O = f.autoSlide, y.querySelectorAll(".fragment").length === 0 && $41a34c1f82b9918d$var$t(y, "video, audio").forEach((e)=>{
+            n ? O = parseInt(n, 10) : i ? O = parseInt(i, 10) : r ? O = parseInt(r, 10) : (O = f.autoSlide, y.querySelectorAll(".fragment").length === 0 && $4aa888c367b643f0$var$t(y, "video, audio").forEach((e)=>{
                 e.hasAttribute("data-autoplay") && O && e.duration * 1e3 / e.playbackRate > O && (O = e.duration * 1e3 / e.playbackRate + 1e3);
             })), O && !j && !lt() && !B.isActive() && (!at() || z.availableRoutes().next || f.loop === !0) && (A = setTimeout(()=>{
                 typeof f.autoSlideMethod == "function" ? f.autoSlideMethod() : Kt(), Lt();
@@ -3157,7 +3157,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
             });
             else {
                 let n;
-                if (n = f.rtl ? $41a34c1f82b9918d$var$t(D.wrapper, $41a34c1f82b9918d$var$w + ".future").pop() : $41a34c1f82b9918d$var$t(D.wrapper, $41a34c1f82b9918d$var$w + ".past").pop(), n && n.classList.contains("stack")) {
+                if (n = f.rtl ? $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".future").pop() : $4aa888c367b643f0$var$t(D.wrapper, $4aa888c367b643f0$var$w + ".past").pop(), n && n.classList.contains("stack")) {
                     let e = n.querySelectorAll("section").length - 1 || void 0;
                     Z(h - 1, e);
                 } else f.rtl ? Ht({
@@ -3187,7 +3187,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
     function Jt(e) {
         let t = e.data;
         if (typeof t == "string" && t.charAt(0) === "{" && t.charAt(t.length - 1) === "}" && (t = JSON.parse(t), t.method && typeof l[t.method] == "function")) {
-            if ($41a34c1f82b9918d$var$E.test(t.method) === !1) {
+            if ($4aa888c367b643f0$var$E.test(t.method) === !1) {
                 let e = l[t.method].apply(l, t.args);
                 Ye("callback", {
                     method: t.method,
@@ -3208,7 +3208,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         }));
     }
     function Xt(e) {
-        let t = $41a34c1f82b9918d$var$o(e.target, "a[href^=\"#\"]");
+        let t = $4aa888c367b643f0$var$o(e.target, "a[href^=\"#\"]");
         if (t) {
             let n = t.getAttribute("href"), r = H.getIndicesFromHash(n);
             r && (l.slide(r.h, r.v, r.f), e.preventDefault());
@@ -3229,7 +3229,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         at() && f.loop === !1 ? (Z(0, 0), Bt()) : j ? Bt() : zt();
     }
     let tn = {
-        VERSION: $41a34c1f82b9918d$var$Te,
+        VERSION: $4aa888c367b643f0$var$Te,
         initialize: Oe,
         configure: Ve,
         destroy: We,
@@ -3323,7 +3323,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         removeHiddenSlides: Me,
         getScale: ()=>S,
         getConfig: ()=>f,
-        getQueryHash: $41a34c1f82b9918d$var$u,
+        getQueryHash: $4aa888c367b643f0$var$u,
         getSlidePath: H.getHash.bind(H),
         getRevealElement: ()=>a,
         getSlidesElement: ()=>D.slides,
@@ -3334,7 +3334,7 @@ function $41a34c1f82b9918d$var$z(a, s) {
         getPlugin: G.getPlugin.bind(G),
         getPlugins: G.getRegisteredPlugins.bind(G)
     };
-    return $41a34c1f82b9918d$var$e(l, $41a34c1f82b9918d$var$F($41a34c1f82b9918d$var$F({}, tn), {}, {
+    return $4aa888c367b643f0$var$e(l, $4aa888c367b643f0$var$F($4aa888c367b643f0$var$F({}, tn), {}, {
         announceStatus: Fe,
         getStatusText: Ie,
         focus: q,
@@ -3359,11 +3359,11 @@ function $41a34c1f82b9918d$var$z(a, s) {
 }
 //#endregion
 //#region js/index.ts
-var $41a34c1f82b9918d$export$2e2bcd8739ae039 = $41a34c1f82b9918d$var$z, $41a34c1f82b9918d$var$V = [];
-$41a34c1f82b9918d$export$2e2bcd8739ae039.initialize = (e)=>{
+var $4aa888c367b643f0$export$2e2bcd8739ae039 = $4aa888c367b643f0$var$z, $4aa888c367b643f0$var$V = [];
+$4aa888c367b643f0$export$2e2bcd8739ae039.initialize = (e)=>{
     let t = document.querySelector(".reveal");
     if (!(t instanceof HTMLElement)) throw Error("Unable to find presentation root (<div class=\"reveal\">).");
-    return Object.assign($41a34c1f82b9918d$export$2e2bcd8739ae039, new $41a34c1f82b9918d$var$z(t, e)), $41a34c1f82b9918d$var$V.map((e)=>e($41a34c1f82b9918d$export$2e2bcd8739ae039)), $41a34c1f82b9918d$export$2e2bcd8739ae039.initialize();
+    return Object.assign($4aa888c367b643f0$export$2e2bcd8739ae039, new $4aa888c367b643f0$var$z(t, e)), $4aa888c367b643f0$var$V.map((e)=>e($4aa888c367b643f0$export$2e2bcd8739ae039)), $4aa888c367b643f0$export$2e2bcd8739ae039.initialize();
 }, [
     "configure",
     "on",
@@ -3372,16 +3372,16 @@ $41a34c1f82b9918d$export$2e2bcd8739ae039.initialize = (e)=>{
     "removeEventListener",
     "registerPlugin"
 ].forEach((e)=>{
-    $41a34c1f82b9918d$export$2e2bcd8739ae039[e] = (...t)=>{
-        $41a34c1f82b9918d$var$V.push((n)=>n[e].call(null, ...t));
+    $4aa888c367b643f0$export$2e2bcd8739ae039[e] = (...t)=>{
+        $4aa888c367b643f0$var$V.push((n)=>n[e].call(null, ...t));
     };
-}), $41a34c1f82b9918d$export$2e2bcd8739ae039.isReady = ()=>!1, $41a34c1f82b9918d$export$2e2bcd8739ae039.VERSION = $41a34c1f82b9918d$var$Te;
+}), $4aa888c367b643f0$export$2e2bcd8739ae039.isReady = ()=>!1, $4aa888c367b643f0$export$2e2bcd8739ae039.VERSION = $4aa888c367b643f0$var$Te;
 
 
-var $3a347ea2f4dd985b$exports = {};
+var $3a40084cc1148c50$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? $3a347ea2f4dd985b$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealHighlight = t());
-})($3a347ea2f4dd985b$exports, function() {
+    "object" == `object` && "object" < `u` ? $3a40084cc1148c50$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealHighlight = t());
+})($3a40084cc1148c50$exports, function() {
     var e = Object.create, t = Object.defineProperty, n = Object.getOwnPropertyDescriptor, r = Object.getOwnPropertyNames, i = Object.getPrototypeOf, a = Object.prototype.hasOwnProperty, o = (e, t)=>()=>(t || e((t = {
                 exports: {}
             }).exports, t), t.exports), s = (e, i, o, s)=>{
@@ -26096,10 +26096,10 @@ https://github.com/highlightjs/highlight.js/issues/2277`), i = e, r = t), n === 
 });
 
 
-var $f510e4bc1a751120$exports = {};
+var $d8024fbd8c5f4891$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? $f510e4bc1a751120$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealMarkdown = t());
-})($f510e4bc1a751120$exports, function() {
+    "object" == `object` && "object" < `u` ? $d8024fbd8c5f4891$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealMarkdown = t());
+})($d8024fbd8c5f4891$exports, function() {
     function e() {
         return {
             async: !1,
@@ -27875,10 +27875,10 @@ Please report this to https://github.com/markedjs/marked.`, e) {
 });
 
 
-var $80ec7a82d4a85961$exports = {};
+var $16d1888e98cd8a0f$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? $80ec7a82d4a85961$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealZoom = t());
-})($80ec7a82d4a85961$exports, function() {
+    "object" == `object` && "object" < `u` ? $16d1888e98cd8a0f$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealZoom = t());
+})($16d1888e98cd8a0f$exports, function() {
     var e = {
         id: `zoom`,
         init: function(e) {
@@ -27957,10 +27957,10 @@ var $80ec7a82d4a85961$exports = {};
 });
 
 
-var $7bb934d68d230f5b$exports = {};
+var $6b0c1068c8869d9a$exports = {};
 (function(e, t) {
-    "object" == `object` && "object" < `u` ? $7bb934d68d230f5b$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealNotes = t());
-})($7bb934d68d230f5b$exports, function() {
+    "object" == `object` && "object" < `u` ? $6b0c1068c8869d9a$exports = t() : typeof define == `function` && define.amd ? define([], t) : (e = typeof globalThis < `u` ? globalThis : e || self, e.RevealNotes = t());
+})($6b0c1068c8869d9a$exports, function() {
     var e = `<!--
 	NOTE: You need to build the notes plugin after making changes to this file.
 -->
@@ -31823,7 +31823,7 @@ window.pixuTalks = {
 
 
 addEventListener("DOMContentLoaded", ()=>{
-    let deck = new (0, $41a34c1f82b9918d$export$2e2bcd8739ae039)(document.querySelector(".reveal"), {
+    let deck = new (0, $4aa888c367b643f0$export$2e2bcd8739ae039)(document.querySelector(".reveal"), {
         ...window.location.href.includes("?print-pdf") && {
             pdfSeparateFragments: false
         },
@@ -31831,10 +31831,10 @@ addEventListener("DOMContentLoaded", ()=>{
         // plugins: [Markdown, Highlight, Zoom, Notes, Menu, Toolbar, Header],
         // plugins: [Markdown, Highlight, Zoom, Notes, Toolbar, Menu],
         plugins: [
-            (0, (/*@__PURE__*/$parcel$interopDefault($f510e4bc1a751120$exports))),
-            (0, (/*@__PURE__*/$parcel$interopDefault($3a347ea2f4dd985b$exports))),
-            (0, (/*@__PURE__*/$parcel$interopDefault($80ec7a82d4a85961$exports))),
-            (0, (/*@__PURE__*/$parcel$interopDefault($7bb934d68d230f5b$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($d8024fbd8c5f4891$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($3a40084cc1148c50$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($16d1888e98cd8a0f$exports))),
+            (0, (/*@__PURE__*/$parcel$interopDefault($6b0c1068c8869d9a$exports))),
             (0, $b03278a6677e60e6$export$2e2bcd8739ae039)
         ],
         navigationMode: "linear",
@@ -33005,4 +33005,4 @@ const $8f517260698e52f7$export$8b945488eb7acd70 = ()=>{
 });
 
 
-//# sourceMappingURL=talk-60fps-or-nothing.ddb97596.js.map
+//# sourceMappingURL=talk-60fps-or-nothing.176fc747.js.map
